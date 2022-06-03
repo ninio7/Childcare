@@ -6,6 +6,9 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+ config.i18n.default_locale = :ja
+ config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
+
 module Childcare
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -20,3 +23,4 @@ module Childcare
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+

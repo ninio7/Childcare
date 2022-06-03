@@ -1,0 +1,60 @@
+ ja:
+    enums:
+      contact:
+        quantity:
+          completed: "完食"
+          largeky:　"少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+  ja:
+    enums:
+      contact:
+        humor:
+          good: "良い"
+          usually:　"普通"
+          bad: "悪い"
+  ja:
+    enums:
+      contact:
+        defecation:
+          usually: "普通"
+          soft:　"軟便"
+          diarrhea: "下痢"
+          hard: "硬便"
+          
+  ja:
+    enums:
+      contact:
+        sleep_degree:
+          deep: "よく眠った"
+          shallow:　"眠りが浅い"
+
+  ja:
+    enums:
+      contact:
+        pool:
+          ok: "OK"
+          no:　"NO"
+  
+  ja:
+    enums:
+      contact:
+        weather:
+          sunny: "晴れ"
+          cloudy:　"曇り"
+          rain: "雨"
+ 
+  ja:
+    enums:
+      contact:
+        status:
+          published: "公開"
+          draft:　"下書き保存"
+  ja:
+    enums:
+      absence_notification:
+        type:
+          absence: "欠席"
+          lateness:　"遅刻"
+          
+         
