@@ -1,2 +1,39 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="border-bottom mt-3 col-md-3 text-center">会員一覧</h2>
+      <table class="table table-hover mt-5">
+        <thead>
+          <tr>
+            <th class="bg-light">会員ID</th>
+            <th class="bg-light">氏名</th>
+            <th class="bg-light">メールアドレス</th>
+            <th class="bg-light">ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr onclick='window.location="<%= admin_customer_path(customer) %>"' role="link">
+            <td><%= customer.id %></td>
+            <td><%= customer.name %></td>
+            <td><%= customer.email %></td>
+            <td id="is_deleted<%= customer.id %>" class="text-success">
+              <%= I18n.t("enums.customer.is_deleted.#{customer.is_deleted}") %>
+               <script>
+                  if(<%= customer.is_deleted%>){
+                  var element = document.querySelector('#is_deleted<%= customer.id %>');
+                  element.className = 'text-secondary';
+                }
+               </script>
+            </td>
+          </tr>
+         <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    <div class="col offset-5 text-center">
+      <%= paginate @customers %>
+    </div>
+</div>

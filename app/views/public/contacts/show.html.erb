@@ -1,2 +1,62 @@
-<h1>Public::Contacts#show</h1>
-<p>Find me in app/views/public/contacts/show.html.erb</p>
+<div class="container">
+  <h2 class="border-bottom mt-3 col-md-3 text-center">連絡帳</h2>
+  <h3><%= @date %> (<%=@weekday %>)</h3>
+  <h4>食事</h4>
+    <div class="field form-group row">
+      <p class="col-md-1">前日の夜</p>
+      <div class="col-md-3">
+        <%= @contact.dinner %>
+      </div>
+      <div class="col-md-3 ">
+        <%= @contact.quantity_i18n %>
+        <%= @contact.dinner_time.strftime('%H:%M')%>
+      </div>
+    </div>
+
+    <div class="field form-group row">
+     <p class="col-md-1">朝食</p>
+     <div class="col-md-3">
+     <%= @contact.breakfast%>
+     </div>
+      <div class="col-md-3">
+        <%= @contact.quantity_i18n %>
+        <%= @contact.breakfast_time.strftime('%H:%M')%>
+      </div>
+    </div>
+     <div class="field form-group row">
+     <p class="col-md-1">機嫌</p>
+      <div class="col-md-3">
+        <%= @contact.humor_i18n %>
+      </div>
+    </div>
+    <div class="field form-group row">
+     <p class="col-md-1">睡眠</p>
+      <div class="col-md-5">
+      <%= @contact.sleep_time.strftime('%H:%M') %> ～
+        <%= @contact.sleep_time.strftime('%H:%M')%>
+        <%= @contact.sleep_degree_i18n %>
+      </div>
+     </div>
+    <div class="field form-group row">
+     <p class="col-md-1">検温</p>
+      <div class="col-md-3">
+       <%= @contact.temperture%>  ℃
+       <%= @contact.temperture_time.strftime('%H:%M')%>
+      </div>
+    </div>
+    <div class="field form-group row">
+     <p class="col-md-1">お迎え</p>
+      <div class="col-md-5">
+       <%= @contact.pickup_person %>
+       <%= @contact.pickup_time.strftime('%H:%M')%>
+      </div>
+    </div>
+     <div class="field form-group row">
+     <p class="col-md-1">コメント</p>
+      <div class="col-md-5">
+       <%= @contact.comment %>
+      </div>
+
+    </div>
+
+</div>

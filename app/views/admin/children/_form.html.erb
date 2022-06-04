@@ -24,7 +24,7 @@
        </div>
        <div class="form-group row">
          <%= f.label :group_id,"クラス", class: "col-md-5"%>
-         <!--%= f.select :group_id, { include_blank: '--選択してください--'},style: "width:90%"%>-->
+          <%= f.select :group_id,options_from_collection_for_select(Group.all, :id, :name, prompt: "--選択してください--"), class:"col-md-5"%>
          <div class="invalid-feedback row offset-5">
            クラスを選択してください。
          </div>

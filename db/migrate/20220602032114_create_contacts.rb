@@ -4,6 +4,7 @@ class CreateContacts < ActiveRecord::Migration[6.1]
       
       t.integer :customer_id
       t.integer :admin_id
+      t.integer :child_id
       t.date :contacted_at
       t.string :weather
       t.string :staple
@@ -11,7 +12,8 @@ class CreateContacts < ActiveRecord::Migration[6.1]
       t.string :side_dish
       t.string :dessert
       t.integer :quantity
-      t.time :nap
+      t.time :nap_start
+      t.time :nap_end
       t.text :comment
       t.integer :humor
       t.integer :defecation

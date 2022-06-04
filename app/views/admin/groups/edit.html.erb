@@ -1,2 +1,19 @@
-<h1>Admin::Classes#edit</h1>
-<p>Find me in app/views/admin/classes/edit.html.erb</p>
+ <div class="container">
+  <h2 class="col-md-5 mt-3 border-bottom text-center">クラス情報編集</h2>
+ <%= form_with(model: @group,url: admin_group_path , method: :patch, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
+     <div class="row g-3 needs-validation novalidate">
+      <div class="col-md-8 mt-3 ">
+        <div class="form-group row">
+          <%= f.label :"クラス" , class: "col-md-5 "%>
+          <%= f.text_field :name, autofocus: true,class:'form-control col-md-3', required: true %>
+          <div class="invalid-feedback row offset-5">
+            クラスを入力してください。
+          </div>
+       </div>
+
+      <div class="col-md-4 mt-5 pt-5">
+        <%= f.submit "登録", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-4 " %>
+      </div>
+     </div>
+     <% end %>
+  </div>

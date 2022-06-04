@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="col-md-5 mt-3 border-bottom text-center">子ども情報登録/一覧</h2>
-   <%= form_with(model: @child, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
+   <%= form_with(model: @child, url: admin_children_path, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
      <div class="row g-3 needs-validation novalidate">
       <div class="col-md-8 mt-3 ">
         <div class="form-group row">
@@ -26,7 +26,7 @@
        </div>
        <div class="form-group row">
          <%= f.label :group_id,"クラス", class: "col-md-5"%>
-         <!--%= f.select :group_id, { include_blank: '--選択してください--'},style: "width:90%"%>-->
+         <%= f.select :group_id,options_from_collection_for_select(Group.all, :id, :name, prompt: "--選択してください--"), class:"col-md-5"%>
          <div class="invalid-feedback row offset-5">
            クラスを選択してください。
          </div>
@@ -46,15 +46,23 @@
              <th>かな名</th>
              <th>誕生日</th>
              <th>クラス</th>
+             <th></th>
            </tr>
          </thead>
         <tbody>
         <% @children.each do |child| %>
            <tr>
+
              <td><%= child.name %></td>
              <td><%= child.kana_name %></td>
              <td><%= child.birthday %></td>
-             <td class="text-center"><%= link_to "編集する", edit_child_path(child.id), class: "btn btn-outline-secondary rounded-pill text-dark text-center mr-3" %></td>
+
+             <td>
+             <%= child.group.name %>
+
+             </td>
+
+             <td class="text-center"><%= link_to "編集する", edit_admin_child_path(child.id), class: "btn btn-outline-secondary rounded-pill text-dark text-center mr-3" %></td>
            </tr>
         <% end %>
         </tbody>

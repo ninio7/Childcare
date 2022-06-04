@@ -1,2 +1,61 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+ <div class="row">
+  <div class="col mt-5">
+  <h2 class="border-bottom text-dark text-center col-md-6 mt-2"><%= @customer.name %>さんの会員情報編集</h2>
+   <%= form_with model: @customer,url: admin_customer_path(@customer), local: true do |f| %>
+
+    <div class="field form-group row mt-5">
+      <%= f.label :"会員ＩⅮ" , class: "col-md-3"%>
+   <%= @customer.id %>
+    </div>
+
+   <div class="field form-group row">
+     <%= f.label :"氏名" , class: "col-md-3"%>
+     <%= f.text_field :name,placeholder: "山田 太郎", class: "col-md-2 control-label"%>
+    </div>
+
+   <div class="field form-group row">
+     <%= f.label :"ふりがな" , class: "col-md-3"%>
+     <%= f.text_field :kana_name,placeholder: "やまだ　たろう", class: "col-md-2 control-label mr-3" %>
+   </div>
+
+    <div class="field form-group row">
+     <%= f.label :"郵便番号（ハイフンなし）", class: "col-md-3" %>
+     <%= f.text_field :postal_code,placeholder: "0000000" , class: "col-md-2 control-label" %>
+   </div>
+
+   <div class="field form-group row">
+     <%= f.label :"住所", class: "col-md-3 " %>
+     <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町0-0", class: "col-md-6 control-label"  %>
+   </div>
+
+   <div class="field form-group row">
+     <%= f.label :"電話番号（ハイフンなし）" , class: "col-md-3" %>
+     <%= f.text_field :phone_number,placeholder: "00000000000", class: "col-md-2 control-label" %>
+   </div>
+
+   <div class="field form-group row">
+     <%= f.label :"メールアドレス", class: "col-md-3" %>
+     <%= f.text_field :email, autofocus: true,placeholder: "samplie@example.com" ,autocomplete: "email", class: "col-md-2 control-label"%>
+   </div>
+   <div class="field form-group row">
+      <%= f.label :"会員ステータス", class: "col-md-3" %>
+      <div class="field form-group col-md-2">
+    　<%= f.radio_button :is_deleted, false %>
+      <%= f.label :is_deleted, "有効", {value: :ok, style: "display: inline-block;"} %>
+    　</div>
+    　<div class="field form-group col-md-2">
+    　<%= f.radio_button :is_deleted, true %>
+      <%= f.label :is_deleted, "退会", {value: :no, style: "display: inline-block;"} %>
+      </div>
+   </div>
+   <%= f.submit :変更を保存, class: "btn btn-secondary rounded-pill col-md-3 text-white offset-3 " %>
+   <% end %>
+   <%= link_to new_admin_customer_contact_path(@customer.id) do %>
+        <div class="border rounded-circle d-flex flex-column" style="height: 40px;width: 40px;">
+          <i class="fas fa-plus h4 mb-0 mx-auto my-auto" ></i>
+        </div>
+        <% end %>
+  </div>
+ </div>
+</div>

@@ -1,2 +1,87 @@
-<h1>Admin::Contacts#show</h1>
-<p>Find me in app/views/admin/contacts/show.html.erb</p>
+<div class="container">
+  <h2 class="border-bottom mt-3 col-md-3 text-center">連絡帳</h2>
+  <h3><%= @date %> (<%=@weekday %>)</h3>
+  <p>昼食</p>
+    <div class="field form-group row">
+      <p class="col-md-1">主食</p>
+      <div class="col-md-3">
+        <%= @contact.staple%>
+      </div>
+      <div class="col-md-4">
+        <%= @contact.quantity %>
+      </div>
+    </div>
+     <div class="field form-group row">
+      <p class="col-md-1">主菜</p>
+      <div class="col-md-3">
+        <%= @contact.main_dish %>
+      </div>
+      <div class="col-md-4">
+        <%= @contact.quantity %>
+      </div>
+    </div>
+     <div class="field form-group row">
+      <p class="col-md-1">副菜</p>
+      <div class="col-md-3">
+        <%= @contact.side_dish %>
+      </div>
+      <div class="col-md-4">
+        <%= @contact.quantity %>
+      </div>
+    </div>
+     <div class="field form-group row">
+      <p class="col-md-1">デザート</p>
+      <div class="col-md-3">
+        <%= @contact.dessert %>
+      </div>
+      <div class="col-md-4">
+        <%= @contact.quantity %>
+      </div>
+    </div>
+
+
+     <div class="field form-group row">
+     <p class="col-md-1">機嫌</p>
+      <div class="col-md-3">
+        <%= @contact.humor %>
+      </div>
+    </div>
+    <div class="field form-group row">
+     <p class="col-md-1">午睡</p>
+      <div class="col-md-5">
+      <%= @contact.nap_start %> ～
+        <%= @contact.nap_end %>
+        <%= @contact.sleep_degree %>
+      </div>
+     </div>
+    <div class="field form-group row">
+     <p class="col-md-1">検温</p>
+      <div class="col-md-3">
+       <%= @contact.temperture %>  ℃
+       <%= @contact.temperture_time %>
+      </div>
+    </div>
+    <div class="field form-group row">
+     <p class="col-md-1">排便</p>
+      <div class="col-md-5">
+       <%= @contact.defecation %>
+       <%= @contact.defecation_number %> 回
+      </div>
+    </div>
+
+    <div class="field form-group row">
+     <p class="col-md-1">写真</p>
+      <div class="col-md-5">
+       %= @contact.image %>
+      </div>
+    </div>
+
+    <div class="field form-group row">
+       <p class="col-md-1">コメント</p>
+       <div class="col-md-5">
+        <%= @contact.comment %>
+       </div>
+    </div>
+　<% end %>
+</div>
+

@@ -1,7 +1,8 @@
-class Public::ChildrenController < ApplicationController
+class Admin::ChildrenController < ApplicationController
   def index
     @children = Child.all
     @child = Child.new
+    @groups = Group.all
   end
 
   def edit
@@ -10,12 +11,12 @@ class Public::ChildrenController < ApplicationController
 
   def create
     @child = Child.new(child_params)
-    # @child.customer_id = current_customer.id
+    @child.customer_id = current_customer.id
     if @child.save
       flash[:notice]="新規登録しました"
-      redirect_to children_path
+      redirect_to admin_children_path
     else
-       @children = Children.all
+       @children = Child.all
        render :index
     end
   end
@@ -24,9 +25,9 @@ class Public::ChildrenController < ApplicationController
     @child = Child.find(params[:id])
     if @child.update(child_params)
          flash[:notice]="登録内容を変更しました"
-      redirect_to children_path
+      redirect_to admin_children_path
     else
-       @children = Children.all
+       @children = Child.all
        render :index
     end
   end

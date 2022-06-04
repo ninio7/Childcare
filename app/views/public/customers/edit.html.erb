@@ -11,6 +11,11 @@
 
       <div class="row">
         <div class="col mb-5 p-5 info_edit_form">
+           <%= f.label :"氏名", class:"col-sm-2 control-label" %>
+          <%= f.text_field :name, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
+
+          <%= f.label :"かな", class:"col-sm-2 control-label" %>
+          <%= f.text_field :kana_name, autofocus: true, class:"col-sm-7 ml-1 form-control-static input_area" %><br>
 
 
            <%= f.label :"郵便番号", class:"col-sm-2 control-label" %>
@@ -20,7 +25,7 @@
           <%= f.text_field :address, autofocus: true, class:"col-sm-7 ml-1 form-control-static input_area" %><br>
 
           <%= f.label :"電話番号", class:"col-sm-2 control-label" %>
-          <%= f.text_field :telephone_number, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
+          <%= f.text_field :phone_number, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
 
           <%= f.label :"メールアドレス", class:"col-sm-2 control-label" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-2 ml-1 form-control-static input_area" %>

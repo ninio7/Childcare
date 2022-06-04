@@ -1,2 +1,9 @@
-<h1>Admin::Games#new</h1>
-<p>Find me in app/views/admin/games/new.html.erb</p>
+<div class="container">
+  <h2 class="border-bottom mt-3 col-md-3 text-center">遊び投稿</h2>
+  <%= form_with model: @game,url: admin_games_path,method: :post do |f| %>
+    <%= render partial: "admin/games/form", locals: { f: f } %>
+    <div class="col-md-3 mt-5">
+     <%= f.submit "登録", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-5" %>
+    </div>
+  <% end %>
+</div>

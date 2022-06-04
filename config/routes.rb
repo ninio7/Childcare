@@ -4,11 +4,15 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :games
     resources :customers, only: [:index,:show,:edit,:update] do
+      resources :contacts
       member do
         get :search_orders
       end
+
+
     end
-    resources :contacts
+
+    resources :children, only:[:new, :index, :show, :edit, :create, :update]
     resources :groups
   end
 
@@ -17,7 +21,7 @@ Rails.application.routes.draw do
     resources :contacts
     resources :absence_notifications, only:[:new, :index, :show, :edit, :create]
     resources :customers, only:[:show, :edit, :update]
-    resources :children, only:[:new, :index, :show, :edit, :create, :update]
+
   end
 
 

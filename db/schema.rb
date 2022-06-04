@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_044653) do
+ActiveRecord::Schema.define(version: 2022_06_04_042845) do
 
   create_table "absence_notifications", force: :cascade do |t|
     t.integer "customer_id"
@@ -21,6 +21,34 @@ ActiveRecord::Schema.define(version: 2022_06_02_044653) do
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.integer "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "admins", force: :cascade do |t|
@@ -42,11 +70,13 @@ ActiveRecord::Schema.define(version: 2022_06_02_044653) do
     t.date "birthday"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
   end
 
   create_table "contacts", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "admin_id"
+    t.integer "child_id"
     t.date "contacted_at"
     t.string "weather"
     t.string "staple"
@@ -54,7 +84,8 @@ ActiveRecord::Schema.define(version: 2022_06_02_044653) do
     t.string "side_dish"
     t.string "dessert"
     t.integer "quantity"
-    t.time "nap"
+    t.time "nap_start"
+    t.time "nap_end"
     t.text "comment"
     t.integer "humor"
     t.integer "defecation"
@@ -81,10 +112,12 @@ ActiveRecord::Schema.define(version: 2022_06_02_044653) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "childr_id"
+    t.string "name"
+    t.string "kana_name"
+    t.integer "child_id"
     t.string "postal_code"
     t.string "address"
-    t.string "phone_namber"
+    t.string "phone_number"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -96,7 +129,14 @@ ActiveRecord::Schema.define(version: 2022_06_02_044653) do
     t.integer "customer_id"
     t.integer "admin_id"
     t.integer "game_id"
-    t.integer "contact"
+    t.integer "contact_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -107,4 +147,6 @@ ActiveRecord::Schema.define(version: 2022_06_02_044653) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end

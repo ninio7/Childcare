@@ -1,0 +1,13 @@
+    <div class="field form-group row">
+      <%= f.label :"タイトル", class: "col-md-5" %>
+      <%= f.text_field :title,autofocus: true%>
+    </div>
+    <div class="field form-group row">
+      <%= f.label :"遊び方の詳細", class: "col-md-5" %>
+      <%= f.text_area :body,autofocus: true%>
+    </div>
+    <div class="field form-group row">
+      <%= f.label :"写真", class: "col-md-5" %>
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+

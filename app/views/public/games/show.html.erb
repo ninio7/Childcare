@@ -1,2 +1,14 @@
-<h1>Public::Games#show</h1>
-<p>Find me in app/views/public/games/show.html.erb</p>
+<div class='row px-3 px-sm-0  mt-5'>
+  <div class="row">
+  <div class=" d-block mx-auto my-2">
+    <%= image_tag @game.image, size: "auto"%>
+  </div>
+
+  <div class='col-sm-4 mx-auto my-2'>
+    <h3><%= @game.title %></h3>
+    <p class="mt-3"><%= @game.body %></p>
+
+      </div>
+  </div>
+</div>
+

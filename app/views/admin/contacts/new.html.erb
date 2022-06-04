@@ -1,2 +1,92 @@
-<h1>Admin::Contacts#new</h1>
-<p>Find me in app/views/admin/contacts/new.html.erb</p>
+<div class="container">
+  <h2 class="border-bottom mt-3 col-md-3 text-center">連絡帳</h2>
+  <h3><%= @date %> (<%=@weekday %>)</h3>
+  <p>昼食</p>
+ <%= form_with model: @contact , url: admin_customer_contacts_path, method: :post do |f| %>
+    <div class="field form-group row">
+      <p class="col-md-1">主食</p>
+      <div class="col-md-3">
+        <%= f.text_area :staple, placeholder: "内容",autofocus: true, size: "30x1"%>
+      </div>
+      <div class="col-md-4">
+        <%= f.select :quantity,Contact.quantities.keys.map{|k| [I18n.t("enums.contact.quantity.#{k}"),k]} %>
+      </div>
+    </div>
+     <div class="field form-group row">
+      <p class="col-md-1">主菜</p>
+      <div class="col-md-3">
+        <%= f.text_area :main_dish, placeholder: "内容",autofocus: true, size: "30x1"%>
+      </div>
+      <div class="col-md-4">
+        <%= f.select :quantity,Contact.quantities.keys.map{|k| [I18n.t("enums.contact.quantity.#{k}"),k]} %>
+      </div>
+    </div>
+     <div class="field form-group row">
+      <p class="col-md-1">副菜</p>
+      <div class="col-md-3">
+        <%= f.text_area :side_dish, placeholder: "内容",autofocus: true, size: "30x1"%>
+      </div>
+      <div class="col-md-4">
+        <%= f.select :quantity,Contact.quantities.keys.map{|k| [I18n.t("enums.contact.quantity.#{k}"),k]} %>
+      </div>
+    </div>
+     <div class="field form-group row">
+      <p class="col-md-1">デザート</p>
+      <div class="col-md-3">
+        <%= f.text_area :dessert, placeholder: "内容",autofocus: true, size: "30x1"%>
+      </div>
+      <div class="col-md-4">
+        <%= f.select :quantity,Contact.quantities.keys.map{|k| [I18n.t("enums.contact.quantity.#{k}"),k]} %>
+      </div>
+    </div>
+
+
+     <div class="field form-group row">
+     <p class="col-md-1">機嫌</p>
+      <div class="col-md-3">
+        <%= f.select :humor,Contact.humors.keys.map{|k| [I18n.t("enums.contact.humor.#{k}"),k]} %>
+      </div>
+    </div>
+    <div class="field form-group row">
+     <p class="col-md-1">午睡</p>
+      <div class="col-md-5">
+      <%= f.time_field :nap_start, autofocus: true %> ～
+        <%= f.time_field :nap_end, autofocus: true ,class: "mr-2"%>
+        <%= f.select :sleep_degree,Contact.sleep_degrees.keys.map{|k| [I18n.t("enums.contact.sleep_degree.#{k}"),k]} %>
+      </div>
+     </div>
+    <div class="field form-group row">
+     <p class="col-md-1">検温</p>
+      <div class="col-md-3">
+       <%= f.text_field :temperture, placeholder: "温度", autofocus: true , size: "2x5"%>  ℃
+       <%= f.time_field :temperture_time, autofocus: true , class:"ml-3"%>
+      </div>
+    </div>
+    <div class="field form-group row">
+     <p class="col-md-1">排便</p>
+      <div class="col-md-5">
+       <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} %>
+       <%= f.text_field :dafecation_number, autofocus: true , placeholder: "回数", size: "4x5", class:"ml-5"%> 回
+      </div>
+    </div>
+
+    <div class="field form-group row">
+     <p class="col-md-1">写真</p>
+      <div class="col-md-5">
+      <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+
+     <div class="field form-group row">
+
+     <p class="col-md-1">コメント</p>
+      <div class="col-md-5">
+       <%= f.text_area :comment, autofocus: true, size: "50x5" %>
+        </div>
+      <div class="col-md-3 mt-5">
+        <%= f.submit "登録", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-5" %>
+      </div>
+    </div>
+　<% end %>
+</div>
+

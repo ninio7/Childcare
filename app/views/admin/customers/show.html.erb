@@ -1,2 +1,55 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+   <h2 class="border-bottom text-dark text-center col-md-5 mt-3"><%= @customer.name %> さんの会員詳細</h2>
+   <div class="row my-3">
+     <div class="col-md-8">
+       <table class="table ">
+        <tbody>
+        　<tr>
+           <th class="bg-light" >会員ID</th>
+           <td><%= @customer.id %></td>
+         </tr>
+         <tr>
+         <tr>
+           <th class="bg-light" >氏名</th>
+           <td><%= @customer.name %></td>
+         </tr>
+         <tr>
+           <th class="bg-light">かな</th>
+           <td><%= @customer.kana_name %></td>
+         </tr>
+         <tr>
+           <th class="bg-light">郵便番号</th>
+           <td><%= @customer.postal_code %></td>
+       </tr>
+       <tr>
+         <th class="bg-light">住所</th>
+         <td><%= @customer.address %></td>
+       </tr>
+       <tr>
+         <th class="bg-light">電話番号</th>
+         <td><%= @customer.phone_number %></td>
+       </tr>
+       <tr>
+         <th class="bg-light">メールアドレス</th>
+         <td><%= @customer.email %></td>
+       </tr>
+       <tr>
+         <th class="bg-light">会員ステータス</th>
+         <td><%= I18n.t("enums.customer.is_deleted.#{@customer.is_deleted}") %></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="row mt-2">
+
+        <%= link_to new_admin_customer_contact_path(@customer.id) do %>
+        <div class="border rounded-circle d-flex flex-column" style="height: 40px;width: 40px;">
+          <i class="fas fa-plus h4 mb-0 mx-auto my-auto" ></i>
+        </div>
+        <% end %>
+        <%= link_to "子ども", admin_children_path, class: "btn btn-secondary text-white rounded-pill col-md-2 ml-5" %>
+
+     <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-secondary text-white rounded-pill col-md-2 ml-5" %>
+   </div>
+</div>

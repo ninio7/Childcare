@@ -1,2 +1,10 @@
-<h1>Admin::Games#edit</h1>
-<p>Find me in app/views/admin/games/edit.html.erb</p>
+<div class="container">
+  <h2 class="border-bottom mt-3 col-md-3 text-center">遊び編集</h2>
+  <%= form_with model: @game ,url: admin_game_path,method: :patch  do |f| %>
+    <%= render partial: "admin/games/form", locals: { f: f } %>
+    <div class="col-md-3 mt-5">
+     <%= f.submit "変更", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-5" %>
+    </div>
+  <% end %>
+</div>
+
