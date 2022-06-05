@@ -1,14 +1,37 @@
 <div class="container mb-5">
-  <h2 class="mb-5 mt-5">連絡帳<span>（全<%= @contacts_all_count %>件）</span></h2>
-  <div class="col-md-6 mx-auto">
-      <div class="d-flex justify-content-end mr-3 mb-3">
-        <%= link_to new_contact_path do %>
-        <div class="border rounded-circle d-flex flex-column" style="height: 40px;width: 40px;">
-          <i class="fas fa-plus h4 mb-0 mx-auto my-auto" ></i>
-        </div>
-        <% end %>
-      </div>
+  <div class="row">
+    <h2 class="col-md-3 mt-5">連絡帳<span>（全<%= @contacts_all_count %>件）</span></h2>
+    <div class="col-md-3 mt-5 d-inline-block">
+      <%= link_to new_contact_path do %>
+        <h4 class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 新規登録</h4>
+      <% end %>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 mt-5">
+      <table class="table table-hover">
+        <tbody>
+          <% @contacts.each do |contact| %>
+          <% date = contact.created_at.to_s(:detetime)%>
+            <tr>
+              <td><% weeks = ["日","月","火","水","木","金","土"]%>
+                  <% week = weeks[contact.created_at.wday]%>
+                  <% if contact.admin_id? %>
+                    <%= link_to admin_customer_contact_path(@customer,contact)  do %>
+                      <p class="text-secondary mt-1 mb-0">【 園 】<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
+                    <% end %>
+                  <% elsif contact.customer_id?%>
+                    <%= link_to contact_path(contact) do %>
+                      <p class="text-secondary mt-1 mb-0">【家庭】<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
+                    <% end %>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
     <div class='row px-md-0 ml-2 mt-5'>
        <div class='col-md-9 justify-content-end'>
         <div class='row mb-5'>
@@ -16,20 +39,27 @@
           <% date = contact.created_at.to_s(:detetime)%>
 
             <div class='card mx-1 border border-0 mr-3'>
-               <%= link_to item_path(item) do %>
-                 <%= image_tag item.get_image ,size: "240x160"%>
+               <%= link_to contact_path(contact) do %>
+                 <!--%= image_tag contact.image ,size: "240x160"%>-->
                <% end %>
                <% weeks = ["日","月","火","水","木","金","土"]%>
                <% week = weeks[contact.created_at.wday]%>
-               <%= link_to contact_path(contact) do %>
-                 <p class="text-secondary mt-1 mb-0"><%=contact.created_at.strftime("%Y年%m月%d日(#{week})") %></p>
+               <% if contact.admin_id? %>
+                 <%= link_to admin_customer_contact_path(@customer,contact)  do %>
+                   <p class="text-secondary mt-1 mb-0">【園】<%=contact.created_at.strftime("%Y年%m月%d日(#{week})") %></p>
+                 <% end %>
+               <% elsif contact.customer_id?%>
+                <%= link_to contact_path(contact) do %>
+                  <p class="text-secondary mt-1 mb-0">【家庭】<%=contact.created_at.strftime("%Y年%m月%d日(#{week})") %></p>
+                <% end %>
                <% end %>
-               </div>
-          <% end %>
+             </div>
+           <% end %>
         </div>
         <div class="text-center mx-auto">
-         <!--%= paginate @contacts %>-->
+         <%= paginate @contacts %>
         </div>
       </div>
     </div>
 </div>
+

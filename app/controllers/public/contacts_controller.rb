@@ -1,5 +1,5 @@
 class Public::ContactsController < ApplicationController
-  before_action :authenticate_customer!
+  # before_action :authenticate_customer!
   def new
     @contact = Contact.new
     @weekday = days[day]
@@ -8,7 +8,8 @@ class Public::ContactsController < ApplicationController
   end
 
   def index
-     @contacts = current_customer.contacts.all
+    @customer = current_customer
+     @contacts = current_customer.contacts.page(params[:page])
      @contacts_all_count=Contact.all.count
   end
 
@@ -33,6 +34,6 @@ class Public::ContactsController < ApplicationController
     private
 
   def contact_params
-    params.require(:contact).permit(:customer_id, :child_id, :contacted_at, :weather, :staple, :main_dish, :side_dish, :dessert, :quantity, :nap_start, :nap_end, :comment, :humor, :defecation, :dafecation_number, :temperture, :temperture_time, :dinner, :dinner_time, :breakfast, :breakfast_time, :sleep_time, :sleep_degree, :pickup_person, :pickup_time, :status)
+    params.require(:contact).permit(:customer_id, :child_id, :admin, :contacted_at, :weather, :staple, :main_dish, :side_dish, :dessert, :quantity, :nap_start, :nap_end, :comment, :humor, :defecation, :dafecation_number, :temperture, :temperture_time, :dinner, :dinner_time, :breakfast, :breakfast_time, :sleep_time, :sleep_degree, :pickup_person, :pickup_time, :status)
   end
 end

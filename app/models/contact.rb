@@ -1,7 +1,7 @@
 class Contact < ApplicationRecord
   has_one_attached :image
   belongs_to :customer
-  belongs_to :admin
+  belongs_to :admin, optional: true
   belongs_to :child
   # 昼食量の設定
   enum quantity:{

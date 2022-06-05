@@ -1,87 +1,99 @@
 <div class="container">
-  <h2 class="border-bottom mt-3 col-md-3 text-center">連絡帳</h2>
-  <h3><%= @date %> (<%=@weekday %>)</h3>
-  <p>昼食</p>
+  <h2 class="border-bottom mt-3 col-md-3 text-center">園からの連絡帳</h2>
+ <div class="row">
+    <div class="col-md-5">
+      <h3 class="mt-4"><%= @date %> (<%=@weekday %>)</h3>
+    </div>
+    <div class="col-md-5 mt-4">
+      <h3><%= @contact.child.name %> さん</h3>
+    </div>
+  </div>
+  <p class="mt-4">昼食</p>
     <div class="field form-group row">
-      <p class="col-md-1">主食</p>
+      <p class="col-md-2">主食</p>
       <div class="col-md-3">
-        <%= @contact.staple%>
+        <%= @contact.staple %>
       </div>
       <div class="col-md-4">
-        <%= @contact.quantity %>
+        <%= @contact.quantity_i18n %>
       </div>
     </div>
      <div class="field form-group row">
-      <p class="col-md-1">主菜</p>
+      <p class="col-md-2">主菜</p>
       <div class="col-md-3">
         <%= @contact.main_dish %>
       </div>
       <div class="col-md-4">
-        <%= @contact.quantity %>
+        <%= @contact.quantity_i18n %>
       </div>
     </div>
      <div class="field form-group row">
-      <p class="col-md-1">副菜</p>
+      <p class="col-md-2">副菜</p>
       <div class="col-md-3">
         <%= @contact.side_dish %>
       </div>
       <div class="col-md-4">
-        <%= @contact.quantity %>
+        <%= @contact.quantity_i18n %>
       </div>
     </div>
      <div class="field form-group row">
-      <p class="col-md-1">デザート</p>
+      <p class="col-md-2">デザート</p>
       <div class="col-md-3">
         <%= @contact.dessert %>
       </div>
       <div class="col-md-4">
-        <%= @contact.quantity %>
+        <%= @contact.quantity_i18n %>
       </div>
     </div>
-
-
      <div class="field form-group row">
-     <p class="col-md-1">機嫌</p>
+     <p class="col-md-2">機嫌</p>
       <div class="col-md-3">
-        <%= @contact.humor %>
+        <%= @contact.humor_i18n %>
       </div>
     </div>
     <div class="field form-group row">
-     <p class="col-md-1">午睡</p>
-      <div class="col-md-5">
-      <%= @contact.nap_start %> ～
-        <%= @contact.nap_end %>
-        <%= @contact.sleep_degree %>
+     <p class="col-md-2">午睡</p>
+      <div class="col-md-3">
+        <%= @contact.nap_start.strftime('%H:%M') %> ～
+        <%= @contact.nap_end.strftime('%H:%M') %>
       </div>
+      <div class="col-md-3">
+        <%= @contact.sleep_degree_i18n %>
+      </div>
+
      </div>
     <div class="field form-group row">
-     <p class="col-md-1">検温</p>
+     <p class="col-md-2">検温</p>
       <div class="col-md-3">
        <%= @contact.temperture %>  ℃
-       <%= @contact.temperture_time %>
+      </div>
+      <div class="col-md-3">
+       <%= @contact.temperture_time.strftime('%H:%M')%>
       </div>
     </div>
     <div class="field form-group row">
-     <p class="col-md-1">排便</p>
-      <div class="col-md-5">
-       <%= @contact.defecation %>
-       <%= @contact.defecation_number %> 回
+     <p class="col-md-2">排便</p>
+      <div class="col-md-3">
+       <%= @contact.defecation_i18n %>
       </div>
-    </div>
-
-    <div class="field form-group row">
-     <p class="col-md-1">写真</p>
-      <div class="col-md-5">
-       %= @contact.image %>
+      <div class="col-md-3">
+       <%= @contact.dafecation_number %> 回
       </div>
     </div>
 
     <div class="field form-group row">
-       <p class="col-md-1">コメント</p>
+     <p class="col-md-2">写真</p>
+      <div class="col-md-5">
+        <%= image_tag @contact.image, size: "auto"%>
+       </div>
+    </div>
+
+    <div class="field form-group row">
+       <p class="col-md-2">コメント</p>
        <div class="col-md-5">
         <%= @contact.comment %>
        </div>
     </div>
-　<% end %>
+
 </div>
 

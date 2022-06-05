@@ -5,14 +5,11 @@ Rails.application.routes.draw do
     resources :games
     resources :customers, only: [:index,:show,:edit,:update] do
       resources :contacts
+      resources :children
       member do
         get :search_orders
       end
-
-
-    end
-
-    resources :children, only:[:new, :index, :show, :edit, :create, :update]
+  end
     resources :groups
   end
 
@@ -31,9 +28,11 @@ devise_for :customer,skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
+
 # 管理者用
 devise_for :admin,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
+

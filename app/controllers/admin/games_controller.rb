@@ -6,9 +6,9 @@ class Admin::GamesController < ApplicationController
   def edit
     @game =Game.find(params[:id])
   end
-  
+
   def index
-    @games = Game.all
+    @games = Game.page(params[:page])
     @games_all_count= Game.all.count
   end
 

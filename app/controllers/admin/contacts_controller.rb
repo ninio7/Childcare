@@ -1,5 +1,6 @@
 class Admin::ContactsController < ApplicationController
   def new
+    @customer = Customer.find(params[:customer_id])
     @contact = Contact.new
     @weekday = days[day]
     @date = Date.current.strftime('%Y年 %m月 %d日')
@@ -7,23 +8,26 @@ class Admin::ContactsController < ApplicationController
   end
 
   def index
-     @contacts = Contact.all
+     @customer = Customer.find(params[:customer_id])
+      # @contacts = Contact.where(customer_id:params[:customer_id])
+   　 @contacts = Contact.all
      @contacts_all_count=Contact.all.count
   end
 
   def show
+    # @customer = Customer.find(params[:customer_id])
     @contact = Contact.find(params[:id])
     @weekday = days[day]
     @date = Date.current.strftime('%Y年 %m月 %d日')
   end
 
   def create
-    @contact = Contact.new(contact_params)
+    @customer = Customer.find(params[:customer_id])
+    @contact = @customer.contacts.new(contact_params)
     @contact.admin_id = current_admin.id
-
-    if @contact.save
+     if @contact.save
       flash[:notice]="新規登録しました"
-      redirect_to admin_customercontacts_path
+      redirect_to admin_customer_contacts_path
     else
        @contacts = Contact.all
        render :index
