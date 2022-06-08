@@ -1,0 +1,42 @@
+<div class="container">
+  <h2 class="border-bottom mt-3 col-md-3 text-center">欠席・遅刻連絡</h2>
+    <h3 class="col-md-4"><%= @date %> (<%=@weekday %>)</h3>
+    <%= form_with model: @absent , url: absents_path, method: :post do |f| %>
+    <div class="form-group row">
+        <!--%= f.collection_select :child_id, Child.all, :id, :name, {prompt: '--選択してください'},{ class: 'form-select '} %>-->
+     <%= f.select :child_id,options_from_collection_for_select(Child.all, :id, :name , promote: "--選択してください--"),{},{ class: "form-select col-md-2"}%>
+    </div>
+
+    <div class="field form-group row">
+      <p class="col-md-1">種別</p>
+      <div class="col-md-4">
+        <%= f.select :kind,Absent.kinds.keys.map{|k| [I18n.t("enums.absent.kind.#{k}"),k]} %>
+      </div>
+    </div>
+
+    <div class="field form-group row">
+     <p class="col-md-1">期間</p>
+     <div class="col-md-4">
+        <%= f.date_field :started_on, autofocus: true %> ～
+        <%= f.date_field :finished_on, autofocus: true ,class: "mr-2"%>
+     </div>
+    </div>
+     <div class="field form-group row">
+     <p class="col-md-1">症状</p>
+      <div class="col-md-3">
+      <%= f.text_area :symptom, autofocus: true, size: "50x2" %>
+      </div>
+    </div>
+    <div class="field form-group row">
+     <p class="col-md-1">備考</p>
+      <div class="col-md-5">
+       <%= f.text_area :note, autofocus: true, size: "50x5" %>
+        </div>
+      <div class="col-md-3 mt-5">
+        <%= f.submit "登録", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-5" %>
+      </div>
+    </div>
+　<% end %>
+</div>
+
+

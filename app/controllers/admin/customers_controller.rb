@@ -2,6 +2,7 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
   def index
     @customers = Customer.page(params[:page])
+    @groups = Group.all
   end
 
   def show
@@ -22,9 +23,22 @@ class Admin::CustomersController < ApplicationController
     end
   end
 
+   def search
+     if params[:name].present?
+       @customers = Customer.where('name LIKE ?', "%#{params[:name]}%")
+     else
+       @customers = Customer.none
+     end
+  # end
+    @customer_name=params[:name]
+  #   @customers = Group.where("name LILE ?", "%#{@customer_name}%").page(params[:page])
+    @customers_all_count=Customer.where("name LIKE ?","%#{@customer_name}%").count
+    @groups = Group.all
+   end
+
   private
    def customer_params
-     params.require(:customer).permit(:name,:kana_name,:email,:postal_code,:address,:phone_number,:encrypted_password,:is_deleted)
+     params.require(:customer).permit(:child_id, :name,:kana_name,:email,:postal_code,:address,:phone_number,:encrypted_password,:is_deleted)
    end
 end
 

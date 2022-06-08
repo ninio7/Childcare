@@ -2,21 +2,24 @@ Rails.application.routes.draw do
 
   root "public/games#index"
   namespace :admin do
-    resources :games
+    resources :games do
+      resource :favorites, only:[:create, :destroy]
+    end
     resources :customers, only: [:index,:show,:edit,:update] do
       resources :contacts
       resources :children
-      member do
-        get :search_orders
-      end
-  end
+      resources :absents
+    end
+    get "search"=>"customers#search"
     resources :groups
   end
 
   scope module: :public do
-    resources :games, only:[:index, :show]
+    resources :games do
+      resource :favorites, only:[:create, :destroy]
+    end
     resources :contacts
-    resources :absence_notifications, only:[:new, :index, :show, :edit, :create]
+    resources :absents
     resources :customers, only:[:show, :edit, :update]
 
   end

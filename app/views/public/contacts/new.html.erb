@@ -3,7 +3,8 @@
     <h3><%= @date %> (<%=@weekday %>)</h3>
     <%= form_with model: @contact , url: contacts_path, method: :post do |f| %>
     <div class="form-group row">
-     <%= f.select :child_id,options_from_collection_for_select(Child.all, :id, :name , promote: "--選択してください--"), class:"col-md-5"%>
+        <!--%= f.collection_select :child_id, Child.all, :id, :name, {prompt: '--選択してください'},{ class: 'form-select '} %>-->
+     <%= f.select :child_id,options_from_collection_for_select(Child.all, :id, :name , promote: "--選択してください--"),{},{ class: "form-select col-md-2"}%>
     </div>
     <h4>食事</h4>
     <div class="field form-group row">
@@ -12,7 +13,7 @@
         <%= f.text_area :dinner, placeholder: "内容",autofocus: true, size: "40x2"%>
       </div>
       <div class="col-md-4 mt-4 ">
-        <%= f.select :quantity,Contact.quantities.keys.map{|k| [I18n.t("enums.contact.quantity.#{k}"),k]} %>
+        <%= f.select :dinner_quantity,Contact.dinner_quantities.keys.map{|k| [I18n.t("enums.contact.dinner_quantity.#{k}"),k]} %>
         <%= f.time_field :dinner_time, autofocus: true ,class: "ml-3"%>
       </div>
     </div>
@@ -23,7 +24,7 @@
      <%= f.text_area :breakfast, placeholder: "内容",autofocus: true, size: "40x2"%>
      </div>
       <div class="col-md-4 mt-4">
-        <%= f.select :quantity,Contact.quantities.keys.map{|k| [I18n.t("enums.contact.quantity.#{k}"),k]} %>
+        <%= f.select :breakfast_quantity,Contact.breakfast_quantities.keys.map{|k| [I18n.t("enums.contact.breakfast_quantity.#{k}"),k]} %>
         <%= f.time_field :breakfast_time, autofocus: true ,class: "ml-3"%>
       </div>
     </div>
@@ -36,8 +37,8 @@
     <div class="field form-group row">
      <p class="col-md-1">睡眠</p>
       <div class="col-md-5">
-      <%= f.time_field :sleep_time, autofocus: true %> ～
-        <%= f.time_field :sleep_time, autofocus: true ,class: "mr-2"%>
+      <%= f.time_field :sleep_started_at, autofocus: true %> ～
+        <%= f.time_field :sleep_finished_at, autofocus: true ,class: "mr-2"%>
         <%= f.select :sleep_degree,Contact.sleep_degrees.keys.map{|k| [I18n.t("enums.contact.sleep_degree.#{k}"),k]} %>
       </div>
      </div>
@@ -45,14 +46,21 @@
      <p class="col-md-1">検温</p>
       <div class="col-md-3">
        <%= f.text_field :temperture, placeholder: "温度", autofocus: true , size: "2x5"%>  ℃
-       <%= f.time_field :temperture_time, autofocus: true , class:"ml-3"%>
+       <%= f.time_field :tempertured_at, autofocus: true , class:"ml-3"%>
+      </div>
+    </div>
+     <div class="field form-group row">
+     <p class="col-md-1">排便</p>
+      <div class="col-md-3">
+       <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} %>
+       <%= f.text_field :defecation_number, autofocus: true , placeholder: "回数", size: "4x5", class:"ml-5"%> 回
       </div>
     </div>
     <div class="field form-group row">
      <p class="col-md-1">お迎え</p>
       <div class="col-md-5">
        <%= f.text_field :pickup_person, placeholder: "お迎えの人", autofocus: true %>
-       <%= f.time_field :pickup_time, autofocus: true , class:"ml-3"%>
+       <%= f.time_field :pickuped_at, autofocus: true , class:"ml-3"%>
       </div>
     </div>
      <div class="field form-group row">

@@ -5,5 +5,7 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :contacts, dependent: :destroy
   has_many :absence_notifications, dependent: :destroy
+  has_many :games, dependent: :destroy
+  # has_many :favorites, dependent: :destroy
 
 end

@@ -8,4 +8,5 @@ class Customer < ApplicationRecord
   has_many :contacts, dependent: :destroy
   has_many :absence_notifications, dependent: :destroy
   has_many :favorites, dependent: :destroy
- end
+  has_many :games, dependent: :destroy
+end

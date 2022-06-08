@@ -3,13 +3,53 @@ class Contact < ApplicationRecord
   belongs_to :customer
   belongs_to :admin, optional: true
   belongs_to :child
-  # 昼食量の設定
-  enum quantity:{
+
+  # 主食量の設定
+  enum staple_quantity:{
     completed:0,
     little:1,
     half:2,
     largely:3,
   }
+  # 主菜量の設定
+   enum main_quantity:{
+    completed:0,
+    little:1,
+    half:2,
+    largely:3,
+  }, _prefix: true
+
+  # 副菜量の設定
+   enum side_quantity:{
+    completed:0,
+    little:1,
+    half:2,
+    largely:3,
+  }, _prefix: true
+
+   # デザート量の設定
+  enum dessert_quantity:{
+    completed:0,
+    little:1,
+    half:2,
+    largely:3,
+  }, _prefix: true
+
+   # 夕食量の設定
+  enum dinner_quantity:{
+    completed:0,
+    little:1,
+    half:2,
+    largely:3,
+  }, _prefix: true
+
+    # 朝食量の設定
+  enum breakfast_quantity:{
+    completed:0,
+    little:1,
+    half:2,
+    largely:3,
+  }, _prefix: true
 
    # 機嫌の設定
   enum humor:{

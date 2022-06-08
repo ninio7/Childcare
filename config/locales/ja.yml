@@ -1,7 +1,32 @@
  ja:
     enums:
       contact:
-        quantity:
+        dinner_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        breakfast_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        staple_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        main_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        side_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        dessert_quantity:
           completed: "完食"
           largely: "少し残した"
           half: "半分"
@@ -29,9 +54,8 @@
           published: "公開"
           draft: "下書き保存"
 
-
-      absence_notification:
-        type:
+      absent:
+        kind:
           absence: "欠席"
           lateness: "遅刻"
 

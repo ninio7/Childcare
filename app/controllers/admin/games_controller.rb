@@ -10,6 +10,8 @@ class Admin::GamesController < ApplicationController
   def index
     @games = Game.page(params[:page])
     @games_all_count= Game.all.count
+
+    # @admin = current_admin
   end
 
   def create
@@ -17,7 +19,7 @@ class Admin::GamesController < ApplicationController
        @game=Game.new(game_params)
     if @game.save
       flash[:notice]="新規登録しました"
-      redirect_to games_path
+      redirect_to admin_games_path
     else
       render new_admin_game_path
     end
@@ -40,7 +42,7 @@ class Admin::GamesController < ApplicationController
     redirect_to games_path
   end
 
-   def show
+  def show
     @game = Game.find(params[:id])
   end
 
@@ -48,7 +50,7 @@ class Admin::GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :body, :image)
+    params.require(:game).permit(:title, :body, images: [])
   end
 
 end

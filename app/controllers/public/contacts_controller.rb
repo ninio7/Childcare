@@ -15,8 +15,7 @@ class Public::ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
-    @weekday = days[day]
-    @date = Date.current.strftime('%Y年 %m月 %d日')
+
   end
 
   def create
@@ -34,6 +33,6 @@ class Public::ContactsController < ApplicationController
     private
 
   def contact_params
-    params.require(:contact).permit(:customer_id, :child_id, :admin, :contacted_at, :weather, :staple, :main_dish, :side_dish, :dessert, :quantity, :nap_start, :nap_end, :comment, :humor, :defecation, :dafecation_number, :temperture, :temperture_time, :dinner, :dinner_time, :breakfast, :breakfast_time, :sleep_time, :sleep_degree, :pickup_person, :pickup_time, :status)
+    params.require(:contact).permit(:customer_id, :child_id, :admin_id, :weather, :staple, :main, :side, :dessert, :staple_quantity, :main_quantity, :side_quantity, :dessert_quantity, :comment, :humor, :defecation, :defecation_number, :temperture, :tempertured_at, :dinner, :dinner_time,:dinner_quantity, :breakfast, :breakfast_time, :breakfast_quantity ,:sleep_started_at, :sleep_finished_at, :sleep_degree, :pickup_person, :pickuped_at, :status)
   end
 end

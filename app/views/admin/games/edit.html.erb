@@ -2,8 +2,8 @@
   <h2 class="border-bottom mt-3 col-md-3 text-center">遊び編集</h2>
   <%= form_with model: @game ,url: admin_game_path,method: :patch  do |f| %>
     <%= render partial: "admin/games/form", locals: { f: f } %>
-    <div class="col-md-3 mt-5">
-     <%= f.submit "変更", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-5" %>
+    <div class="col mt-5 offset-lg-6">
+     <%= f.submit "変更", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-2" %>
     </div>
   <% end %>
 </div>

@@ -1,14 +1,26 @@
-<div class='row px-3 px-sm-0  mt-5'>
-  <div class="row">
-  <div class=" d-block mx-auto my-2">
-    <%= image_tag @game.image, size: "auto"%>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-3 ">
+      <% @game.images.each do |image| %>
+        <div class=" col ml-3 mt-3">
+          <%= image_tag(image, width:150) %>
+         </div>
+      <% end %>
+    </div>
+    <div class='col-md-4'>
+      <h3><%= @game.title %></h3>
+      <p class="mt-3"><%= @game.body %></p>
+    </div>
   </div>
-
-  <div class='col-sm-4 mx-auto my-2'>
-    <h3><%= @game.title %></h3>
-    <p class="mt-3"><%= @game.body %></p>
-
-      </div>
+  <div class="row offset-3">
+  <div class="col-md-2">
+   <p id = "game_<%= @game.id %>"><%= render "public/favorites/btn", game: @game %></p></div>
+   <div class="col-md-6">
+    <% if admin_signed_in?  %>
+    <%= link_to "Edit", edit_admin_game_path(@game.id) ,class:"btn btn-sm btn-success col-md-3 ml-3" %>
+    <%= link_to "Destroy", admin_game_path(@game.id), class:"btn btn-sm btn-danger col-md-3 ml-3", method: :delete, "data-confirm" => "Are you sure?" %>
+    <% end %>
+<div class="col-md-3">
   </div>
 </div>
 

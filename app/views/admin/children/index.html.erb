@@ -57,10 +57,8 @@
              <td><%= child.kana_name %></td>
              <td><%= child.birthday %></td>
 
-             <td>
-             <%= child.group.name %>
-
-             </td>
+             <td><%= child.group.name %></td>
+             <!--<td>%= child.age %></td>-->
              <td class="text-center"><%= link_to "編集する", edit_admin_customer_child_path(@customer, child), class: "btn btn-outline-secondary rounded-pill text-dark text-center mr-3" %>
                <%= link_to "削除する", admin_customer_child_path(@customer, child.id), class: "btn btn-outline-danger rounded-pill", method: :delete , "data-confirm" => "本当に削除してよろしいでしょうか?"%></td>
              </td>

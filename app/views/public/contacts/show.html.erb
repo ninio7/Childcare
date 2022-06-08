@@ -2,7 +2,9 @@
   <h2 class="border-bottom mt-3 col-md-5 text-center">家庭からの連絡帳</h2>
   <div class="row">
     <div class="col-md-5">
-      <h3 class="mt-4"><%= @date %> (<%=@weekday %>)</h3>
+        <% weeks = ["日","月","火","水","木","金","土"]%>
+        <% week = weeks[@contact.created_at.wday]%>
+      <h3 class="mt-4"><%= @contact.updated_at.strftime("%Y年%m月%d日 (#{week})")%></h3>
     </div>
     <div class="col-md-5 mt-4">
       <h3><%= @contact.child.name %> さん</h3>
@@ -15,7 +17,7 @@
       <%= @contact.dinner %>
     </div>
     <div class="col-md-3 ">
-      <%= @contact.quantity_i18n %>
+      <%= @contact.dinner_quantity_i18n %>
       <%= @contact.dinner_time.strftime('%H:%M')%>
     </div>
   </div>
@@ -25,7 +27,7 @@
      <%= @contact.breakfast%>
     </div>
     <div class="col-md-3">
-     <%= @contact.quantity_i18n %>
+     <%= @contact.breakfast_quantity_i18n %>
      <%= @contact.breakfast_time.strftime('%H:%M')%>
     </div>
    </div>
@@ -38,8 +40,8 @@
    <div class="field form-group row">
     <p class="col-md-2">睡眠</p>
     <div class="col-md-3">
-     <%= @contact.sleep_time.strftime('%H:%M') %> ～
-     <%= @contact.sleep_time.strftime('%H:%M')%>
+     <%= @contact.sleep_started_at.strftime('%H:%M') %> ～
+     <%= @contact.sleep_finished_at.strftime('%H:%M')%>
     </div>
     <div class="col-md-3">
       <%= @contact.sleep_degree_i18n %>
@@ -51,7 +53,16 @@
      <%= @contact.temperture%>  ℃
     </div>
     <div class="col-md-3">
-      <%= @contact.temperture_time.strftime('%H:%M')%>
+      <%= @contact.tempertured_at.strftime('%H:%M')%>
+    </div>
+   </div>
+   <div class="field form-group row">
+    <p class="col-md-2">排便</p>
+    <div class="col-md-3">
+     <%= @contact.defecation_i18n  %>
+    </div>
+    <div class="col-md-3">
+      <%= @contact.defecation_number%> 回
     </div>
    </div>
    <div class="field form-group row">
@@ -60,7 +71,7 @@
      <%= @contact.pickup_person %>
     </div>
     <div class="col-md-3">
-     <%= @contact.pickup_time.strftime('%H:%M')%>
+     <%= @contact.pickuped_at.strftime('%H:%M')%>
     </div>
    </div>
    <div class="field form-group row">

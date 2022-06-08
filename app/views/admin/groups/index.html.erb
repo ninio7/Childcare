@@ -1,23 +1,24 @@
 <div class="container">
   <h2 class="col-md-5 mt-3 border-bottom text-center">クラス登録/一覧</h2>
    <%= form_with(model: @group,url: admin_groups_path, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
-     <div class="row g-3 needs-validation novalidate">
+     <div class="row g-3 needs-validation novalidate mt-5">
       <div class="col-md-8 mt-3 ">
-        <div class="form-group row">
-          <%= f.label :"クラス" , class: "col-md-5 "%>
-          <%= f.text_field :name, autofocus: true,class:'form-control col-md-3', required: true %>
-          <div class="invalid-feedback row offset-5">
-            クラスを入力してください。
+        <div class="form-group row ml-3">
+          <%= f.label :"クラス名" , class: "col-md-3 "%>
+          <%= f.text_field :name, autofocus: true,class:'form-control col-md-4', required: true %>
+            <%= f.submit "新規登録", class: "btn btn-secondary text-white rounded-pill col-md-2 offset-1" %>
+          <div class="invalid-feedback row offset-3">
+            クラス名を入力してください。
           </div>
        </div>
      </div>
-      <div class="col-md-4 mt-5 pt-5">
-        <%= f.submit "新規登録", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-4 " %>
+      <div class="col-md-4">
+
       </div>
      </div>
      <% end %>
      <div class="row">
-       <div class="col-md-8 mt-5 table-responsive">
+       <div class="col-md-7 mt-5 table-responsive">
         <table class="table table-bordered text-nowrap">
          <thead class="thead-light">
            <tr class="">
@@ -29,8 +30,8 @@
         <% @groups.each do |group| %>
            <tr>
              <td><%= group.name %></td>
-             <td class="text-center"><%= link_to "編集する", edit_admin_group_path(group.id),class: "btn btn-outline-secondary" %>
-         <%= link_to "削除する", admin_group_path(group.id), class: "btn btn-outline-danger rounded-pill", method: :delete %></td>
+             <td class="text-center"><%= link_to "編集する", edit_admin_group_path(group.id),class: "btn btn-outline-secondary rounded-pill" %>
+         <%= link_to "削除する", admin_group_path(group.id), class: "btn btn-outline-danger rounded-pill ml-3", method: :delete %></td>
            </tr>
         <% end %>
         </tbody>

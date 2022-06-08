@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_042845) do
+ActiveRecord::Schema.define(version: 2022_06_06_043013) do
 
-  create_table "absence_notifications", force: :cascade do |t|
+  create_table "absents", force: :cascade do |t|
     t.integer "customer_id"
+    t.integer "child_id"
     t.integer "admin_id"
-    t.string "type"
-    t.date "start_at"
+    t.integer "kind"
+    t.date "started_on"
+    t.date "finished_on"
     t.string "symptom"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
@@ -65,41 +67,46 @@ ActiveRecord::Schema.define(version: 2022_06_04_042845) do
 
   create_table "children", force: :cascade do |t|
     t.integer "group_id"
+    t.integer "customer_id"
     t.string "name"
     t.string "kana_name"
     t.date "birthday"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id"
   end
 
   create_table "contacts", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "admin_id"
     t.integer "child_id"
-    t.date "contacted_at"
     t.string "weather"
     t.string "staple"
-    t.string "main_dish"
-    t.string "side_dish"
+    t.string "main"
+    t.string "side"
     t.string "dessert"
-    t.integer "quantity"
-    t.time "nap_start"
-    t.time "nap_end"
+    t.integer "staple_quantity"
+    t.integer "main_quantity"
+    t.integer "side_quantity"
+    t.integer "dessert_quantity"
+    t.time "nap_started_at"
+    t.time "nap_finished_at"
     t.text "comment"
     t.integer "humor"
     t.integer "defecation"
-    t.integer "dafecation_number"
+    t.integer "defecation_number"
     t.string "temperture"
-    t.time "temperture_time"
+    t.time "tempertured_at"
     t.string "dinner"
+    t.integer "dinner_quantity"
     t.time "dinner_time"
     t.string "breakfast"
+    t.integer "breakfast_quantity"
     t.time "breakfast_time"
-    t.time "sleep_time"
+    t.time "sleep_started_at"
+    t.time "sleep_finished_at"
     t.integer "sleep_degree"
     t.integer "pool"
-    t.time "pickup_time"
+    t.time "pickuped_at"
     t.string "pickup_person"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -118,6 +125,7 @@ ActiveRecord::Schema.define(version: 2022_06_04_042845) do
     t.string "postal_code"
     t.string "address"
     t.string "phone_number"
+    t.integer "game_id"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -137,6 +145,8 @@ ActiveRecord::Schema.define(version: 2022_06_04_042845) do
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.text "body"
+    t.integer "customer_id"
+    t.integer "admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

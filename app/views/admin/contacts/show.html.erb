@@ -2,7 +2,9 @@
   <h2 class="border-bottom mt-3 col-md-3 text-center">園からの連絡帳</h2>
  <div class="row">
     <div class="col-md-5">
-      <h3 class="mt-4"><%= @date %> (<%=@weekday %>)</h3>
+      <% weeks = ["日","月","火","水","木","金","土"]%>
+        <% week = weeks[@contact.created_at.wday]%>
+      <h3 class="mt-4"><%= @contact.updated_at.strftime("%Y年%m月%d日 (#{week})")%></h3>
     </div>
     <div class="col-md-5 mt-4">
       <h3><%= @contact.child.name %> さん</h3>
@@ -15,25 +17,25 @@
         <%= @contact.staple %>
       </div>
       <div class="col-md-4">
-        <%= @contact.quantity_i18n %>
+        <%= @contact.staple_quantity_i18n %>
       </div>
     </div>
      <div class="field form-group row">
       <p class="col-md-2">主菜</p>
       <div class="col-md-3">
-        <%= @contact.main_dish %>
+        <%= @contact.main %>
       </div>
       <div class="col-md-4">
-        <%= @contact.quantity_i18n %>
+        <%= @contact.main_quantity_i18n %>
       </div>
     </div>
      <div class="field form-group row">
       <p class="col-md-2">副菜</p>
       <div class="col-md-3">
-        <%= @contact.side_dish %>
+        <%= @contact.side %>
       </div>
       <div class="col-md-4">
-        <%= @contact.quantity_i18n %>
+        <%= @contact.side_quantity_i18n %>
       </div>
     </div>
      <div class="field form-group row">
@@ -42,7 +44,7 @@
         <%= @contact.dessert %>
       </div>
       <div class="col-md-4">
-        <%= @contact.quantity_i18n %>
+        <%= @contact.dessert_quantity_i18n %>
       </div>
     </div>
      <div class="field form-group row">
@@ -54,8 +56,8 @@
     <div class="field form-group row">
      <p class="col-md-2">午睡</p>
       <div class="col-md-3">
-        <%= @contact.nap_start.strftime('%H:%M') %> ～
-        <%= @contact.nap_end.strftime('%H:%M') %>
+        <%= @contact.nap_started_at.strftime('%H:%M') %> ～
+        <%= @contact.nap_finished_at.strftime('%H:%M') %>
       </div>
       <div class="col-md-3">
         <%= @contact.sleep_degree_i18n %>
@@ -68,7 +70,7 @@
        <%= @contact.temperture %>  ℃
       </div>
       <div class="col-md-3">
-       <%= @contact.temperture_time.strftime('%H:%M')%>
+       <%= @contact.tempertured_at%>
       </div>
     </div>
     <div class="field form-group row">
@@ -77,7 +79,7 @@
        <%= @contact.defecation_i18n %>
       </div>
       <div class="col-md-3">
-       <%= @contact.dafecation_number %> 回
+       <%= @contact.defecation_number %> 回
       </div>
     </div>
 

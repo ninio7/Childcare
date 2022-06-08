@@ -4,9 +4,16 @@ class Admin::GroupsController < ApplicationController
     @groups = Group.all
   end
 
+  def show
+    @groups = Group.all
+    @group = Group.find(params[:id])
+    @customers = Customer.where(params[:id])
+    @groups_all_count=Group.where("name LIKE ?","%#{@group.name}%").count
+  end
+
+
   def create
     @group = Group.new(group_params)
-
     if @group.save
       flash[:notice]="新規登録しました"
       redirect_to admin_groups_path
@@ -15,8 +22,6 @@ class Admin::GroupsController < ApplicationController
        render :index
     end
   end
-
-
 
   def edit
     @group = Group.find(params[:id])
@@ -40,6 +45,7 @@ class Admin::GroupsController < ApplicationController
    end
 
   private
+
   def group_params
     params.require(:group).permit(:name)
   end
