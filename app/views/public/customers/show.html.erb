@@ -1,12 +1,19 @@
 <div class="container">
 　<div><%= flash[:info_edit_success] %></div>
-  <div class="row">
-    <div class="col-md-7 p-5 my-page-info">
+　  <div class="row">
+    <div class="col-md-6 offset-1">
       <div class="row">
-        <div class="col-md-3 mt-2 text-right ml-5">
+        <div class="col-md-4"><%= image_tag 'cat.png',style: "background-size: cover;", size: "200x150" ,class: "carousel_image " %></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 p-5 my-page-info offset-1">
+      <div class="row">
+        <div class="col-md-3 ml-5">
           <strong class="info-title">登録情報</strong>
         </div>
-        <div class="col-md-9 text-right">
+        <div class="col-md-9 offset-3 text-right">
           <%= link_to edit_customer_path, class:"btn text-right info_to_edit" do %>
             編集する<i class="fas fa-user-edit"></i>
           <% end %>
@@ -45,38 +52,43 @@
      </div>
     </div>
 
-<h3 class="offset-1">お子様情報</h3>
- <div class="row ml-5">
+    <div class="row">
+    <div class="col-md-9 p-5 ml-5">
+      <div class="row">
+        <div class="col-md-3 ml-3">
+          <strong class="info-title">お子様情報</strong>
+        </div>
 
-       <div class="col-md-7 mt-2 table-responsive">
-        <table class="table table-bordered">
-         <thead class="thead-light">
+        </div>
+        <div class="mt-3 pl-5 pr-5 ">
+          <!--<table class="table table-sm table-borderless my_info_table">-->
+          <table class="table table-bordered my_info_table">
+         <thead class="">
            <tr class="">
              <th>名前</th>
              <th>ふりがな</th>
              <th>誕生日</th>
+             <th>年齢</th>
              <th>クラス</th>
-
            </tr>
          </thead>
         <tbody>
         <% @children.each do |child| %>
            <tr>
-
              <td><%= child.name %></td>
              <td><%= child.kana_name %></td>
              <td><%= child.birthday %></td>
-
-             <td>
-             <%= child.group.name %>
-
+             <td><%= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳
+               <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100 ).to_s.split("")[-1] %> カ月
              </td>
-
+             <td><%= child.group.name %> </td>
            </tr>
         <% end %>
         </tbody>
       </table>
+      　</div>
      </div>
     </div>
-    </div>
+
+
 

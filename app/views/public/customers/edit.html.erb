@@ -5,7 +5,6 @@
       <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
       <%= render "public/shared/error_messages", resource: @customer %>
       <div class="row">
-        <div class="col-md-4"><i class="fas fa-user-edit info_edit_page_icon"></i></div>
         <div class="col-md-8 mt-5"><h4 class="info_edit_title">会員情報を編集する</h4></div>
       </div>
 
@@ -33,7 +32,7 @@
           <div class="row mt-3">
             <div class="col-md-8 ml-3 text-center">
               <%= button_tag(type: "submit", class:"btn info_edit_save") do %>
-              <i class="fas fa-star"></i> 編集内容を保存
+               編集内容を保存
               <% end %>
             </div>
           </div>

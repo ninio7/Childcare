@@ -5,8 +5,7 @@ class Admin::ChildrenController < ApplicationController
     @children = Child.where(customer_id:params[:customer_id])
     @child = Child.new
     @groups = Group.all
-    # @age = (Date.today.strftime("%Y %m %d").to_i - @child.birthday.strftime("%Y %m %d").to_i) / 10000
-    # @child.age = @age
+    
   end
 
   def edit

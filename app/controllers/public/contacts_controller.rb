@@ -9,7 +9,8 @@ class Public::ContactsController < ApplicationController
 
   def index
     @customer = current_customer
-     @contacts = current_customer.contacts.page(params[:page])
+    @contacts = Contact.published.page(params[:page]).reverse_order
+    # @contacts = current_customer.contacts.page(params[:page])
      @contacts_all_count=Contact.all.count
   end
 
@@ -21,7 +22,13 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
+    
+    # 管理者は1人しか存在しないハズ
+    # なのでfirstで1件のみを取得するので十分なハズ
+    target_admin = Admin.first
+    
     if @contact.save
+      @contact.create_notification_by_customer(current_customer, target_admin)
       flash[:notice]="新規登録しました"
       redirect_to contacts_path
     else

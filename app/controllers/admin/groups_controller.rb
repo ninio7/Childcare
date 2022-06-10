@@ -1,12 +1,13 @@
 class Admin::GroupsController < ApplicationController
   def index
     @group = Group.new
-    @groups = Group.all
+    @groups = Group.page(params[:page])
   end
 
   def show
     @groups = Group.all
     @group = Group.find(params[:id])
+    @children = @group.children.page(params[:page])
     @customers = Customer.where(params[:id])
     @groups_all_count=Group.where("name LIKE ?","%#{@group.name}%").count
   end

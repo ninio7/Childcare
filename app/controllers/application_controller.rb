@@ -9,9 +9,7 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-
-
-  protected
+   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :kana_name, :postal_code, :address, :phone_number, :email])

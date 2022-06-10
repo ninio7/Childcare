@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_043013) do
+ActiveRecord::Schema.define(version: 2022_06_08_075631) do
 
   create_table "absents", force: :cascade do |t|
     t.integer "customer_id"
@@ -157,6 +157,25 @@ ActiveRecord::Schema.define(version: 2022_06_06_043013) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "customer_id"
+    t.boolean "send_by_admin", default: false, null: false
+    t.integer "contact_id"
+    t.integer "absent_id"
+    t.integer "admin_id", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["absent_id"], name: "index_notifications_on_absent_id"
+    t.index ["admin_id"], name: "index_notifications_on_admin_id"
+    t.index ["contact_id"], name: "index_notifications_on_contact_id"
+    t.index ["customer_id"], name: "index_notifications_on_customer_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "notifications", "absents"
+  add_foreign_key "notifications", "admins"
+  add_foreign_key "notifications", "contacts"
+  add_foreign_key "notifications", "customers"
 end

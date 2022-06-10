@@ -25,6 +25,15 @@
          <i class="fas fa-sign-out-alt"></i>ログアウト
         <% end %>
       </li>
+      <li class="d-inline-block">
+        <%= link_to admin_notifications_path, class:"nav-link text-white" do %>
+        <!--<\% if @unchecked_notifications.any? %>-->
+        <span style ="background-color: gold;width:10px;height:10px;top:14px;left:10px;position:absolute;border-radius:50%;"></span>
+
+        <!--% end %>-->
+        <% end %>
+      </li>
+
 
     </ul>
   </div>

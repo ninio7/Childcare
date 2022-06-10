@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-
   root "public/games#index"
+
   namespace :admin do
     resources :games do
       resource :favorites, only:[:create, :destroy]
     end
     resources :customers, only: [:index,:show,:edit,:update] do
       resources :contacts
+      get "confirm"=>"customers#confirm"
       resources :children
       resources :absents
-    end
+      end
     get "search"=>"customers#search"
     resources :groups
+    resources :notifications, only:[:index]
   end
 
   scope module: :public do
@@ -21,7 +23,7 @@ Rails.application.routes.draw do
     resources :contacts
     resources :absents
     resources :customers, only:[:show, :edit, :update]
-
+    resources :notifications, only:[:index]
   end
 
 

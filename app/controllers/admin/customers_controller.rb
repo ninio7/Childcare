@@ -23,6 +23,14 @@ class Admin::CustomersController < ApplicationController
     end
   end
 
+  def confirm
+     @customer_name=params[:name]
+    @contacts = current_admin.contacts.draft.page(params[:page]).reverse_order
+     @customer = Customer.find(params[:customer_id])
+       # @contacts = @contacts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
+     @contacts_all_count=Contact.all.count
+  end
+
    def search
      if params[:name].present?
        @customers = Customer.where('name LIKE ?', "%#{params[:name]}%")

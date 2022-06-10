@@ -36,6 +36,7 @@
           usually: "普通"
           bad: "悪い"
         defecation:
+          didnot: "排便なし"
           normal: "普通"
           soft: "軟便"
           diarrhea: "下痢"

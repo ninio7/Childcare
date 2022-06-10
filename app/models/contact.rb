@@ -3,6 +3,64 @@ class Contact < ApplicationRecord
   belongs_to :customer
   belongs_to :admin, optional: true
   belongs_to :child
+  has_many :notifications, dependent: :destroy
+
+  # 保護者が連絡を作った時
+  def create_notification_by_customer(current_customer, target_admin)
+    notification = Notification.new(
+      customer_id: current_customer.id,
+      contact_id: self.id,
+      admin_id: target_admin.id,
+      send_by_admin: true # つまり管理者へ通知
+    )
+     notification.save if notification.valid?
+  end
+
+  # 管理者が連絡を作った時
+  def create_notification_by_admin(current_admin, target_customer)
+      notification = Notification.new(
+        customer_id: target_customer.id,
+        admin_id: current_admin.id,
+        contact_id: self.id,
+        send_by_admin: false # つまり保護者へ通知
+      )
+     notification.save if notification.valid?
+  end
+
+    # temp_ids = Customer.all.select(:id).distinct
+    # temp_ids.each do |temp_id|
+      # save_notification_contact!(current_customer, temp_id['id'])
+    # end
+  # end
+
+  # def save_notification_by(current_customer)
+  #   notification = current_customer.notifications.new(
+  #     # visited_id: visited_id,
+  #     contact_id: id,
+  #     action: 'contact'
+  #   )
+  #   notification.save if notification.valid?
+  # end
+
+  # def self.confirmed
+  #   unchecked_notifications = where(checked: false)
+  #   unchecked_notifications.each do |un|
+  #     un.update!(checked: true)
+  #   end
+  # end
+
+
+
+  # def save_notification_by(current_admin)
+  #   notification = current_admin.notifications.new(
+  #     # visited_id: visited_id,
+  #     contact_id: id,
+  #     action: 'contact'
+  #   )
+  #   notification.save if notification.valid?
+  # end
+
+
 
   # 主食量の設定
   enum staple_quantity:{
@@ -60,10 +118,11 @@ class Contact < ApplicationRecord
 
   # 排便量の設定
   enum defecation:{
-    normal:0,
-    soft:1,
-    diarrhea:2,
-    hard:3,
+    didnot:0,
+    normal:1,
+    soft:2,
+    diarrhea:3,
+    hard:4,
   }
 
   # 睡眠度の設定

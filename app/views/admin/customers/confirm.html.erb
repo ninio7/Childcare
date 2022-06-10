@@ -1,0 +1,14 @@
+<div class="container">
+  <div class ="row">
+  <h2 class="col-md-6 mt-5">"<%= @customer.name%>" さん 連絡帳下書き一覧</h2>
+   <div class="col-md-3 mt-5 d-inline-block">
+      <%= link_to admin_customer_contacts_path do %>
+        <p class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 連絡帳一覧</p>
+      <% end %>
+    </div>
+  </div>
+  <%= render "admin/contacts/index", contacts: @contacts %>
+  <div class="text-center mx-auto">
+    <%= paginate @contacts %>
+  </div>
+</div>

@@ -9,8 +9,7 @@ class Public::AbsentsController < ApplicationController
 
   def index
     @customer = current_customer
-    @absents = Absent.all
-    # @absents = current_customer.absents.page(params[:page])
+    @absents = current_customer.absents.page(params[:page])
     @absents_all_count = Absent.all.count
   end
 
@@ -21,7 +20,12 @@ class Public::AbsentsController < ApplicationController
   def create
   @absent = Absent.new(absent_params)
   @absent.customer_id = current_customer.id
+  # 管理者は1人しか存在しないハズ
+  # なのでfirstで1件のみを取得するので十分なハズ
+  target_admin = Admin.first
+
     if @absent.save
+      @absent.create_notification_by_customer(current_customer, target_admin)
       flash[:notice]="新規登録しました"
       redirect_to absents_path
     else
