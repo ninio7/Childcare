@@ -1,0 +1,12 @@
+<!--% if game.favorited_by?(current_admin) %>-->
+<!--  %= link_to admin_game_favorites_path(game), method: :delete do %>-->
+<!--    <i class="fas fa-heart" aria-hidden="true" style="coler: red;"></i>-->
+<!--    %= game.favorites.count %> いいね-->
+<!--  % end %>-->
+<!--% else %>-->
+<!--  %= link_to admin_game_favorites_path(game), method: :post do %>-->
+<!--    <i class="fas fa-heart" aria-hidden="true"></i>-->
+<!--    %= game.favorites.count %> いいね-->
+<!--  % end %>-->
+
+<!--% end %>-->

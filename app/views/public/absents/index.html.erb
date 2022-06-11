@@ -1,0 +1,30 @@
+<div class="container mb-5">
+    <div class="row">
+    <h2 class="col-md-5 mt-5">欠席・遅刻連絡<span>（全<%= @absents_all_count %>件）</span></h2>
+     <div class="col-md-3 mt-5 d-inline-block">
+      <%= link_to new_absent_path do %>
+        <h4 class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 欠席・遅刻連絡</h4>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 mt-5">
+      <table class="table table-hover">
+        <tbody>
+          <% @absents.each do |absent| %>
+          <% date = absent.created_at.to_s(:detetime)%>
+            <tr>
+              <td><% weeks = ["日","月","火","水","木","金","土"]%>
+                  <% week = weeks[absent.created_at.wday]%>
+
+                    <%= link_to absent_path(absent) do %>
+                      <p class="text-secondary mt-1 mb-0"><%=absent.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
+                    <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

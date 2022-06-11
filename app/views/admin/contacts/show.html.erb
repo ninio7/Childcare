@@ -1,0 +1,106 @@
+<div class="container">
+ <h2 class="mt-3 col-md-4 text-center">園からの連絡帳</h2>
+   <div class="row">
+     <div class="col-md-4 mb-3 text-center ">
+       <% weeks = ["日","月","火","水","木","金","土"]%>
+       <% week = weeks[@contact.created_at.wday]%>
+       <h3 class="mt-4"><%= @contact.updated_at.strftime("%Y年%m月%d日 (#{week})")%></h3>
+     </div>
+     <div class="col-md-5 mt-4 text-center ">
+       <h3><%= @contact.child.name %> さん</h3>
+     </div>
+   </div>
+   <p class="col-md-8 border-top"></p>
+  <i class="fas fa-utensils"></i> 昼食
+   <div class="field form-group row mt-3">
+     <p class="col-md-2">主食</p>
+     <div class="col-md-3 ">
+       <%=safe_join(@contact.staple.split("\n"),tag(:br))%>
+     </div>
+     <div class="col-md-4">
+       <%= @contact.staple_quantity_i18n %>
+     </div>
+   </div>
+   <div class="field form-group row mt-3">
+     <p class="col-md-2">主菜</p>
+     <div class="col-md-3">
+      <%=safe_join(@contact.main.split("\n"),tag(:br))%>
+     </div>
+     <div class="col-md-4">
+       <%= @contact.main_quantity_i18n %>
+     </div>
+   </div>
+   <div class="field form-group row mt-3">
+     <p class="col-md-2">副菜</p>
+     <div class="col-md-3">
+       <%=safe_join(@contact.side.split("\n"),tag(:br))%>
+     </div>
+     <div class="col-md-4">
+       <%= @contact.side_quantity_i18n %>
+     </div>
+   </div>
+   <div class="field form-group row mt-3">
+     <p class="col-md-2">デザート</p>
+     <div class="col-md-3">
+       <%=safe_join(@contact.dessert.split("\n"),tag(:br))%>
+     </div>
+     <div class="col-md-4">
+       <%= @contact.dessert_quantity_i18n %>
+     </div>
+   </div>
+   <p class="col-md-8 border-top"></p>
+   <i class="far fa-smile"></i> 機嫌
+   <div class="field form-group row">
+     <div class="col-md-3 offset-2 mt-3">
+       <%= @contact.humor_i18n %>
+     </div>
+   </div>
+   <p class="col-md-8 border-top"></p>
+    <i class="fas fa-bed"></i> 午睡
+   <div class="field form-group row">
+     <div class="col-md-3 offset-2 mt-3">
+       <%= @contact.nap_started_at.strftime('%H:%M') %> ～
+       <%= @contact.nap_finished_at.strftime('%H:%M') %>
+     </div>
+     <div class="col-md-3 mt-3">
+       <%= @contact.sleep_degree_i18n %>
+     </div>
+   </div>
+   <p class="col-md-8 border-top"></p>
+   <i class="fas fa-thermometer"></i> 検温
+   <div class="field form-group row">
+     <div class="col-md-1 offset-2 mt-3">
+      <%= @contact.temperture %>  ℃
+     </div>
+     <div class="col-md-3 offset-2 mt-3">
+      <%= @contact.tempertured_at.strftime('%H:%M') %>
+     </div>
+   </div>
+     <p class="col-md-8 border-top"></p>
+    <i class="fas fa-poo"></i> 排便
+   <div class="field form-group row">
+     <div class="col-md-1 offset-2 mt-3">
+      <%= @contact.defecation_i18n %>
+     </div>
+     <div class="col-md-3 offset-2 mt-3">
+      <%= @contact.defecation_number %> 回
+     </div>
+   </div>
+   <p class="col-md-8 border-top"></p>
+   <i class="fas fa-camera"></i> 写真
+   <div class="field form-group row">
+      <div class="col-md-5 offset-2 mt-3">
+       <%= image_tag @contact.image, size: "150x150"%>
+      </div>
+   </div>
+   <p class="col-md-8 border-top"></p>
+   <i class="far fa-comment"></i> コメント
+   <div class="field form-group row">
+      <div class="col-md-5 offset-2 mb-5 mt-3">
+       <%=safe_join(@contact.comment.split("\n"),tag(:br))%>
+      </div>
+   </div>
+   <p class="col-md-8 border-top"></p>
+   <%= link_to "編集する", edit_admin_customer_contact_path(customer: @contact.id), class: "btn btn-secondary text-white rounded-pill col-md-2 offset-lg-5" %>
+</div>
+

@@ -1,0 +1,38 @@
+<div class="container mb-5">
+  <div class="row">
+  <h2 class="col-md-3 mb-5 mt-5">遊び集<span>（全<%= @games_all_count %>件）</span></h2>
+    <div class="col-md-3 mt-5 d-inline-block">
+      <%= link_to new_admin_game_path do %>
+        <h4 class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 新規登録</h4>
+      <% end %>
+    </div>
+    <div class="col-md-3 offset-md-2 mt-5">
+      <%= render 'layouts/sort_game', link: sort_path %>
+    </div>
+  </div>
+  <div class='row px-md-0 ml-2 mt-5'>
+    <div class='col-md-12 justify-content-end'>
+      <div class='row mb-5'>
+        <% @games.each do |game| %>
+        <div class='card mx-1 border border-0 mr-3 mb-5'>
+          <%= link_to game_path(game) do %>
+            <%= image_tag game.images[0] ,size: "240x160"%>
+          <% end %>
+          <%= link_to game_path(game) , class:"text-secondary" do %>
+            <%= game.title %>
+          <% end %>
+          <%= link_to game_path(game) , class:"text-secondary" do %>
+            <i class="fas fa-heart" aria-hidden="true" style="color:red;"></i>
+            <%= game.favorites.count %> いいね
+          <% end %>
+           <!--%= render "admin/favorites/btn" , game: game %>-->
+        </div>
+        <% end %>
+
+      </div>
+      <div class="text-center mx-auto">
+        <%= paginate @games %>
+      </div>
+    </div>
+  </div>
+</div>

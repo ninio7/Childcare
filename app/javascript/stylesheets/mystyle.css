@@ -1,0 +1,122 @@
+.my-page-info {
+ position: relative;
+
+    border: solid 10px #FFFF99;
+    border-radius: 8px;
+}
+
+
+.my_page_icon {
+  font-size: 8em;
+  color: #FFFF99;
+}
+
+.title_h3 {
+
+  font-size: 40px;
+  font-family: "Noto Sans JP";
+  font-weight: bold;
+}
+
+.my-page-visual {
+  background-image: url('/images/cup_cake3.png');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: left 100% top;
+}
+
+.info-title {
+  font-size: 19px;
+  font-family: "Noto Sans JP";
+  color: #515151
+}
+
+.info_to_edit {
+  background-color: #FFFF99;
+  /*border-color: #d5a6bd;*/
+  font-family: "Noto Sans JP";
+  color: #515151
+}
+
+.my_info_table th {
+  /*text-align: right;*/
+  font-size: 15px;
+  font-family: "Noto Sans JP";
+  color: #515151
+}
+
+.my_info_table td {
+  /*text-align: center;*/
+  font-size: 18px;
+  font-family: "Noto Sans JP";
+  color: #515151
+}
+
+.info_to_order_index {
+  margin-left: 3px;
+  background-color: #d5a6bd;
+  border-color: #d5a6bd;
+  font-family: "Noto Sans JP";
+  color: #515151
+}
+
+.info_to_address_index {
+  background-color: #d5a6bd;
+  border-color: #d5a6bd;
+  font-family: "Noto Sans JP";
+  color: #515151
+}
+
+/*ここから会員情報編集ページ*/
+
+.info_edit_page_icon {
+  font-size: 8em;
+  color: #ffefcf;
+}
+
+.info_edit_title {
+  color: #ffefcf;
+  font-size: 40px;
+  font-family: "Noto Sans JP";
+  font-weight: bold;
+}
+
+.info_edit_form {
+  font-family: "Noto Sans JP";
+  background-color: #ffefcf;
+  color: #515151;
+}
+
+.input_area {
+  border: 2px solid #ccbfa5;
+  border-radius: 5px;
+}
+
+.info_edit_save, .customer_out {
+  background-color: #7f7767;
+}
+
+.info_edit_save:hover, .customer_out:hover {
+  background-color: #ccbfa5;
+}
+
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}

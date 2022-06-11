@@ -1,0 +1,107 @@
+<p class="col-md-8 border-top"></p>
+<i class="fas fa-utensils"></i> 昼食
+<div class="field form-group row mt-3">
+  <p class="col-md-1 ">主食</p>
+  <div class="col-md-3 offset-1">
+    <%= f.text_area :staple, placeholder: "内容",autofocus: true, size: "30x1"%>
+  </div>
+  <div class="col-md-2 col-sm-3 offset-1">
+    <%= f.select :staple_quantity,Contact.staple_quantities.keys.map{|k| [I18n.t("enums.contact.staple_quantity.#{k}"),k]} , {}, {class: "form-control"}%>
+  </div>
+ </div>
+ <div class="field form-group row">
+   <p class="col-md-1">主菜</p>
+   <div class="col-md-3 offset-1">
+     <%= f.text_area :main, placeholder: "内容",autofocus: true, size: "30x1"%>
+   </div>
+   <div class="col-md-2 col-sm-3 offset-1">
+     <%= f.select :main_quantity,Contact.main_quantities.keys.map{|k| [I18n.t("enums.contact.main_quantity.#{k}"),k]}, {}, {class: "form-control"} %>
+   </div>
+ </div>
+ <div class="field form-group row">
+   <p class="col-md-1">副菜</p>
+   <div class="col-md-3 offset-1">
+     <%= f.text_area :side, placeholder: "内容",autofocus: true, size: "30x1"%>
+   </div>
+   <div class="col-md-2 col-sm-3 offset-1">
+     <%= f.select :side_quantity,Contact.side_quantities.keys.map{|k| [I18n.t("enums.contact.side_quantity.#{k}"),k]} , {}, {class: "form-control"}%>
+   </div>
+ </div>
+ <div class="field form-group row">
+   <p class="col-md-1">デザート</p>
+   <div class="col-md-3 offset-1">
+     <%= f.text_area :dessert, placeholder: "内容",autofocus: true, size: "30x1"%>
+   </div>
+   <div class="col-md-2 col-sm-3 offset-1">
+     <%= f.select :dessert_quantity,Contact.dessert_quantities.keys.map{|k| [I18n.t("enums.contact.dessert_quantity.#{k}"),k]}, {}, {class: "form-control"} %>
+   </div>
+ </div>
+ <p class="col-md-8 border-top"></p>
+ <i class="far fa-smile"></i> 機嫌
+ <div class="field form-group row">
+   <div class="col-md-3 mt-3 offset-2">
+     <!--</%= f.select :humor,Contact.humors.keys.map{|k| [I18n.t("enums.contact.humor.#{k}"),k]} %>-->
+   <%= f.radio_button :humor, "good" %>
+    <%= f.label :humor,"良い" ,class:"mr-3"%>
+    <%= f.radio_button :humor, "usually" %>
+    <%= f.label :humor,"普通" ,class:"mr-3"%>
+    <%= f.radio_button :humor, "bad" %>
+    <%= f.label :humor,"悪い" %>
+   </div>
+ </div>
+ <p class="col-md-8 border-top"></p>
+<i class="fas fa-bed"></i> 午睡
+ <div class="field form-group row">
+
+   <div class="col-md-3 mt-3 offset-2">
+     <%= f.time_field :nap_started_at, autofocus: true %> ～
+     <%= f.time_field :nap_finished_at, autofocus: true ,class: "mr-2"%>
+   </div>
+   <div class="col-md-2 col-sm-5 mt-3 offset-md-1 offset-sm-2">
+     <%= f.select :sleep_degree,Contact.sleep_degrees.keys.map{|k| [I18n.t("enums.contact.sleep_degree.#{k}"),k]}, {}, {class: "form-control"} %>
+     </div>
+    </div>
+ <p class="col-md-8 border-top"></p>
+ <i class="fas fa-thermometer"></i> 検温
+ <div class="field form-group row">
+   <div class="col-md-1 col-sm-5 offset-2 mt-3">
+     <%= f.text_field :temperture, placeholder: "温度", autofocus: true , placeholder: "体温",  class:"form-control"%>
+     </div>
+     <div class="col-md-1 col-sm-1 mt-4 text-left">
+     ℃
+     </div>
+     <div class="col-md-1 col-sm-2 offset-md-2 mt-3 ">
+        <%= f.time_field :tempertured_at, autofocus: true %>
+   </div>
+
+
+ </div>
+ <p class="col-md-8 border-top"></p>
+ <i class="fas fa-poo"></i> 排便
+ <div class="field form-group row">
+   <div class="col-md-2 col-sm-5 offset-2 mt-3">
+     <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, {class: "form-control"}%>
+     </div>
+     <div class="col-md-1 col-sm-2 offset-md-2 mt-3 ">
+     <%= f.text_field :defecation_number, autofocus: true , placeholder: "回数",  class:"form-control"%>
+   </div>
+   <div class="col-md-1 col-sm-1 mt-4 ">
+     回
+   </div>
+ </div>
+ <p class="col-md-8 border-top"></p>
+ <i class="fas fa-camera"></i> 写真
+ <div class="field form-group row">
+
+   <div class="col-md-5 offset-2 mt-3">
+     <%= f.file_field :image, accept: "image/*" %>
+    </div>
+ </div>
+ <p class="col-md-8 border-top"></p>
+ <i class="far fa-comment"></i> コメント
+ <div class="field form-group row">
+   <div class="col-md-5 offset-2 mt-3">
+     <%= f.text_area :comment, autofocus: true, size: "50x5" %>
+   </div>
+   <p class="col-md-8 border-top mt-4"></p>
+ </div>

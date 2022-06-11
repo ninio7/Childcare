@@ -1,0 +1,51 @@
+<div class="container">
+  <h2 class="mt-3 col-md-3 text-center">欠席・遅刻連絡</h2>
+  <%= form_with model: @absent , url: absents_path, method: :post do |f| %>
+  <div class="row mb-3">
+  <h3 class="col-md-4 mt-3"><%= @date %> (<%=@weekday %>)</h3>
+
+  <div class="col-md-5 mt-4">
+
+ <%= f.select :child_id,options_from_collection_for_select(Child.all, :id, :name , promote: "--選択してください--"),{},{ class: "form-select "}%>
+  </div>
+  </div>
+  <p class="col-md-8 border-top"></p>
+  <i class="far fa-check-circle"></i> 種別
+  <div class="field form-group row">
+    <div class="col-md-4 offset-2">
+      <%= f.radio_button :kind, "absence" %>
+      <%= f.label :kind,"欠席" ,class:"mr-3"%>
+      <%= f.radio_button :kind, "lateness",class:"offset-1" %>
+      <%= f.label :kind,"遅刻" %>
+      <!--</%= f.select :kind,Absent.kinds.keys.map{|k| [I18n.t("enums.absent.kind.#{k}"),k]} %>-->
+    </div>
+  </div>
+  <p class="col-md-8 border-top"></p>
+  <i class="far fa-calendar-alt"></i> 期間
+  <div class="field form-group row">
+    <div class="col-md-4 offset-2">
+      <%= f.date_field :started_on, autofocus: true %> ～
+      <%= f.date_field :finished_on, autofocus: true ,class: "mr-2"%>
+    </div>
+  </div>
+  <p class="col-md-8 border-top"></p>
+  <i class="fas fa-notes-medical"></i> 症状
+  <div class="field form-group row">
+    <div class="col-md-5 offset-2">
+      <%= f.text_area :symptom, autofocus: true, size: "50x2" %>
+    </div>
+  </div>
+  <p class="col-md-8 border-top"></p>
+  <i class="far fa-comment"></i> 備考
+  <div class="field form-group row">
+    <div class="col-md-5 offset-2">
+      <%= f.text_area :note, autofocus: true, size: "50x5" %>
+    </div>
+    <div class="col-md-3 mt-5">
+      <%= f.submit "登録", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-5" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+

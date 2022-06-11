@@ -1,0 +1,30 @@
+<div class= "container">
+  <h2 class="mb-5 mt-5"><%= @group.name %> 一覧<span>（<%= @groups_all_count %>名）</span></h2>
+<div class="row">
+  <div class='col-md-2 mt-5'>
+      <%= render "admin/customers/group", groups: @groups %>
+  </div>
+  <div class="col-md-7 ml-5">
+    <table class="table table-hover mt-5">
+      <thead>
+        <tr>
+          <th class="bg-light">園児氏名</th>
+          <th class="bg-light">年齢</th>
+        </tr>
+      </thead>
+         <% @children.each do |child| %>
+      <tbody>
+        <td> <%= link_to new_admin_customer_contact_path(customer_id: child.customer.id) do %>
+        <%= child.name %> <% end %></td>
+        <td><%= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳
+            <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100 ).to_s.split("")[-1] %> カ月
+        </td>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+  <div class="col offset-5 text-center">
+    <%= paginate @children %>
+  </div>
+</div>
+</div>
