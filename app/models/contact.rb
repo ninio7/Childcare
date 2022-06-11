@@ -27,39 +27,7 @@ class Contact < ApplicationRecord
      notification.save if notification.valid?
   end
 
-    # temp_ids = Customer.all.select(:id).distinct
-    # temp_ids.each do |temp_id|
-      # save_notification_contact!(current_customer, temp_id['id'])
-    # end
-  # end
-
-  # def save_notification_by(current_customer)
-  #   notification = current_customer.notifications.new(
-  #     # visited_id: visited_id,
-  #     contact_id: id,
-  #     action: 'contact'
-  #   )
-  #   notification.save if notification.valid?
-  # end
-
-  # def self.confirmed
-  #   unchecked_notifications = where(checked: false)
-  #   unchecked_notifications.each do |un|
-  #     un.update!(checked: true)
-  #   end
-  # end
-
-
-
-  # def save_notification_by(current_admin)
-  #   notification = current_admin.notifications.new(
-  #     # visited_id: visited_id,
-  #     contact_id: id,
-  #     action: 'contact'
-  #   )
-  #   notification.save if notification.valid?
-  # end
-
+ 
 
 
   # 主食量の設定

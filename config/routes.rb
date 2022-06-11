@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "search"=>"customers#search"
     resources :groups
     resources :notifications, only:[:index]
+    
   end
 
   scope module: :public do
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
     resources :absents
     resources :customers, only:[:show, :edit, :update]
     resources :notifications, only:[:index]
+    get "sort" => "games#sort"
   end
 
 

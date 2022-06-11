@@ -8,7 +8,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.page(params[:page])
+    @games = Game.page(params[:page]).per(6)
     @games_all_count= Game.all.count
 
     # @admin = current_admin
@@ -44,6 +44,21 @@ class Admin::GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+  end
+
+
+  def sort
+    @games = Game.all
+    case params[:sort_games]
+    when "old"
+      @games = Game.page(params[:page]).per(8)
+    when "high_favorite"
+      @games = Game.order(favorite: "DESC").page(params[:page]).per(8)
+    when "low_favorite"
+      @games =Game.order(favorite: "ASC").page(params[:page]).per(8)
+    else # default(new)
+      @games = Game.latest.page(params[:page]).per(8)
+    end
   end
 
 

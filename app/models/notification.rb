@@ -3,4 +3,5 @@ class Notification < ApplicationRecord
   belongs_to :absent, optional: true
   belongs_to :customer, optional: true
   belongs_to :admin, optional: true
+
 end

@@ -9,7 +9,7 @@ class Public::AbsentsController < ApplicationController
 
   def index
     @customer = current_customer
-    @absents = current_customer.absents.page(params[:page])
+    @absents = current_customer.absents.page(params[:page]).per(10)
     @absents_all_count = Absent.all.count
   end
 

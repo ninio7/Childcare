@@ -1,11 +1,16 @@
 <%# 保護者側は 連絡 だけ %>
-<%# customer = notification.customer %>
-<%# contact = notification.contact %>
-<%# if send_by_admin:true && current_customer = customer_id %>
+<ul>
+    <li>
+        <%= link_to contacts_path(notification.customer) do %>
+         【園より連絡帳が公開されました】
+        <% end %>
+        <% weeks = ["日","月","火","水","木","金","土"]%>
+        <% week = weeks[notification.created_at.wday]%>
+        <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %>
+        <p class="n-time"><%= time_ago_in_words(notification.created_at).upcase %>前</p>
+    </li>
+</ul>
 
 
-    <h2>【園より連絡帳が公開されました】<%= notification.contact.created_at.strftime('%Y年 %m月 %d日') %></h2>
-    <p><%#= safe_join(notification.contact.content.split("\n"), tag(:br)) %></p>
 
-  <%# end %>
-  <p class="n-time"><%#= time_ago_in_words(notification.created_at).upcase %>前（<%#= notification.set_created %>）</p>
+

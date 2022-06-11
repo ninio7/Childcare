@@ -9,13 +9,13 @@ class Admin::ContactsController < ApplicationController
 
   def index
      @customer = Customer.find(params[:customer_id])
-     @contacts = Contact.published.page(params[:page]).reverse_order
+     @contacts = Contact.published.page(params[:page]).per(10).reverse_order
      @contacts = @contacts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
      @contacts_all_count=Contact.all.count
   end
 
   def confirm
-    @contacts = current_admin.contacts.draft.page(params[:page]).reverse_order
+    @contacts = current_admin.contacts.draft.page(params[:page]).per(10).reverse_order
   end
 
   def show
@@ -28,7 +28,7 @@ class Admin::ContactsController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @contact = @customer.contacts.new(contact_params)
     @contact.admin_id = current_admin.id
-    
+
       if @contact.save
         @contact.create_notification_by_admin(current_admin, @customer)
         flash[:notice]="新規登録しました"

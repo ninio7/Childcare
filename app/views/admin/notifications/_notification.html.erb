@@ -1,24 +1,23 @@
 <%# 連絡 と 欠席 2種類ある %>
-<%# customer = notification.customer %>
-<%# contact = notification.contact %>
-
-
-<%# if notification.contact_id == nil %>
+<% if notification.contact_id == nil %>
 <%# つまり欠席%>
-<%# else %>
-<%# つまり連絡%>
-<%# end %>
-
-
-  <ul>
-    <li><%#= link_to admin_customer_path(customer) do %><strong><%#=customer.name %><%# end %></strong>さんが
-    <strong><%#= link_to admin_customer_contacts_path(customer) do %><%#= contact.created_at %><%# end %></strong>投稿しました。
-    <%#= " (#{time_ago_in_words(notification.created_at)} 前)" %></li>
+ <ul>
+    <li>
+    　<% weeks = ["日","月","火","水","木","金","土"]%>
+      <% week = weeks[notification.created_at.wday]%>
+     【 <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %> 】
+      <strong> <%= link_to admin_customer_absents_path(notification.customer) do %><%=notification.customer.name %><% end %></strong>さんから【欠席・遅刻連絡】が届いています。
+    <%= " (#{time_ago_in_words(notification.created_at)} 前)" %></li>
   </ul>
+<% else %>
+<%# つまり連絡%>
+<ul>
+    <li>
+    　<% weeks = ["日","月","火","水","木","金","土"]%>
+      <% week = weeks[notification.created_at.wday]%>
+    【 <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %> 】
+    <strong ><%= link_to admin_customer_contacts_path(notification.customer) do %><%=notification.customer.name %><% end %></strong>さんから【連絡帳】が届いています。
+    <%= time_ago_in_words(notification.created_at) %></li>
+  </ul>
+<% end %>
 
-    <h2>【家庭より連絡帳が公開されました】<%#= notification.contact.created_at.strftime('%Y年 %m月 %d日') %></h2>
-
-
-
-
-  <%# end %>

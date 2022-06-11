@@ -9,6 +9,8 @@ class Game < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :favorite, -> { includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}}
 #   def favorited_by?(admin)
     # favorites.exists?(admin_id: admin.id)
 #   end
