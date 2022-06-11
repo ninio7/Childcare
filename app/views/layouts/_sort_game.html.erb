@@ -1,7 +1,7 @@
 <%= form_with url: link, local: true, method: :get do |f| %>
   <div class="row">
     <div>
-      <%= f.select :sort_games, [["新着順(Default)", "new"], ["古い順", "old"], ["いいね順(多い)", "high_price"], ["いいね順(少ない)", "low_price"]], {}, class: "form-control" %>
+      <%= f.select :sort_games, [["新着順(Default)", "new"], ["古い順", "old"], ["いいね順(多い)", "lot_favorite"], ["いいね順(少ない)", "few_favorite"]], {}, class: "form-control" %>
     </div>
     <div>
       <%= f.submit "並び替える", class: "btn btn-secondary text-white" %>

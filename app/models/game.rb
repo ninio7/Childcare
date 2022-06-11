@@ -11,9 +11,7 @@ class Game < ApplicationRecord
 
   scope :latest, -> {order(created_at: :desc)}
   scope :favorite, -> { includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}}
-#   def favorited_by?(admin)
-    # favorites.exists?(admin_id: admin.id)
-#   end
+
 
      # イメージが登録されなかった場合、デフォルトの画像をアタッチする
   def get_image

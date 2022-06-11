@@ -1,6 +1,6 @@
 #管理者を1人作成
 Admin.create!(
-    email: 'admin@gmail.com',
+    email: 'admin@admin',
     password: 'aaaaaa'
 )
 # This file should contain all the record creation needed to seed the database with its default values.

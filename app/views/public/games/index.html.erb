@@ -7,16 +7,16 @@
       <!--% end %>-->
     <!--</div>-->
     <div class="col-md-3 offset-md-2 mt-5">
-      <%= render 'layouts/sort_game', link: sort_path %>
+      <%= render 'layouts/sort_game', link: games_path %>
     </div>
   </div>
 
 
   <div class='row px-md-0 ml-2'>
-    <div class='col-md-9 justify-content-end'>
+    <div class='col justify-content-end'>
       <div class='row mb-5'>
         <% @games.each do |game| %>
-        <div class='card mx-1 border border mr-3'>
+        <div class='card mx-1 border border mr-3 mt-5'>
           <%= link_to game_path(game) do %>
             <%= image_tag game.images[0] ,size: "240x160"%>
            <% end %>
@@ -32,6 +32,6 @@
     </div>
   </div>
   <div class="text-center mx-auto">
-    <%= paginate @games %>
+    <%= paginate @pages %>
   </div>
 </div>
