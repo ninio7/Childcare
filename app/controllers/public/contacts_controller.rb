@@ -16,11 +16,19 @@ class Public::ContactsController < ApplicationController
 
   def show
     @customer = Customer.where(params[:customer_id])
-    @contact = Contact.find(params[:id])
+    #@contact = Contact.find(params[:id])
     # byebug
     #園の投稿（customerが投稿した日と同じ日の投稿）を取得
-    @contact_from_en = Contact.where(customer_id: @contact.customer.id, created_at: @contact.created_at.all_day).map{|c| c if c.admin_id.present?}.compact.first
+    @contact = @contact.customer_contact(@contact.created_at.day)
+
+    #@contact_from_en = Contact.where(customer_id: @contact.customer.id, created_at: @contact.created_at.all_day).map{|c| c if c.admin_id.present?}.compact.first
+    @contact_from_en = @contact.admin_contact(@contact.created_at.day)
+
     @contact.customer
+  end
+
+  def cotact_contacts
+    @contactsPair = ContactContacts.find(params[:id])
   end
 
   def create
@@ -32,6 +40,12 @@ class Public::ContactsController < ApplicationController
     target_admin = Admin.first
 
     if @contact.save
+      if ContactContact.find_by(day: @contact.created_at.day)
+       contact = ContactContact.find_by(day: @contact.created_at.day)
+       contact.update(customer_contact_id: @contact.id)
+      else
+        ContactContact.create(customer_contact_id: @contact.id, day: @contact.created_at.day)
+      end
       @contact.create_notification_by_customer(current_customer, target_admin)
       flash[:notice]="新規登録しました"
       redirect_to contacts_path

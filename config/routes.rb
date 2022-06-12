@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     resources :customers, only: [:index,:show,:edit,:update] do
       resources :contacts
+      resources :contact_contacts, only: [:show]
       get "confirm"=>"customers#confirm"
       resources :children
       resources :absents

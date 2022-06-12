@@ -117,12 +117,24 @@ class Contact < ApplicationRecord
     published:0,
     draft:1,
   }
-end
 
-def day
+  def day
   Date.today.wday
-end
-def days
- ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+  end
+  def days
+   ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+  end
+
+  def admin_contact(day)
+    admin_contact_id = ContactContact.find_by(day: day).admin_contact_id
+    Contact.find(admin_contact_id)
+  end
+
+  def customer_contact(day)
+    customer_contact_id = ContactContact.find_by(day: day).customer_contact_id
+    Contact.find(customer_contact_id)
+  end
+
+
 end
 

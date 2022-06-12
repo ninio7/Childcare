@@ -10,4 +10,6 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :games, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  #has_many :contact_contacts, dependent: :destroy, foreign_key: :customer_contact_id
+  #has_many :user_contacts, through: :contact_contacts, source: 'AdminContact'
 end
