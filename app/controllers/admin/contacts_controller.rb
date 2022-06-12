@@ -19,24 +19,24 @@ class Admin::ContactsController < ApplicationController
   end
 
   def show
-    # @customer = Customer.find(params[:customer_id])
+    @customer = Customer.find(params[:customer_id])
     @contact = Contact.find(params[:id])
-
+    # @contact_from_en = Contact.where(customer_id: @contact.customer.id, created_at: @contact.created_at.all_day).map{|c| c if c.admin_id.present?}.compact.first
+     
   end
 
   def create
     @customer = Customer.find(params[:customer_id])
     @contact = @customer.contacts.new(contact_params)
     @contact.admin_id = current_admin.id
-
-      if @contact.save
-        @contact.create_notification_by_admin(current_admin, @customer)
-        flash[:notice]="新規登録しました"
-        redirect_to admin_customer_contacts_path
-      else
-        @contacts = Contact.all
-        render :index
-      end
+    if @contact.save
+      @contact.create_notification_by_admin(current_admin, @customer)
+      flash[:notice]="新規登録しました"
+      redirect_to admin_customer_contacts_path
+    else
+      @contacts = Contact.all
+      render :index
+    end
   end
 
   def edit
@@ -46,7 +46,7 @@ class Admin::ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-    flash[:notice] = "連絡帳を変更しました"
+      flash[:notice] = "連絡帳を変更しました"
       redirect_to admin_customer_contacts_path
     else
       render :edit
@@ -54,10 +54,11 @@ class Admin::ContactsController < ApplicationController
   end
 
 
-    private
+  private
 
   def contact_params
     params.require(:contact).permit(:customer_id, :admin_id, :child_id, :image, :weather, :staple, :main, :side, :dessert, :staple_quantity, :main_quantity, :side_quantity, :dessert_quantity, :nap_started_at, :nap_finished_at, :comment, :humor, :defecation, :defecation_number, :temperture, :tempertured_at, :status)
   end
+
 end
 

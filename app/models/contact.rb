@@ -27,7 +27,7 @@ class Contact < ApplicationRecord
      notification.save if notification.valid?
   end
 
- 
+
 
 
   # 主食量の設定
