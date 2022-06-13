@@ -34,6 +34,8 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
+    @contact.type = 'customer'
+    @contact.user_id = current_customer.id
 
     # 管理者は1人しか存在しないハズ
     # なのでfirstで1件のみを取得するので十分なハズ

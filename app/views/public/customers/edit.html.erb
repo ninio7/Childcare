@@ -5,33 +5,33 @@
       <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
       <%= render "public/shared/error_messages", resource: @customer %>
       <div class="row">
-        <div class="col-md-8 mt-5"><h4 class="info_edit_title">会員情報を編集する</h4></div>
+        <div class="col-md-8 mt-5"><h4 class="info_edit_title">マイページ編集</h4></div>
       </div>
 
       <div class="row">
         <div class="col mb-5 p-5 info_edit_form">
-           <%= f.label :"氏名", class:"col-sm-2 control-label" %>
-          <%= f.text_field :name, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
+           <%= f.label :"氏名", class:"col-md-2 control-label mt-3" %>
+          <%= f.text_field :name, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" %><br>
 
-          <%= f.label :"かな", class:"col-sm-2 control-label" %>
-          <%= f.text_field :kana_name, autofocus: true, class:"col-sm-7 ml-1 form-control-static input_area" %><br>
+          <%= f.label :"ふりがな", class:"col-md-2 control-label mt-3" %>
+          <%= f.text_field :kana_name, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" %><br>
 
 
-           <%= f.label :"郵便番号", class:"col-sm-2 control-label" %>
-          <%= f.text_field :postal_code, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
+           <%= f.label :"郵便番号", class:"col-md-2 control-label mt-3" %>
+          <%= f.text_field :postal_code, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" %><br>
 
-          <%= f.label :"住所", class:"col-sm-2 control-label" %>
-          <%= f.text_field :address, autofocus: true, class:"col-sm-7 ml-1 form-control-static input_area" %><br>
+          <%= f.label :"住所", class:"col-md-2 control-label mt-3" %>
+          <%= f.text_field :address, autofocus: true, class:"col-md-5 ml-1 form-control-static input_area" %><br>
 
-          <%= f.label :"電話番号", class:"col-sm-2 control-label" %>
-          <%= f.text_field :phone_number, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
+          <%= f.label :"電話番号", class:"col-md-2 control-label mt-3" %>
+          <%= f.text_field :phone_number, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" %><br>
 
-          <%= f.label :"メールアドレス", class:"col-sm-2 control-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-2 ml-1 form-control-static input_area" %>
+          <%= f.label :"メールアドレス", class:"col-md-2 control-label mt-3" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-md-5 ml-1 form-control-static input_area" %>
 
           <div class="row mt-3">
-            <div class="col-md-8 ml-3 text-center">
-              <%= button_tag(type: "submit", class:"btn info_edit_save") do %>
+            <div class="col-md-8 offset-md-5 text-center">
+              <%= button_tag(type: "submit", class:"btn info_edit_save text-white") do %>
                編集内容を保存
               <% end %>
             </div>

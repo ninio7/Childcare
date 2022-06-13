@@ -6,13 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
       <header class="shadow-sm">
-     <nav class="navbar navbar-expand-lg bg-secondary ">
+     <nav class="navbar navbar-expand-lg  ">
       <div class="container">
         <%= link_to root_path, class: 'text-white navbar-brand title_logo' do %>
 
@@ -39,7 +41,7 @@
   </div>
    <%= yield %>
   <div style="height: 100px;"></div>
-  <footer class="bg-secondary fixed-bottom ">
+  <footer class="fixed-bottom ">
   <div class='container'>
   	<div class='row'>
     	<div class='mx-auto mt-3'>

@@ -9,10 +9,12 @@
                   <% week = weeks[contact.created_at.wday]%>
                   <% if contact.admin_id? %>
                     <%= link_to admin_customer_contact_path(@customer,contact)  do %>
+                    <%#= link_to contact_contact_path(id: @contact_contact.id, day: contact.created_at.day)  do %>
                       <p class="text-secondary mt-1 mb-0">【 園 】<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
                     <% end %>
-                  <% elsif contact.customer_id?%>
-                    <%= link_to contact_path(contact) do %>
+                  <% elsif contact.customer_id? && @contact_contact.present? %>
+                  <%= link_to contact_contact_path(@contact_contact.ids, day: contact.created_at.day)  do %>
+                    <%#= link_to contact_path(contact) do %>
                       <p class="text-secondary mt-1 mb-0">【家庭】<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
                     <% end %>
                   <% end %>

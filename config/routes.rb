@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   end
 
+
   scope module: :public do
     resources :games do
       resource :favorites, only:[:create, :destroy]
@@ -26,9 +27,10 @@ Rails.application.routes.draw do
     resources :absents
     resources :customers, only:[:show, :edit, :update]
     resources :notifications, only:[:index]
-
+    resources :favorites, only:[:index]
   end
 
+  get "contact_contact/:id" => "contact_contacts#show", as: 'contact_contact'
 
  # 会員用
 devise_for :customer,skip: [:passwords], controllers: {

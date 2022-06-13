@@ -13,5 +13,12 @@ class Public::FavoritesController < ApplicationController
     # redirect_to request.referer
   end
 
+  def index
+     @favorites = current_customer.favorites.page(params[:page]).per(8)
+ 
+  end
 
+  def favorite_params
+    params.require(:favorite).permit(:game_id, :customer_id)
+  end
 end
