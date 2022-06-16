@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get "search"=>"customers#search"
     resources :groups
     resources :notifications, only:[:index]
+    get "search_tag"=>"games#search_tag"
 
   end
 
@@ -28,9 +29,11 @@ Rails.application.routes.draw do
     resources :customers, only:[:show, :edit, :update]
     resources :notifications, only:[:index]
     resources :favorites, only:[:index]
+    get "search_tag"=>"games#search_tag"
   end
 
   get "contact_contact/:id" => "contact_contacts#show", as: 'contact_contact'
+
 
  # 会員用
 devise_for :customer,skip: [:passwords], controllers: {

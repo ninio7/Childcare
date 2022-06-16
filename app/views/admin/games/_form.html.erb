@@ -10,4 +10,8 @@
       <%= f.label :"写真", class: "col-md-2" %>
       <%= f.file_field :images, multiple: true %>
     </div>
+    <div class="field offset-2 mt-5">
+      <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
+      <%= f.text_field :name,value: @tag_list,class:"form-control col-md-5"%>
+    </div>
 

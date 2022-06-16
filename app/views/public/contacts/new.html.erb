@@ -4,7 +4,7 @@
   <div class="row mt-5 mb-5 offset-1">
     <h3 class="col-md-5"><%= @date %> (<%=@weekday %>)</h3>
     <div class="col-md-3 mt-2">
-      <%= f.select :child_id,options_from_collection_for_select(Child.all, :id, :name, prompt: "--選択してください--") , {}, {class: "form-control"}%>
+      <%= f.select :child_id,options_from_collection_for_select(@customer.children.all, :id, :name) , {}, {class: "form-control"}%>
     </div>
   </div>
   <p class="border-top"></p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_12_104340) do
+ActiveRecord::Schema.define(version: 2022_06_16_024630) do
 
   create_table "absents", force: :cascade do |t|
     t.integer "customer_id"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2022_06_12_104340) do
     t.date "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_id"
+    t.integer "customer_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -152,6 +154,16 @@ ActiveRecord::Schema.define(version: 2022_06_12_104340) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "game_tags", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id", "tag_id"], name: "index_game_tags_on_game_id_and_tag_id", unique: true
+    t.index ["game_id"], name: "index_game_tags_on_game_id"
+    t.index ["tag_id"], name: "index_game_tags_on_tag_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -182,8 +194,16 @@ ActiveRecord::Schema.define(version: 2022_06_12_104340) do
     t.index ["customer_id"], name: "index_notifications_on_customer_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "game_tags", "games"
+  add_foreign_key "game_tags", "tags"
   add_foreign_key "notifications", "absents"
   add_foreign_key "notifications", "admins"
   add_foreign_key "notifications", "contacts"

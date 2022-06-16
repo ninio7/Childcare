@@ -8,5 +8,8 @@
     <div class="col mt-5 offset-lg-6">
      <%= f.submit "変更", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-2" %>
     </div>
+     <div class="col-md-2 offset-2 mt-3 ">
+        <%= f.select :status, Contact.statuses.keys.map { |k| [t("enums.contact.status.#{k}"),k]}, {}, {class: "form-control"} %>
+      </div>
   <% end %>
  </div>

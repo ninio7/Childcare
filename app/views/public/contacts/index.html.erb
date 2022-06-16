@@ -21,15 +21,18 @@
           <tr>
             <td><% weeks = ["日","月","火","水","木","金","土"]%>
                 <% week = weeks[contact.created_at.wday]%>
-                <% if contact.admin_id? %>
-                  <%= link_to admin_customer_contact_path(@customer,contact)  do %>
-                    <p class="text-secondary mt-1 mb-0">【 園 】<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
+                 <% contact_contact = @contact_contacts.where(day: contact.created_at.day).first %>
+                  <% if contact_contact.present? %>
+                    <%# if contact.admin_id? %>
+                        <%= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
+                        <p class="text-secondary mt-1 mb-0">●　<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
+                      <% end %>
+                    <%# elsif contact.customer_id? %>
+                    <%#= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
+                      <!--<p class="text-secondary mt-1 mb-0">【家庭】<%#=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>-->
+                      <%# end %>
+                    <%# end %>
                   <% end %>
-                <% elsif contact.customer_id?%>
-                  <%= link_to contact_path(contact) do %>
-                    <p class="text-secondary mt-1 mb-0">【家庭】<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
-                  <% end %>
-                <% end %>
             </td>
           </tr>
         <% end %>

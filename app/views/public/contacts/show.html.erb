@@ -112,7 +112,7 @@
       </div>
       <% if admin_signed_in? %>
         <p class="col border-top"></p>
-        <%= link_to "編集する", edit_admin_customer_contact_path(@contact_from_en.id), class: "btn btn-secondary text-white rounded-pill col-md-2 offset-lg-5" %>
+        <%= link_to "編集する", edit_admin_customer_contact_path(@contact_from_en.id), class: "btn btn-gray text-white rounded-pill col-md-2 offset-lg-5" %>
       <% end %>
     </div>
     <%#= render "public/contacts/admin_contact", contact_from_en: @contact_from_en  %>

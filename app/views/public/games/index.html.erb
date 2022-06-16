@@ -5,13 +5,11 @@
       <%= render 'layouts/sort_game', link: games_path %>
     </div>
   </div>
-
-   <%= link_to favorites_path do %>
- <p><i class="far fa-heart"></i> お気に入り一覧</p>
- <% end %>
-
-
-
+  <% if customer_signed_in? %>
+    <%= link_to favorites_path do %>
+     <p><i class="far fa-heart"></i> お気に入り一覧</p>
+    <% end %>
+  <% end %>
 
   <div class='row px-md-0 ml-2'>
     <div class='col justify-content-end'>

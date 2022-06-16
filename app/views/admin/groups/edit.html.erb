@@ -1,19 +1,9 @@
  <div class="container">
-  <h2 class="col-md-3 mt-5 border-bottom text-center">クラス情報編集</h2>
+  <h2 class="col-md-7 mt-5 text-center">クラス情報編集</h2>
   <%= form_with(model: @group,url: admin_group_path , method: :patch, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
-  <div class="row g-3 needs-validation novalidate">
-    <div class="col-md-6 mt-5 ">
-      <div class="form-group row mt-5">
-        <%= f.label :"クラス名" , class: "col-md-3" %>
-        <%= f.text_field :name, autofocus: true,class:'form-control col-md-5 my-auto mx-auto', required: true %>
-        <div class="invalid-feedback row offset-3">
-          クラスを入力してください。
-        </div>
-      </div>
+    <%= render partial: "admin/groups/form", locals: { f: f } %>
+    <div class="col-md-8 text-right">
+      <%= f.submit "変更する", class: "btn btn-gray text-white rounded-pill mt-3" %>
     </div>
-  </div>
-  <div class="row mt-5 ">
-    <%= f.submit "登録", class: "btn btn-secondary text-white rounded-pill col-md-2 offset-md-3" %>
-  </div>
   <% end %>
 </div>

@@ -25,7 +25,7 @@ class Admin::CustomersController < ApplicationController
 
   def confirm
      @customer_name=params[:name]
-    @contacts = current_admin.contacts.draft.page(params[:page]).reverse_order
+     @contacts = current_admin.contacts.draft.page(params[:page]).reverse_order
      @customer = Customer.find(params[:customer_id])
        # @contacts = @contacts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
      @contacts_all_count=Contact.all.count
@@ -37,11 +37,10 @@ class Admin::CustomersController < ApplicationController
      else
        @customers = Customer.none
      end
-  # end
-    @customer_name=params[:name]
-  #   @customers = Group.where("name LILE ?", "%#{@customer_name}%").page(params[:page])
-    @customers_all_count=Customer.where("name LIKE ?","%#{@customer_name}%").count
-    @groups = Group.all
+     @customer_name=params[:name]
+     #@customers = Group.where("name LILE ?", "%#{@customer_name}%").page(params[:page])
+     @customers_all_count=Customer.where("name LIKE ?","%#{@customer_name}%").count
+     @groups = Group.all
    end
 
   private

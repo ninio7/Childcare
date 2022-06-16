@@ -1,4 +1,15 @@
 <div class="container">
+   <h2 class="my-5 col-md-10 text-center">連絡帳</h2>
+  <div class="row">
+    <div class="col-md-4 mb-3 text-center ">
+      <% weeks = ["日","月","火","水","木","金","土"]%>
+      <% week = weeks[@contactsPair.created_at.wday]%>
+     <h3 class="mt-4"><%= @contactsPair.created_at.strftime("%Y年%m月%d日 (#{week})")%></h3>
+    </div>
+    <div class="col-md-5 mt-4 mb-3 text-center ">
+     <h3><%= Customer.find(@contactsPair.customer_id).name %> さん</h3>
+    </div>
+  </div>
    <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">園から</a>
@@ -15,9 +26,11 @@
    <!--   %= link_to contact_path(@contact.created_at) ,class:"nav-link" do %>家庭から% end %>-->
    <!-- </li>-->
    <!--</ul>-->
+
    <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <p class="col border-top"></p>
+      <% if @contactsPair.admin_contact(@day) && (@contactsPair.admin_contact(@day).status == "published"|| admin_signed_in? ) %>
+      <%= @contactsPair.admin_contact(@day).status %>
       <i class="fas fa-utensils"></i> 昼食
       <div class="field form-group row mt-3">
         <p class="col-md-2">主食</p>
@@ -111,13 +124,16 @@
       </div>
       <% if admin_signed_in? %>
         <p class="col border-top"></p>
-        <%= link_to "編集する", edit_admin_customer_contact_path(@contactsPair.admin_contact(@day).id), class: "btn btn-secondary text-white rounded-pill col-md-2 offset-lg-5" %>
+        <%= link_to "編集する", edit_admin_customer_contact_path(@contactsPair.customer_id, @contactsPair.admin_contact(@day).id), class: "btn btn-secondary text-white rounded-pill col-md-2 offset-lg-5" %>
       <% end %>
+    <% end %>
     </div>
 
 
-<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-<p class="col border-top"></p>
+
+　  <!--家庭からの連絡帳-->
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <% if @contactsPair.customer_contact(@day) %>
   <i class="fas fa-utensils"></i> 食事
   <div class="field form-group row">
     <p class="col-md-1 mt-3">前日の夜</p>
@@ -198,7 +214,9 @@
        <%=safe_join(@contactsPair.customer_contact(@day).comment.split("\n"),tag(:br))%>
      </div>
   </div>
-
+<% end %>
     </div>
+
+
  </div>
 </div>

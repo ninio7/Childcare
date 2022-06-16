@@ -13,32 +13,30 @@
   </head>
 
   <body>
-      <header class="shadow-sm">
-     <nav class="navbar navbar-expand-lg  ">
-      <div class="container">
-        <%= link_to root_path, class: 'text-white navbar-brand title_logo' do %>
-
-          <strong>C</strong>HILD<i class="fas fa-egg"></i> <strong>C</strong>are
-        <% end %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <% if customer_signed_in? %>
-          <%=render 'layouts/customer_header' %>
-        <% elsif admin_signed_in? %>
-          <%=render 'layouts/admin_header' %>
-        <% else %>
-          <%=render 'layouts/guest_header' %>
-        <% end %>
-      </div>
-     </nav>
-   </header>
-<% flash.each do |type,message| %>
-  <div class="alert alert-warning text-center" role="alert">
-
-   <%= message %>
-   <% end %>
-  </div>
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <%= link_to root_path, class: 'text-white navbar-brand title_logo' do %>
+            <strong>C</strong>HILD<i class="fas fa-egg"></i> <strong>C</strong>are
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <% if customer_signed_in? %>
+            <%=render 'layouts/customer_header' %>
+          <% elsif admin_signed_in? %>
+            <%=render 'layouts/admin_header' %>
+          <% else %>
+            <%=render 'layouts/guest_header' %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+    <% flash.each do |type,message| %>
+      <div class="alert alert-warning text-center" role="alert">
+       <%= message %>
+    <% end %>
+    </div>
    <%= yield %>
   <div style="height: 100px;"></div>
   <footer class="fixed-bottom ">

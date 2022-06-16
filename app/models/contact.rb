@@ -32,6 +32,9 @@ class Contact < ApplicationRecord
 
 
 
+
+
+
   # 主食量の設定
   enum staple_quantity:{
     completed:0,
@@ -122,15 +125,12 @@ class Contact < ApplicationRecord
 
 
 
-
-
-
+end
 
   def day
-  Date.today.wday
+    Date.today.wday
   end
 
   def days
-  ["日", "月", "火", "水", "木", "金", "土"]
+    ["日", "月", "火", "水", "木", "金", "土"]
   end
-end

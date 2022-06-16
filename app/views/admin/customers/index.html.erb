@@ -1,8 +1,8 @@
 <div class="container">
-  <h2 class="border-bottom mt-3 col-md-3 text-center">会員一覧</h2>
-  <div class="form-inline d-block text-right">
+  <h2 class="my-3 col-md-6 text-center">会員一覧</h2>
+  <div class="col-md-11 form-inline d-block text-right">
     <%= form_with url: admin_search_path ,local: true, method: :get do |f| %>
-      <%= f.text_field :name ,class: "form-control",placeholder: "名前で検索"%>
+      <%= f.text_field :name ,class: "form-control col-md-2",placeholder: "名前で検索"%>
       <%= button_tag :type => "submit", :class =>"btn btn-outline-secondary" do %>
         <i class="fas fa-search"></i>
       <% end %>
@@ -18,7 +18,7 @@
         <tr>
           <th class="bg-light">会員ID</th>
           <th class="bg-light">氏名</th>
-          <th class="bg-light">メールアドレス</th>
+          <th class="bg-light">電話番号</th>
           <th class="bg-light">ステータス</th>
         </tr>
       </thead>
@@ -27,7 +27,7 @@
         <tr onclick='window.location="<%= admin_customer_path(customer) %>"' role="link">
           <td><%= customer.id %></td>
           <td><%= customer.name %></td>
-          <td><%= customer.email %></td>
+          <td><%= customer.phone_number %></td>
           <td id="is_deleted<%= customer.id %>" class="text-success">
             <%= I18n.t("enums.customer.is_deleted.#{customer.is_deleted}") %>
             <script>
