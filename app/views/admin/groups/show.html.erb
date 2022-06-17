@@ -14,11 +14,16 @@
       </thead>
          <% @children.each do |child| %>
       <tbody>
-        <td> <%= link_to new_admin_customer_contact_path(customer_id: child.customer.id) do %>
-        <%= child.name %> <% end %></td>
-        <td><%= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳
+        <tr onclick='window.location="<%= new_admin_customer_contact_path(customer_id: child.customer.id) %>"' role="link">
+          <td>
+            <%= link_to new_admin_customer_contact_path(customer_id: child.customer.id) do %>
+              <span class="text-dark"><%= child.name %></span>
+            <% end %>
+          </td>
+          <td><%= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳
             <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100 ).to_s.split("")[-1] %> カ月
-        </td>
+          </td>
+        </tr>
       </tbody>
       <% end %>
     </table>

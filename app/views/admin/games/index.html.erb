@@ -1,16 +1,15 @@
 <div class="container mb-5">
   <div class="row">
-  <h2 class="col-md-4 mt-5">遊び集<span>（全<%= @games_all_count %>件）</span></h2>
-    <div class="col-md-5 offset-md-2 mt-5">
+    <div class="col-md-4 mt-5">
+      <h2>遊び集<span>（全<%= @games_all_count %>件</span></h2>
+      <%= link_to new_admin_game_path do %>
+        <p class="btn btn-gray text-white mt-3"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 新規登録</p>
+      <% end %>
+    </div>
+    <div class="col text-right mb-5 mt-4">
       <%= render 'layouts/sort_game', link: games_path %>
     </div>
   </div>
-  <div class="col-md-3 d-inline-block">
-    <%= link_to new_admin_game_path do %>
-      <h4 class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 新規登録</h4>
-      <% end %>
-  </div>
-
   <div class='row px-md-0 ml-2 mt-5'>
     <div class='col-md-12 justify-content-end'>
       <div class='row mb-5'>
@@ -26,19 +25,8 @@
             <i class="fas fa-heart" aria-hidden="true" style="color:red;"></i>
             <%= game.favorites.count %> いいね
           <% end %>
-          <div class="row">
-         <% @tag_list.each do |list|%>
-          <div class="col-md-4    ">
-             <!--<div class="my-0 mx-0 px-0 py-0">-->
-               <%=link_to search_tag_path(tag_id: list.id) do %>#<%= list.name %><% end %>
-             <!--</div>-->
-           </div>
-         <% end %>
-        </div>
-           <!--%= render "admin/favorites/btn" , game: game %>-->
         </div>
         <% end %>
-
       </div>
       <div class="text-center mx-auto">
         <%= paginate @games %>

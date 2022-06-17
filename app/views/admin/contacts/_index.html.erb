@@ -1,32 +1,31 @@
-<div class="row">
-    <div class="col-md-8 mt-5">
-      <table class="table table-hover">
-        <tbody>
-          <% @contacts.each do |contact| %>
-          <% date = contact.created_at.to_s(:detetime)%>
-            <tr>
-              <% contact_contact = @contact_contacts.last %>
-              <td><% weeks = ["日","月","火","水","木","金","土"]%>
-                  <% week = weeks[contact.created_at.wday]%>
-
-                  <% if contact_contact.present? %>
-                    <%# if contact.admin_id? %>
-                      <%= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
-                      <%#= link_to contact_contact_path(id: @contact_contact.id, day: contact.created_at.day)  do %>
-                        <p class="text-secondary mt-1 mb-0"><%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
-
-                      <% end %>
-                    <%# elsif contact.customer_id? %>
-                      <%#= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
-                        <!--<p class="text-secondary mt-1 mb-0">【家庭】<%#=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>-->
-                      <%# end %>
-                    <%# end %>
+<div class="row d-flex justify-content-center">
+  <div class="col-md-8 mt-5">
+    <table class="table table-hover">
+      <tbody>
+        <% @contacts.each do |contact| %>
+        <% date = contact.created_at.to_s(:detetime)%>
+          <tr>
+            <% contact_contact = @contact_contacts.last %>
+            <td><% weeks = ["日","月","火","水","木","金","土"]%>
+                <% week = weeks[contact.created_at.wday]%>
+                <% if contact_contact.present? %>
+                  <%= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
+                    <p class="text-secondary mt-1 mb-0">■ <%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
                   <% end %>
-              </td>
-              <td><%= contact.status_i18n %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+                <% end %>
+            </td>
+            <% if contact_contact.admin_contact(@day).status == "published"  %>
+            <td>
+              <span class ="text-secondary"><%= contact_contact.admin_contact(@day).status_i18n %></span>
+            </td>
+            <% else %>
+            <td>
+              <span class ="text-success"><%= contact_contact.admin_contact(@day).status_i18n %></span>
+            </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+</div>

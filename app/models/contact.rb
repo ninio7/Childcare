@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-  has_one_attached :image
+  has_many_attached :images
   belongs_to :customer
   belongs_to :admin, optional: true
   belongs_to :child
@@ -123,14 +123,13 @@ class Contact < ApplicationRecord
     draft:1,
   }
 
-
-
-end
-
   def day
-    Date.today.wday
+    date.today.wday
   end
 
   def days
     ["日", "月", "火", "水", "木", "金", "土"]
   end
+
+end
+

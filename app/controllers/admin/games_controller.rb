@@ -9,7 +9,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def index
-    @games = Game.page(params[:page]).per(6)
+    @games = Game.all.order(created_at: :desc).page(params[:page])
     @games_all_count= Game.all.count
     @tag_list = Tag.all
 

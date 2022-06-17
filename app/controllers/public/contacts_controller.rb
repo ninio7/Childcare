@@ -2,7 +2,7 @@ class Public::ContactsController < ApplicationController
   # before_action :authenticate_customer!
   def new
     @customer = current_customer
-    @contact = Contact.new
+    @contact = Contact.new()
     @weekday = days[day]
     @date = Date.current.strftime('%Y年 %m月 %d日')
 

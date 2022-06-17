@@ -3,7 +3,7 @@
   <%= form_with(model: @child, url: admin_customer_child_path(@customer, @child),local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
     <%= render partial: "admin/children/form", locals: { f: f } %>
     <div class="col-md-10 text-right">
-      <%= f.submit "変更する", class: "btn btn-gray text-white rounded-pill col-md-2 mt-3 " %>
+      <%= f.submit "変更する", class: "btn btn-gray text-white rounded-pill col-md-2 mt-3 col-4" %>
     </div>
   <% end %>
 </div>

@@ -7,7 +7,7 @@ class Admin::ContactsController < ApplicationController
   end
 
   def index
-   
+
      @customer = Customer.find(params[:customer_id])
     # @contacts = Contact.published.where(customer_id: params[:customer_id]).page(params[:page]).per(10).reverse_order
      #@contacts = @contacts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
@@ -17,6 +17,8 @@ class Admin::ContactsController < ApplicationController
     # customer_contact_ids = Contact.where(type: 'customer', user_id: @customer.id).ids
     # contact_contact_ids = ContactContact.where(admin_contact_id: admin_contact_ids).ids & ContactContact.where(customer_contact_id: customer_contact_ids).ids
      @contact_contacts = ContactContact.where(admin_id: current_admin.id, customer_id: @customer.id)
+      @day = params[:day]
+
   end
 
   def confirm
@@ -71,7 +73,7 @@ class Admin::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:customer_id, :admin_id, :child_id, :image, :weather, :staple, :main, :side, :dessert, :staple_quantity, :main_quantity, :side_quantity, :dessert_quantity, :nap_started_at, :nap_finished_at, :comment, :humor, :defecation, :defecation_number, :temperture, :tempertured_at, :status)
+    params.require(:contact).permit(:customer_id, :admin_id, :child_id, :weather, :staple, :main, :side, :dessert, :staple_quantity, :main_quantity, :side_quantity, :dessert_quantity, :nap_started_at, :nap_finished_at, :comment, :humor, :defecation, :defecation_number, :temperture, :tempertured_at, :status, images: [])
   end
 
 end

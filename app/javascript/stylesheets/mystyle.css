@@ -142,10 +142,6 @@ a.text-gray:hover, a.text-gray:focus {
 }
 
 
-* {
-  font-family: "Noto Sans JP", cursive;
-}
-
 header {
   background-color: #ddf2b1;
 }
@@ -227,18 +223,6 @@ footer{
 
 /*ここから会員情報編集ページ*/
 
-.info_edit_page_icon {
-  font-size: 8em;
-  color: #ffefcf;
-}
-
-.info_edit_title {
-  color: #a4aa96;
-  font-size: 40px;
-  font-family: "Noto Sans JP";
-  font-weight: bold;
-}
-
 .info_edit_form {
   font-family: "Noto Sans JP";
   background-color: #f2f7a4;
@@ -265,17 +249,17 @@ footer{
   color: #efa04c;
 }
 
-.pagination>li>a {
-  border: none;
-  color: #696969;
-}
+/*.pagination>li>a {*/
+/*  border: none;*/
+/*  color: #696969;*/
+/*}*/
 
-.pagination>.active>a {
-  background: #93c9ff;
-  border-radius: 15px;
-}
+/*.pagination>.active>a {*/
+/*  background: #93c9ff;*/
+/*  border-radius: 15px;*/
+/*}*/
 
-.pagination>li>a:hover {
-  border-radius: 15px;
-}
+/*.pagination>li>a:hover {*/
+/*  border-radius: 15px;*/
+/*}*/
 
