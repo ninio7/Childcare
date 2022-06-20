@@ -1,6 +1,6 @@
 <div class="form-inline d-block text-right">
   <%= form_with url: link, local: true, method: :get do |f| %>
-  <%= f.select :sort_games, [["新着順", "new"], ["古い順", "old"], ["いいね多い順", "lot_favorite"], ["いいね少ない順", "few_favorite"]], {}, class: "form-control col-md-3" %>
+  <%= f.select :sort_games, [["新着順", "new"], ["古い順", "old"], ["いいね多い順", "lot_favorite"], ["いいね少ない順", "few_favorite"]], {}, class: "form-control col-md-6 col-6" %>
     <%= button_tag :type => "submit", :class =>"btn btn-outline-secondary" do %>
       <i class="fas fa-search"></i>
     <% end %>

@@ -1,7 +1,7 @@
 <div class="container">
-  <h2 class="my-3 col-md-7 text-center">連絡帳</h2>
+  <h2 class="mt-5 mb-3 col-md-10 text-center">連絡帳</h2>
   <div class="row mb-3">
-    <div class="col-md-4 col-7 mb-3">
+    <div class="col-md-4 col-7 mb-3 offset-md-2">
       <% weeks = ["日","月","火","水","木","金","土"]%>
       <% week = weeks[@contactsPair.created_at.wday]%>
       <h4 class="mt-3"><%= @contactsPair.created_at.strftime("%Y年%m月%d日 (#{week})")%></h4>
@@ -16,7 +16,7 @@
       </div>
     <% end %>
   </div>
-   <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">園から</a>
     </li>
@@ -24,197 +24,15 @@
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"> 家庭から</a>
     </li>
   </ul>
-  <!--園からの連絡帳-->
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-    　<% if @contactsPair.admin_contact(@day) && (@contactsPair.admin_contact(@day).status == "published"|| admin_signed_in? ) %>
-      　<p class="mt-3"><strong class="info-title"><i class="fas fa-utensils"></i> 昼食</strong></p>
-     　  <div class="field form-group row ">
-          <p class="col-md-1 col-3 offset-md-1">主食</p>
-          <div class="col-md-3 col-5">
-            <%=safe_join(@contactsPair.admin_contact(@day).staple.split("\n"),tag(:br))%>
-          </div>
-          <div class="col-md-4 col-4">
-            <%= @contactsPair.admin_contact(@day).staple_quantity_i18n %>
-          </div>
-        </div>
-        <div class="field form-group row mt-3">
-          <p class="col-md-1 col-3 offset-md-1">主菜</p>
-          <div class="col-md-3 col-5">
-           <%=safe_join(@contactsPair.admin_contact(@day).main.split("\n"),tag(:br))%>
-          </div>
-          <div class="col-md-4 col-4">
-            <%= @contactsPair.admin_contact(@day).main_quantity_i18n %>
-          </div>
-        </div>
-        <div class="field form-group row mt-3">
-          <p class="col-md-1 col-3 offset-md-1">副菜</p>
-          <div class="col-md-3 col-5">
-            <%=safe_join(@contactsPair.admin_contact(@day).side.split("\n"),tag(:br))%>
-          </div>
-          <div class="col-md-3 col-4">
-            <%= @contactsPair.admin_contact(@day).side_quantity_i18n %>
-          </div>
-        </div>
-        <div class="field form-group row mt-3">
-          <p class="col-md-1 col-3 offset-md-1">デザート</p>
-          <div class="col-md-3 col-5">
-            <%=safe_join(@contactsPair.admin_contact(@day).dessert.split("\n"),tag(:br))%>
-          </div>
-          <div class="col-md-3 col-4">
-            <%= @contactsPair.admin_contact(@day).dessert_quantity_i18n %>
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="far fa-smile"></i> 機嫌</strong>
-        <div class="field form-group row">
-          <div class="col-md-3 offset-3 offset-md-2 mt-3">
-            <%= @contactsPair.admin_contact(@day).humor_i18n %>
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="fas fa-bed"></i> 午睡</strong>
-        <div class="field form-group row">
-          <div class="col-md-3 col-4 offset-3 offset-md-2 mt-3">
-            <%= @contactsPair.admin_contact(@day).nap_started_at.strftime('%H:%M') %> ～
-            <%= @contactsPair.admin_contact(@day).nap_finished_at.strftime('%H:%M') %>
-          </div>
-          <div class="col-md-3 col-2 mt-3">
-            <%= @contactsPair.admin_contact(@day).sleep_degree_i18n %>
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="fas fa-thermometer"></i> 検温</strong>
-        <div class="field form-group row">
-          <div class="col-md-1 col-2 offset-3 offset-md-2 mt-3">
-           <%= @contactsPair.admin_contact(@day).temperture %>  ℃
-          </div>
-          <div class="col-md-3 col-2 offset-3 offset-md-2 mt-3">
-           <%= @contactsPair.admin_contact(@day).tempertured_at.strftime('%H:%M') %>
-          </div>
-        </div>
-          <p class="col border-top"></p>
-          <strong class="info-title"><i class="fas fa-poo"></i> 排便</strong>
-        <div class="field form-group row">
-          <div class="col-md-1 col-2 offset-3 offset-md-2 mt-3">
-           <%= @contactsPair.admin_contact(@day).defecation_i18n %>
-          </div>
-          <div class="col-md-3 col-2 offset-3 offset-md-2 mt-3">
-           <%= @contactsPair.admin_contact(@day).defecation_number %> 回
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="fas fa-camera"></i> 写真</strong>
-        <div class="field form-group row">
-          <% if @contactsPair.admin_contact(@day).images.present? %>
-            <% @contactsPair.admin_contact(@day).images.each do |image| %>
-            <div class="col-md-2 col-2"></div>
-              <div class="col-md-1 col-3 mt-3 ">
-                <%= image_tag(image, width:150) %>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="far fa-comment"></i> コメント</strong>
-        <div class="field form-group row">
-           <div class="col-md-5 offset-3 offset-md-2 mb-5 mt-3">
-            <%=safe_join(@contactsPair.admin_contact(@day).comment.split("\n"),tag(:br))%>
-           </div>
-        </div>
-        <% if admin_signed_in? %>
-          <p class="col border-top"></p>
-          <div class="col-md-7 text-center mt-5">
-            <%= link_to "編集する", edit_admin_customer_contact_path(@contactsPair.customer_id, @contactsPair.admin_contact(@day).id), class: "btn btn-gray text-white rounded-pill col-md-3 col-4 " %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
 
+  <div class="tab-content" id="myTabContent">
+    <!--園からの連絡帳-->
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <%= render "contact_contacts/admin" %>
+    </div>
 　  <!--家庭からの連絡帳-->
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <% if @contactsPair.customer_contact(@day) %>
-        <strong class="info-title"><i class="fas fa-utensils"></i> 食事</strong>
-        <div class="field form-group row mt-3">
-          <p class="col-md-1 col-3 offset-md-1">前日夕食</p>
-          <div class="col-md-3 col-5">
-            <%=safe_join(@contactsPair.customer_contact(@day).dinner.split("\n"),tag(:br))%>
-          </div>
-          <div class="col-md-1 col-2">
-            <%= @contactsPair.customer_contact(@day).dinner_quantity_i18n %>
-          </div>
-           <div class="col-md-1 col-2">
-            <%= @contactsPair.customer_contact(@day).dinner_time.strftime('%H:%M')%>
-          </div>
-        </div>
-        <div class="field form-group row mt-3">
-          <p class="col-md-1 col-3 offset-md-1">朝食</p>
-          <div class="col-md-3 col-5">
-           <%=safe_join(@contactsPair.customer_contact(@day).breakfast.split("\n"),tag(:br))%>
-          </div>
-            <div class="col-md-1 col-2">
-            <%= @contactsPair.customer_contact(@day).breakfast_quantity_i18n %>
-          </div>
-           <div class="col-md-1 col-2">
-            <%= @contactsPair.customer_contact(@day).breakfast_time.strftime('%H:%M')%>
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="far fa-smile"></i> 機嫌</strong>
-        <div class="field form-group row">
-          <div class="col-md-3 offset-3 offset-md-2 mt-3">
-            <%= @contactsPair.customer_contact(@day).humor_i18n %>
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="fas fa-bed"></i> 睡眠</strong>
-        <div class="field form-group row">
-          <div class="col-md-3 col-4 offset-3 offset-md-2 mt-3">
-            <%= @contactsPair.customer_contact(@day).sleep_started_at.strftime('%H:%M') %> ～
-            <%= @contactsPair.customer_contact(@day).sleep_finished_at.strftime('%H:%M')%>
-          </div>
-          <div class="col-md-3 col-3 offset-1 offset-md-0 mt-3">
-            <%= @contactsPair.customer_contact(@day).sleep_degree_i18n %>
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="fas fa-thermometer"></i> 検温</strong>
-        <div class="field form-group row">
-          <div class="col-md-1 col-2 offset-3 offset-md-2 mt-3">
-            <%= @contactsPair.customer_contact(@day).temperture%>   ℃
-          </div>
-          <div class="col-md-3 col-2 offset-3 offset-md-2 mt-3">
-           <%= @contactsPair.admin_contact(@day).tempertured_at.strftime('%H:%M') %>
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="fas fa-poo"></i> 排便</strong>
-        <div class="field form-group row">
-          <div class="col-md-1 col-3 offset-3 offset-md-2 mt-3">
-            <%= @contactsPair.customer_contact(@day).defecation_i18n %>
-          </div>
-          <div class="col-md-3 col-2 offset-2 offset-md-2 mt-3">
-            <%= @contactsPair.customer_contact(@day).defecation_number%> 回
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="fas fa-user"></i> お迎え</strong>
-        <div class="field form-group row">
-          <div class="col-md-2 col-2 offset-3 offset-md-2  mt-3">
-            <%= @contactsPair.customer_contact(@day).pickup_person %>
-          </div>
-          <div class="col-md-3 col-2 offset-3 offset-md-1 mt-3">
-           <%= @contactsPair.customer_contact(@day).pickuped_at.strftime('%H:%M')%>
-          </div>
-        </div>
-        <p class="col border-top"></p>
-        <strong class="info-title"><i class="far fa-comment"></i> コメント</strong>
-        <div class="field form-group row">
-          <div class="col-md-5 offset-3 offset-md-2 mb-5 mt-3">
-           <%=safe_join(@contactsPair.customer_contact(@day).comment.split("\n"),tag(:br))%>
-          </div>
-        </div>
-      <% end %>
+　  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+　    <%= render "contact_contacts/customer" %>
     </div>
   </div>
 </div>

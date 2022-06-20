@@ -1,43 +1,42 @@
 <div class="container">
-  <h2 class="my-3 col-md-7 text-center">連絡帳</h2>
+  <h2 class="mt-5 mb-3 col-md-10 text-center">連絡帳</h2>
   <%= form_with model: @contact , url: contacts_path, method: :post do |f| %>
   <div class="row mb-3">
-    <h4 class="col-md-4 col-7 mb-3 mt-3"><%= @date %> (<%=@weekday %>)</h4>
-    <div class="col-md-5 col-5 mt-3 mb-3">
+    <h4 class="col-md-4 col-7 my-3 offset-md-2"><%= @contact.date %></h4>
+    <div class="col-md-5 col-5 my-3">
       <%= f.select :child_id,options_from_collection_for_select(@customer.children.all, :id, :name) , {}, class: "form-control col-md-5"%>
     </div>
   </div>
   <p class="border-top"></p>
   <div class="field form-group row">
     <div class="col-md-1">
-      <strong class="info-title"><i class="fas fa-utensils"></i> 食事</strong>
+      <strong class="info-title"><i class="fas fa-utensils" style="color: coral;"></i> 食事</strong>
     </div>
-    <p class="col-md-1 mt-3">前日夕食</p>
-    <div class="col-md-3 col-6 mt-3">
-      <%= f.text_area :dinner, placeholder: "内容",autofocus: true, size: "30x3"%>
+    <p class="col-md-2 mt-3 offset-md-1">前日夕食</p>
+    <div class="col-md-4 col-7 mt-3">
+      <%= f.text_area :dinner, placeholder: "内容",autofocus: true, size: "35x3"%>
     </div>
-    <div class="col-md-7 col-6">
-      <%= f.select :dinner_quantity,Contact.dinner_quantities.keys.map{|k| [I18n.t("enums.contact.dinner_quantity.#{k}"),k]}, {}, class: "form-control col-md-3 col-8 mt-3" %>
-      <%= f.time_field :dinner_time, autofocus: true ,class: "mt-3"%>
+    <div class="col-md-4 col-5">
+      <%= f.select :dinner_quantity,Contact.dinner_quantities.keys.map{|k| [I18n.t("enums.contact.dinner_quantity.#{k}"),k]}, {}, class: "form-control col-md-6 col-10 mt-3" %>
+      <%= f.time_field :dinner_time, autofocus: true ,class: "mt-3", required: true%>
     </div>
   </div>
   <div class="field form-group row">
-    <div class="col-md-1"></div>
-    <p class="col-md-1 mt-3">朝食</p>
-    <div class="col-md-3 col-6 mt-3">
-      <%= f.text_area :breakfast, placeholder: "内容",autofocus: true, size: "30x3"%>
+    <p class="col-md-2 mt-3 offset-md-2">朝食</p>
+    <div class="col-md-4 col-7 mt-3">
+      <%= f.text_area :breakfast, placeholder: "内容",autofocus: true, size: "35x3"%>
     </div>
-    <div class="col-md-7 col-6">
-      <%= f.select :breakfast_quantity,Contact.breakfast_quantities.keys.map{|k| [I18n.t("enums.contact.breakfast_quantity.#{k}"),k]}, {}, class: "form-control col-md-3 col-8 mt-3" %>
-      <%= f.time_field :breakfast_time, autofocus: true ,class: "mt-3"%>
+    <div class="col-md-4 col-5">
+      <%= f.select :breakfast_quantity,Contact.breakfast_quantities.keys.map{|k| [I18n.t("enums.contact.breakfast_quantity.#{k}"),k]}, {}, class: "form-control col-md-6 col-10 mt-3" %>
+      <%= f.time_field :breakfast_time, autofocus: true ,class: "mt-3", required: true%>
     </div>
   </div>
   <p class="col border-top"></p>
-  <strong class="info-title"><i class="far fa-smile"></i> 機嫌</strong>
+  <strong class="info-title"><i class="far fa-smile" style="color: orange;"></i> 機嫌</strong>
   <div class="field form-group row">
-    <div class="col-md-6 mt-3 offset-2">
+    <div class="col-md-6 mt-3 offset-4">
       <!--</%= f.select :humor,Contact.humors.keys.map{|k| [I18n.t("enums.contact.humor.#{k}"),k]} %>-->
-      <%= f.radio_button :humor, "good" %>
+      <%= f.radio_button :humor, "good", required: true %>
       <%= f.label :humor,"良い" ,class:"mr-3"%>
       <%= f.radio_button :humor, "usually" %>
       <%= f.label :humor,"普通" ,class:"mr-3"%>
@@ -46,28 +45,28 @@
     </div>
   </div>
   <p class="col border-top"></p>
-  <strong class="info-title"><i class="fas fa-bed"></i> 睡眠</strong>
+  <strong class="info-title"><i class="fas fa-bed" style="color: cadetblue;"></i> 睡眠</strong>
   <div class="field form-group row">
-    <div class="col-md-3 col-5 mt-3 offset-2">
-      <%= f.time_field :sleep_started_at, autofocus: true %> ～
-      <%= f.time_field :sleep_finished_at, autofocus: true ,class: "mr-2"%>
+    <div class="col-md-3 col-5 mt-3 offset-4">
+      <%= f.time_field :sleep_started_at, autofocus: true, required: true %> ～
+      <%= f.time_field :sleep_finished_at, autofocus: true ,class: "mr-2", required: true%>
     </div>
-    <div class="col-md-2 col-4 mt-3 ">
+    <div class="col-md-2 col-4 mt-3 offset-md-0 offset-4 ">
       <%= f.select :sleep_degree,Contact.sleep_degrees.keys.map{|k| [I18n.t("enums.contact.sleep_degree.#{k}"),k]} , {}, class: "form-control" %>
     </div>
   </div>
   <p class="col border-top"></p>
-  <strong class="info-title"><i class="fas fa-thermometer"></i> 検温</strong>
+  <strong class="info-title"><i class="fas fa-thermometer" style="color: darkseagreen;"></i> 検温</strong>
   <div class="field form-group row">
-    <div class="col-md-3 mt-3 offset-2">
+    <div class="col-md-3 mt-3 offset-4">
      <%= f.text_field :temperture, placeholder: "温度", autofocus: true , size: "2x5"%>  ℃
-     <%= f.time_field :tempertured_at, autofocus: true , class:"ml-3"%>
+     <%= f.time_field :tempertured_at, autofocus: true , class:"ml-3", required: true%>
     </div>
   </div>
   <p class="col border-top"></p>
-  <strong class="info-title"><i class="fas fa-poo"></i> 排便</strong>
+  <strong class="info-title"><i class="fas fa-poo" style="color: peru;"></i> 排便</strong>
   <div class="field form-group row">
-    <div class="col-md-2 col-4 mt-3 offset-2">
+    <div class="col-md-2 col-4 mt-3 offset-4">
       <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, class: "form-control" %>
       </div>
        <div class="col-md-3 col-4 mt-3">
@@ -75,22 +74,22 @@
     </div>
   </div>
   <p class="col border-top"></p>
-  <strong class="info-title"><i class="fas fa-user"></i> お迎え</strong>
+  <strong class="info-title"><i class="fas fa-user" style="color: skyblue;"></i> お迎え</strong>
   <div class="field form-group row">
-    <div class="col-md-5 mt-3 offset-2">
+    <div class="col-md-5 mt-3 offset-4">
       <%= f.text_field :pickup_person, placeholder: "お迎えの人", autofocus: true %>
-      <%= f.time_field :pickuped_at, autofocus: true , class:"ml-3"%>
+      <%= f.time_field :pickuped_at, autofocus: true , class:"ml-3", required: true%>
      </div>
   </div>
   <p class="col border-top"></p>
-  <strong class="info-title"><i class="far fa-comment"></i> コメント</strong>
+  <strong class="info-title"><i class="far fa-comment" style="color: lightcoral;"></i> コメント</strong>
   <div class="field form-group row">
     <div class="col-md-10 mt-3 d-flex justify-content-center">
       <%= f.text_area :comment, autofocus: true, size: "70x5" %>
     </div>
   </div>
-  <div class="row text-center">
-    <div class="col text-center">
+  <div class="row">
+    <div class="col-md-10 text-center">
      <%= f.submit "登録", class: "btn btn-gray text-white rounded-pill mt-5 col-md-2 col-4 offset-md-1" %>
      </div>
   </div>

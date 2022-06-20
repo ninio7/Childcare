@@ -1,23 +1,28 @@
-<%# 連絡 と 欠席 2種類ある %>
-<% if notification.contact_id == nil %>
-<%# つまり欠席%>
- <ul>
-    <li>
-    　<% weeks = ["日","月","火","水","木","金","土"]%>
+<div class ="row">
+  <table class="table">
+    <tbody>
+      <% weeks = ["日","月","火","水","木","金","土"]%>
       <% week = weeks[notification.created_at.wday]%>
-     【 <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %> 】
-      <strong> <%= link_to admin_customer_absents_path(notification.customer) do %><%=notification.customer.name %><% end %></strong>さんから【欠席・遅刻連絡】が届いています。
-    <%= "(#{time_ago_in_words(notification.created_at)} 前)" %></li>
-  </ul>
-<% else %>
-<%# つまり連絡%>
-<ul>
-    <li>
-    　<% weeks = ["日","月","火","水","木","金","土"]%>
-      <% week = weeks[notification.created_at.wday]%>
-    【 <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %> 】
-    <strong ><%= link_to admin_customer_contacts_path(notification.customer) do %><%=notification.customer.name %><% end %></strong>さんから【連絡帳】が届いています。
-     <%= "(#{time_ago_in_words(notification.created_at)} 前)" %></li>
-  </ul>
-<% end %>
-
+      <tr>
+      <%# 連絡 と 欠席 2種類ある %>
+      <% if notification.contact_id == nil %>
+      <%# つまり欠席%>
+        <td>
+         【 <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %> 】
+          <strong ><%=notification.customer.name %></strong>さんから【欠席・遅刻連絡】が届いています。
+          <%= "(#{time_ago_in_words(notification.created_at)} 前)" %>
+        </td>
+        <td><%= link_to admin_customer_absents_path(notification.customer) do %><i class="fas fa-angle-double-right"></i><% end %></td>
+      <% else %>
+      <%# つまり連絡%>
+        <td>
+         【 <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %> 】
+          <strong ><%=notification.customer.name %></strong>さんから【連絡帳】が届いています。
+          <%= "(#{time_ago_in_words(notification.created_at)} 前)" %>
+        </td>
+        <td><%= link_to admin_customer_contacts_path(notification.customer) do %><i class="fas fa-angle-double-right"></i><% end %></td>
+      <% end %>
+      </tr>
+    </tbody>
+   </table>
+</div>

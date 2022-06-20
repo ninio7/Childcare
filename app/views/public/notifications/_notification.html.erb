@@ -1,16 +1,31 @@
-<%# 保護者側は 連絡 だけ %>
-<ul>
-    <li>
-        <%= link_to contacts_path(notification.customer) do %>
-         【園より連絡帳が公開されました】
-        <% end %>
-        <% weeks = ["日","月","火","水","木","金","土"]%>
-        <% week = weeks[notification.created_at.wday]%>
-        <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %>
-        <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
-    </li>
-</ul>
-
+<div class ="row">
+  <table class="table">
+    <tbody>
+      <% weeks = ["日","月","火","水","木","金","土"]%>
+      <% week = weeks[notification.created_at.wday]%>
+      <tr>
+      <%# 連絡 と お知らせ 2種類ある %>
+      <% if notification.contact_id == nil %>
+      <%# つまりお知らせ%>
+        <td>
+         【 <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %> 】
+          園より<strong>お知らせ</strong>が公開されました。
+          <%= "(#{time_ago_in_words(notification.created_at)} 前)" %>
+        </td>
+        <td><%= link_to admin_newses_path(notification.news) do %><i class="fas fa-angle-double-right"></i><% end %></td>
+      <% else %>
+      <%# つまり連絡%>
+        <td>
+         【 <%= notification.created_at.strftime("%Y年%m月%d日 (#{week})") %> 】
+          園より<strong>連絡帳</strong>が公開されました。
+          <%= "(#{time_ago_in_words(notification.created_at)} 前)" %>
+        </td>
+        <td><%= link_to admin_customer_contacts_path(notification.customer) do %><i class="fas fa-angle-double-right"></i><% end %></td>
+      <% end %>
+      </tr>
+    </tbody>
+   </table>
+</div>
 
 
 

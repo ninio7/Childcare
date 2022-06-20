@@ -3,6 +3,7 @@ class Absent < ApplicationRecord
   belongs_to :child
   has_many :notifications, dependent: :destroy
 
+
   # 保護者が欠席を作った時
   def create_notification_by_customer(current_customer, target_admin)
     notification = Notification.new(
@@ -20,14 +21,19 @@ class Absent < ApplicationRecord
     lateness:1,
   }
 
+  def weeks
+    ["日","月","火","水","木","金","土"]
+  end
+
+  def week
+    weeks[Date.today.wday]
+  end
+
+  def date
+    Date.current.strftime("%Y年%m月%d日 (#{week})")
+  end
+
 end
 
-def day
-  Date.today.wday
-end
-
-def days
- ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
-end
 
 

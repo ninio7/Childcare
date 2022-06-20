@@ -17,44 +17,18 @@
 })();
 
 /*global $*/
-// $(document).on('turbolinks:load', function() {
-//   $(function() {
-//     // .tabがクリックされたときを指定
-//     $('.tab').click(function(){
-//       // 今ある.tab-activeを削除
-//       $('.tab-active').removeClass('tab-active');
-//       // クリックされた.tabに.tab-activeを追加
-//       $(this).addClass('tab-active');
-//       // 今ある.box-showを削除
-//       $('.box-show').removeClass('box-show');
-//       // indexに.tabのindex番号を代入
-//       const index = $(this).index();
-//       // .tabboxとindexの番号が同じ要素に.box-showを追加
-//       $('.tabbox').eq(index).addClass('box-show');
-//     // });
-//   });
-// });
+$(document).on('turbolinks:load', function() {
+  $(function() {
+  $('#js-copybtn').on('click', function(){
+    //　テキストエリアを選択
+    $('#js-copytext').select();
+    // コピー
+    document.execCommand('copy');
+    // アラート文の表示
+    $('#js-copyalert').show().delay(2000).fadeOut(400);
+  });
+　});
+});
 
-// function activeTab(tabid){
-// /*global $*/
-//   $('.nav-tabs a[href="#' + tabid + '"]').tab( 'show' );
-// }
-// function enableTab( tabid ){
-//   $('.nav-tabs a[href="#' + tabid + '"]').attr( 'data-toggle', 'tab' );
-// }
-// function disableTab( tabid ){
-//   $('.nav-tabs a[href="#' + tabid + '"]').removeAttr( 'data-toggle' );
-// }
 
-// function selectX(){
-//   //. A を選択して A のみを有効にする
-//   activeTab( 'tab-a' );
-//   enableTab( 'tab-a' );
-//   disableTab( 'tab-b' );
-// }
-// function selectY(){
-//   //. B を選択して B, C のみを有効にする
-//   activeTab( 'tab-b' );
-//   disableTab( 'tab-a' );
-//   enableTab( 'tab-b' );
-// }
+

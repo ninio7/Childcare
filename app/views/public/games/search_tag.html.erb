@@ -1,9 +1,9 @@
 <div class="container mb-5">
   <div class="row">
-    <% if @game_title %>
+    <% if params[:title].present? %>
       <h2 class="mb-5 mt-5">"<%= @game_title %>"検索結果一覧<span>（全<%= @games_all_count %>件）</span></h2>
-    <% else %>
-      <h2 class="mb-5 mt-5">"<%= @tag.name %>"検索結果一覧<span>（全<%= @games_all_count %>件）</span></h2>
+    <% elsif params[:tag_id].present?%>
+      <h2 class="mb-5 mt-5">"<%= @tag.name %>"検索結果一覧<span>（全<%= @games.size %>件）</span></h2>
     <% end %>
     <div class="col text-right mb-5 mt-4">
       <%= render 'layouts/sort_game', link: games_path %>
@@ -13,17 +13,17 @@
     <div class='col-md-12 justify-content-end'>
       <div class='row mb-5'>
         <% @games.each do |game| %>
-        <div class='card mx-1 border mx-auto mb-5'>
+        <div class='card mx-2 border mb-5'>
           <%= link_to game_path(game) do %>
             <%= image_tag game.images[0] ,size: "240x160"%>
           <% end %>
           <%= link_to game_path(game) , class:"text-secondary" do %>
             <%= game.title %>
           <% end %>
-          <%= link_to game_path(game) , class:"text-secondary" do %>
-            <i class="fas fa-heart" aria-hidden="true" style="color:red;"></i>
-            <%= game.favorites.count %> いいね
-          <% end %>
+          <span id = "game_<%= game.id %>">
+           <%= render "public/favorites/btn" , game: game%>
+          </span>
+
         <!--一覧にタグを載せたい場合↓-->
         <!--  <div class="row">-->
         <!--    <%# @tag_list.each do |list|%>-->

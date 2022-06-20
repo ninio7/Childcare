@@ -1,26 +1,26 @@
 <div class="container">
-  <h2 class="mt-3 col-md-5 text-center">連絡帳</h2>
-  <%= form_with model: @contact , url: admin_customer_contacts_path, method: :post do |f| %>
+  <h2 class="mt-5 col-md-10 text-center">連絡帳</h2>
+   <%= form_with model: @contact , url: admin_customer_contacts_path, method: :post do |f| %>
     <div class="row mt-5">
-      <h4 class="col-md-4"><%= @date %> (<%= @weekday %>)</h4>
-      <div class="col-md-3 mt-2">
-        <%= f.radio_button :weather, "sunny" %>
-        <%= f.label :weather,"晴れ" ,class:"mr-3"%>
-        <%= f.radio_button :weather, "cloudy" %>
-        <%= f.label :weather,"曇り" ,class:"mr-3"%>
-        <%= f.radio_button :weather, "rain" %>
-        <%= f.label :weather,"雨" %>
+      <h4 class="col-md-4 col-7 my-3 offset-md-2"><%= @contact.date %></h4>
+      <div class="col-md-5 col-5 my-3">
+        <%= f.select :child_id,options_from_collection_for_select(@customer.children.all, :id, :name) , {}, class: "form-control col-md-5"%>
       </div>
+      <!--天気を使用する場合↓-->
+      <!--<div class="col-md-3 mt-2">-->
+      <!--  <%#= f.radio_button :weather, "sunny" %> -->
+      <!--  <%#= f.label :weather,"晴れ" ,class:"mr-3"%>-->
+      <!--  <%#= f.radio_button :weather, "cloudy" %>-->
+      <!--  <%#= f.label :weather,"曇り" ,class:"mr-3"%>-->
+      <!--  <%#= f.radio_button :weather, "rain" %>-->
+      <!--  <%#= f.label :weather,"雨" %>-->
+      <!--</div>-->
     </div>
-    <div class="field form-group row">
-      <div class="col-md-3  mb-5 mt-3 col-sm-5">
-     <!--</%= f.select :humor,Contact.humors.keys.map{|k| [I18n.t("enums.contact.humor.#{k}"),k]} %>-->
-        <%= f.select :child_id,options_from_collection_for_select(@customer.children.all, :id, :name) , {}, {class: "form-control"}%>
-      </div>
-    </div>
+    <div class="needs-validation novalidate">
     <%= render partial: "admin/contacts/form" , locals: { f: f } %>
+    </div>
     <div class="row">
-      <div class="col-md-2 col-4 offset-2 mt-3 ">
+      <div class="col-md-2 col-4 offset-2 offset-md-3 mt-3 ">
         <%= f.select :status, Contact.statuses.keys.map { |k| [t("enums.contact.status.#{k}"),k]}, {}, {class: "form-control"} %>
       </div>
       <div class="col-md-5 col-4 mt-3">

@@ -1,6 +1,5 @@
 class Public::GamesController < ApplicationController
   def index
-    @games = Game.all.order(created_at: :desc).page(params[:page])
     case params[:sort_games]
     when "old"
       @games = Game.page(params[:page]).per(8)
@@ -13,8 +12,7 @@ class Public::GamesController < ApplicationController
     end
     @games_all_count= Game.all.count
     @game = Game.new
-    # @game = current_game
-    @pages = Game.all.page(params[:page]).per(8)
+    @pages = Game.all.order(created_at: :desc).page(params[:page]).per(8)
     @tag_list = Tag.all
   end
 
@@ -25,22 +23,23 @@ class Public::GamesController < ApplicationController
   end
 
   def search_tag
-    @tag_list=Tag.all
-    @games=Game.where("title LIKE ?", "%#{@game_title}%").page(params[:page])
-    @games_all_count= Game.where("title LIKE ?", "%#{@game_title}%").count
-    if params[:tag_id]
-      #検索されたタグを受け取る
-      @tag=Tag.find(params[:tag_id])
-     #検索されたタグに紐づく投稿を表示
-    else
+    @tag_lists = Tag.all
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @tags = Tag.where('name LIKE ?', "%#{params[:name]}%")
+      @games = @tag.games.order(created_at: :desc).page(params[:page])
+      @tag_name=params[:name]
+    elsif params[:title].present?
+      @games = Game.where('title LIKE ?', "%#{params[:title]}%").page(params[:page])
       @game_title=params[:title]
+      @games_all_count=Game.where("title LIKE ?","%#{@game_title}%").count
     end
   end
 
   private
 
   def game_params
-    params.require(:game).permit(:title, :body, :image)
+    params.require(:game).permit(:title, :body)
   end
 
 end

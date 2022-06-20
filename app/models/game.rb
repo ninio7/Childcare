@@ -1,6 +1,5 @@
 class Game < ApplicationRecord
   has_many_attached :images
-
   belongs_to :customer, optional: true
   belongs_to :admin, optional: true
   has_many :favorites, dependent: :destroy

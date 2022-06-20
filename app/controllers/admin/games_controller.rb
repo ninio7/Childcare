@@ -1,4 +1,5 @@
 class Admin::GamesController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @game =Game.new
   end
@@ -12,15 +13,12 @@ class Admin::GamesController < ApplicationController
     @games = Game.all.order(created_at: :desc).page(params[:page])
     @games_all_count= Game.all.count
     @tag_list = Tag.all
-
-    # @admin = current_admin
   end
 
   def create
-    # binding.pry
-       @game=Game.new(game_params)
-       @game.admin_id = current_admin.id
-       tag_list = params[:game][:name].split(',')
+    @game=Game.new(game_params)
+    @game.admin_id = current_admin.id
+    tag_list = params[:game][:name].split(',')
     if @game.save
        @game.save_tags(tag_list)
       flash[:notice]="新規登録しました"
@@ -34,11 +32,6 @@ class Admin::GamesController < ApplicationController
     @game = Game.find(params[:id])
     tag_list = params[:game][:name].split(',')
     if @game.update(game_params)
-       @game.save_tags(tag_list)
-       @old_relations = GameTag.where(game_id: @game.id)
-       @old_relations.each do |relation|
-         relation.delete
-       end
        @game.save_tags(tag_list)
        flash[:notice]="変更しました"
        redirect_to games_path
@@ -57,8 +50,6 @@ class Admin::GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @game_tags = @game.tags
-
-
   end
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_024630) do
+ActiveRecord::Schema.define(version: 2022_06_20_080238) do
 
   create_table "absents", force: :cascade do |t|
     t.integer "customer_id"
@@ -179,11 +179,23 @@ ActiveRecord::Schema.define(version: 2022_06_16_024630) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "news", force: :cascade do |t|
+    t.integer "admin_id"
+    t.integer "group_id"
+    t.date "started_on"
+    t.date "finished_on"
+    t.text "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer "customer_id"
     t.boolean "send_by_admin", default: false, null: false
     t.integer "contact_id"
     t.integer "absent_id"
+    t.integer "news_id"
     t.integer "admin_id", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -192,6 +204,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_024630) do
     t.index ["admin_id"], name: "index_notifications_on_admin_id"
     t.index ["contact_id"], name: "index_notifications_on_contact_id"
     t.index ["customer_id"], name: "index_notifications_on_customer_id"
+    t.index ["news_id"], name: "index_notifications_on_news_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -208,4 +221,5 @@ ActiveRecord::Schema.define(version: 2022_06_16_024630) do
   add_foreign_key "notifications", "admins"
   add_foreign_key "notifications", "contacts"
   add_foreign_key "notifications", "customers"
+  add_foreign_key "notifications", "news"
 end

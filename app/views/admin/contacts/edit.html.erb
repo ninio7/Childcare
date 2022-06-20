@@ -1,7 +1,7 @@
 <div class="container">
-  <h2 class="my-3 col-md-7 text-center">連絡帳編集</h2>
+  <h2 class="my-3 col-md-10 text-center">連絡帳編集</h2>
   <div class ="row">
-    <div class="col-md-4 col-7 mt-3 mb-3">
+    <div class="col-md-4 col-7 mt-3 mb-3 offset-md-2">
     <% weeks = ["日","月","火","水","木","金","土"]%>
     <% week = weeks[@contact.created_at.wday]%>
     <h4><%= @contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></h4>
@@ -13,7 +13,7 @@
   <%= form_with model: @contact ,url: admin_customer_contact_path,method: :patch  do |f| %>
     <%= render partial: "admin/contacts/form", locals: { f: f } %>
     <div class="row">
-      <div class="col-md-2 col-4 offset-2 mt-3 ">
+      <div class="col-md-2 col-4 offset-2 offset-md-3 mt-3 ">
         <%= f.select :status, Contact.statuses.keys.map { |k| [t("enums.contact.status.#{k}"),k]}, {}, {class: "form-control"} %>
       </div>
       <div class="col-md-5 col-4 mt-3">

@@ -1,4 +1,5 @@
 class Admin::GroupsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @group = Group.new
     @groups = Group.page(params[:page]).per(10)
@@ -7,11 +8,9 @@ class Admin::GroupsController < ApplicationController
   def show
     @groups = Group.all
     @group = Group.find(params[:id])
-    @children = @group.children.page(params[:page])
-    @customers = Customer.where(params[:id])
-    @groups_all_count=Group.where("name LIKE ?","%#{@group.name}%").count
+    customer_all = Customer.where(is_deleted: true)
+    @children = @group.children.where.not(customer: customer_all).page(params[:page]).per(10)
   end
-
 
   def create
     @group = Group.new(group_params)

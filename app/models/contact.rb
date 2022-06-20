@@ -5,7 +5,7 @@ class Contact < ApplicationRecord
   belongs_to :child
   has_many :notifications, dependent: :destroy
 
-   self.inheritance_column = :_type_disabled
+  self.inheritance_column = :_type_disabled
 
   # 保護者が連絡を作った時
   def create_notification_by_customer(current_customer, target_admin)
@@ -29,12 +29,8 @@ class Contact < ApplicationRecord
      notification.save if notification.valid?
   end
 
-
-
-
-
-
-
+ 
+  
   # 主食量の設定
   enum staple_quantity:{
     completed:0,
@@ -123,12 +119,20 @@ class Contact < ApplicationRecord
     draft:1,
   }
 
-  def day
-    date.today.wday
+  validates :humor, presence: true
+  validates :temperture, presence: true
+  validates :tempertured_at, presence: true
+
+  def weeks
+    ["日","月","火","水","木","金","土"]
   end
 
-  def days
-    ["日", "月", "火", "水", "木", "金", "土"]
+  def week
+    weeks[Date.today.wday]
+  end
+
+  def date
+    Date.current.strftime("%Y年%m月%d日 (#{week})")
   end
 
 end
