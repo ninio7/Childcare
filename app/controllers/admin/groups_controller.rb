@@ -9,7 +9,7 @@ class Admin::GroupsController < ApplicationController
     @groups = Group.all
     @group = Group.find(params[:id])
     customer_all = Customer.where(is_deleted: true)
-    @children = @group.children.where.not(customer: customer_all).page(params[:page]).per(10)
+    @children = @group.children.where.not(customer: customer_all).order("kana_name").page(params[:page]).per(10)
   end
 
   def create

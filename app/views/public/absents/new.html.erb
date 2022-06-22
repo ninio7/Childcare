@@ -4,7 +4,7 @@
   <div class="row mb-3">
     <h4 class="col-md-4 col-7 mb-3 mt-3 offset-md-2"><%= I18n.l(DateTime.now, format: :short) %></h4>
     <div class="col-md-5 col-5 mt-3 mb-3">
-      <%= f.select :child_id,options_from_collection_for_select(Child.all, :id, :name), {}, class: "form-control col-md-5"%>
+      <%= f.select :child_id,options_from_collection_for_select(@customer.children.all, :id, :name) , {}, class: "form-control col-md-5"%>
     </div>
   </div>
   <p class="border-top mt-5"></p>

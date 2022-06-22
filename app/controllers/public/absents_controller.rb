@@ -1,6 +1,7 @@
 class Public::AbsentsController < ApplicationController
   before_action :authenticate_customer!, except: [:show]
   def new
+    @customer = current_customer
     @absent = Absent.new
   end
 

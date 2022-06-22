@@ -29,8 +29,8 @@ class Contact < ApplicationRecord
      notification.save if notification.valid?
   end
 
- 
-  
+
+
   # 主食量の設定
   enum staple_quantity:{
     completed:0,
@@ -119,17 +119,7 @@ class Contact < ApplicationRecord
     draft:1,
   }
 
-  validates :humor, presence: true
-  validates :temperture, presence: true
-  validates :tempertured_at, presence: true
-  validates :nap_started_at, presence: true
-  validates :nap_finished_at, presence: true
-  validates :dinner_time, presence: true
-  validates :breakfast_time, presence: true
-  validates :pickuped_at, presence: true
-  validates :sleep_started_at, presence: true
-  validates :sleep_finished_at, presence: true
-  
+
   # I18nを使用しない場合↓
   # def weeks
   #   ["日","月","火","水","木","金","土"]
