@@ -21,18 +21,8 @@ class Absent < ApplicationRecord
     lateness:1,
   }
 
-  def weeks
-    ["日","月","火","水","木","金","土"]
-  end
-
-  def week
-    weeks[Date.today.wday]
-  end
-
-  def date
-    Date.current.strftime("%Y年%m月%d日 (#{week})")
-  end
-
+  validates :kind, presence: true
+  
 end
 
 

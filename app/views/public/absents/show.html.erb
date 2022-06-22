@@ -1,10 +1,8 @@
 <div class="container">
-  <h2 class="my-5 col-md-10 text-center">欠席・遅刻連絡</h2>
+  <h2 class="my-5 col-md-4 offset-md-3 text-center under">欠席・遅刻連絡</h2>
   <div class="row d-flex justify-content-center">
     <div class="col-md-4 col-7 mt-3 text-left">
-      <% weeks = ["日","月","火","水","木","金","土"]%>
-      <% week = weeks[@absent.created_at.wday]%>
-      <h4><%= @absent.created_at.strftime("%Y年%m月%d日 (#{week})") %></h4>
+      <h4><%=I18n.l(@absent.created_at, format: :short) %></h4>
     </div>
     <div class="col-md-4 col-5 mt-3">
       <h4><%= @absent.child.name %> さん</h4>

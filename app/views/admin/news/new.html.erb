@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="my-5 col-md-10 text-center ">お知らせ新規登録</h2>
-   <%= form_with model: @news, url: new_admin_news_path, method: :post do |f| %>
+   <%= form_with model: @news, url: admin_news_index_path, method: :post do |f| %>
   <div class="row mb-3">
     <div class="col-md-5 col-5 mt-3 mb-3">
       <%= f.select :group_id,options_from_collection_for_select(Group.all, :id, :name), {}, class: "form-control col-md-5"%>

@@ -1,5 +1,6 @@
 <div class="row g-3 needs-validation novalidate d-flex justify-content-center">
-  <div class="col-md-8 mt-5 ">
+  <div class="col-md-8  ">
+    <%= form_with(model: child, url: admin_customer_children_path, local: false, class: 'needs-validation', html: {novalidate: true}) do |f| %>
     <div class="form-group row">
       <%= f.label :"名前" , class: "col-md-3 col-3"%>
       <%= f.text_field :name, autofocus: true,class:'form-control col-md-3 col-6', required: true %>
@@ -28,5 +29,9 @@
         クラスを選択してください。
         </div>
     </div>
+    <div class="col-md-10 text-right">
+      <%= f.submit "新規登録", class: "btn btn-gray text-white rounded-pill col-md-3 col-4 mt-3 " %>
+    </div>
+    <% end %>
   </div>
 </div>

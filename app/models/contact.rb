@@ -122,18 +122,26 @@ class Contact < ApplicationRecord
   validates :humor, presence: true
   validates :temperture, presence: true
   validates :tempertured_at, presence: true
+  validates :nap_started_at, presence: true
+  validates :nap_finished_at, presence: true
+  validates :dinner_time, presence: true
+  validates :breakfast_time, presence: true
+  validates :pickuped_at, presence: true
+  validates :sleep_started_at, presence: true
+  validates :sleep_finished_at, presence: true
+  
+  # I18nを使用しない場合↓
+  # def weeks
+  #   ["日","月","火","水","木","金","土"]
+  # end
 
-  def weeks
-    ["日","月","火","水","木","金","土"]
-  end
+  # def week
+  #   weeks[Date.today.wday]
+  # end
 
-  def week
-    weeks[Date.today.wday]
-  end
-
-  def date
-    Date.current.strftime("%Y年%m月%d日 (#{week})")
-  end
+  # def date
+  #   Date.current.strftime("%Y年%m月%d日 (#{week})")
+  # end
 
 end
 

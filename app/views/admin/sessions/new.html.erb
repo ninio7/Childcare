@@ -18,15 +18,8 @@
     </div>
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field row">
-      <%= f.check_box :remember_me , class: "ml-3" %>
-      <%= f.label :remember_me  , class: "ml-2 col-md-6" %>
-    </div>
-  <% end %>
-
-  <div class="actions row mt-3">
-    <%= f.submit "ログイン", class: "btn btn-gray rounded-pill text-white col-md-3 offset-3 " %>
+  <div class="row mt-5">
+    <%= f.submit "ログイン", class: "btn btn-gray rounded-pill text-white col-md-3 offset-md-3 offset-3 col-6" %>
   </div>
 <% end %>
 <%= render "admin/shared/links" %>

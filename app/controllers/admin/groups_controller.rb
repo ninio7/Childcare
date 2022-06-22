@@ -14,9 +14,9 @@ class Admin::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @groups = Group.all
     if @group.save
       flash[:notice]="新規登録しました"
-      redirect_to admin_groups_path
     else
        @groups = Group.all
        render :index
@@ -38,11 +38,11 @@ class Admin::GroupsController < ApplicationController
     end
   end
 
-   def destroy
-   @group =  Group.find(params[:id])
-   @group.destroy
-   redirect_to admin_groups_path
-   end
+  def destroy
+    @group =  Group.find(params[:id])
+    @group.delete
+    @groups = Group.all
+  end
 
   private
 

@@ -1,0 +1,18 @@
+<table class="table table-bordered text-nowrap">
+  <thead class="thead">
+    <tr>
+      <th class="bg-green text-white">クラス名</th>
+    　<th class="bg-green text-white"></th>
+    </tr>
+  </thead>
+  <tbody id = "group_form">
+  <% groups.each do |group| %>
+    <tr>
+      <td><%= group.name %></td>
+      <td class="text-center">
+        <%= link_to "編集する", edit_admin_group_path(group.id),class: "btn btn-outline-secondary rounded-pill" %>
+        <%= link_to "削除する", admin_group_path(group.id), class: "btn btn-outline-danger rounded-pill ml-3", method: :delete , remote: true %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

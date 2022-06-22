@@ -1,0 +1,28 @@
+ <table class="table table-bordered text-nowrap">
+      <thead class="thead-light">
+        <tr>
+          <th class="bg-green text-white">名前</th>
+          <th class="bg-green text-white">ふりがな</th>
+          <th class="bg-green text-white">誕生日</th>
+          <th class="bg-green text-white">年齢</th>
+          <th class="bg-green text-white">クラス</th>
+          <th class="bg-green text-white"></th>
+        </tr>
+      </thead>
+     <tbody>
+     <% children.each do |child| %>
+        <tr>
+          <td><%= child.name %></td>
+          <td><%= child.kana_name %></td>
+          <td><%= child.birthday %></td>
+          <td><%= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳
+              <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100).to_s.split("")[-1] %> カ月
+          </td>
+          <td><%= child.group.name %></td>
+          <td class="text-center"><%= link_to "編集する", edit_admin_customer_child_path(child.customer.id ,child.id), class: "btn btn-outline-secondary rounded-pill text-dark text-center mr-3" %>
+            <%= link_to "削除する", admin_customer_child_path(child.customer.id, child.id), class: "btn btn-outline-danger rounded-pill", method: :delete , "data-confirm" => "本当に削除してよろしいでしょうか?" , remote: true%></td>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>

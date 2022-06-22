@@ -1,9 +1,9 @@
 <div class="container mb-5">
   <div class="row d-flex justify-content-center">
-    <h2 class="col-md-5 mt-5">欠席・遅刻連絡<span>（全<%= @absents.count %>件）</span></h2>
-     <div class="col-md-3 mt-5 d-inline-block">
+    <h2 class="col-md-5 mt-5 text-center under"><i class="far fa-clipboard"></i>&emsp;欠席・遅刻連絡<span>（全<%= @absents.count %>件）</span></h2>
+     <div class="col-md-3 text-right mt-5 ">
       <%= link_to new_absent_path do %>
-        <p class= "btn btn-gray text-white"><i class="fas fa-edit" aria-hidden="true"></i> 欠席・遅刻連絡</p>
+        <p class= "btn btn-yellow text-secondary"><i class="fas fa-edit" aria-hidden="true"></i> 欠席・遅刻連絡</p>
       <% end %>
     </div>
   </div>

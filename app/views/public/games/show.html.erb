@@ -17,7 +17,7 @@
   </div>
   <div class="row d-flex justify-content-center">
     <% @game_tags.each do |tag| %>
-      <%= link_to search_tag_path(tag_id: tag.id) do %><p class="btn btn-gray text-white rounded-pill mx-1 py-0">#<%=tag.name %></p><% end %>
+      <%= link_to search_tag_path(tag_id: tag.id) do %><p class="btn btn-light text-secondary rounded-pill mx-1 py-0"><%=tag.name %></p><% end %>
     <% end %>
     </div>
     <div class="row d-flex justify-content-center">

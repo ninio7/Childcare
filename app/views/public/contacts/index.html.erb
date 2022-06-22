@@ -1,14 +1,14 @@
 <div class="container mb-5">
   <div class="row d-flex justify-content-center">
-    <h2 class="col-md-4 mt-5 text-center">連絡帳</h2>
+    <h2 class="col-md-3 mt-5 text-center under offset-md-1"><i class="far fa-clipboard"></i>&ensp;連絡帳一覧</h2>
     <div class="col-md-2 col-5 mt-5 text-right">
       <%= link_to new_contact_path do %>
-        <p class= "btn btn-gray text-white"> <i class="fas fa-edit" aria-hidden="true"></i> 連絡帳</p>
+        <p class= "btn btn-yellow text-secondary"> <i class="fas fa-edit" aria-hidden="true"></i> 連絡帳作成</p>
       <% end %>
     </div>
     <div class="col-md-3 col-6 mt-5 text-left">
       <%= link_to absents_path do %>
-        <p class= "btn btn-gray text-white"> <i class="far fa-clipboard" aria-hidden="true"></i> 欠席・遅刻連絡</p>
+        <p class= "btn btn-yellow text-secondary"> <i class="far fa-clipboard" aria-hidden="true"></i> 欠席・遅刻連絡</p>
       <% end %>
     </div>
   </div>

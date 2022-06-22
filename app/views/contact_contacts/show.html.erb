@@ -2,9 +2,7 @@
   <h2 class="mt-5 mb-3 col-md-10 text-center">連絡帳</h2>
   <div class="row mb-3">
     <div class="col-md-4 col-7 mb-3 offset-md-2">
-      <% weeks = ["日","月","火","水","木","金","土"]%>
-      <% week = weeks[@contactsPair.created_at.wday]%>
-      <h4 class="mt-3"><%= @contactsPair.created_at.strftime("%Y年%m月%d日 (#{week})")%></h4>
+      <h4 class="mt-3"><%=I18n.l(@contactsPair.created_at, format: :short)%></h4>
     </div>
     <% if @contactsPair.admin_contact(@day) && (@contactsPair.admin_contact(@day).status == "published"|| admin_signed_in? ) %>
       <div class="col-md-5 col-5 mt-3 mb-3">
@@ -28,11 +26,11 @@
   <div class="tab-content" id="myTabContent">
     <!--園からの連絡帳-->
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <%= render "contact_contacts/admin" %>
+      <%= render "contact_contacts/admin", contactsPair: @contactsPair, day: @day%>
     </div>
 　  <!--家庭からの連絡帳-->
 　  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-　    <%= render "contact_contacts/customer" %>
+　    <%= render "contact_contacts/customer", contactsPair: @contactsPair, day: @day %>
     </div>
   </div>
 </div>

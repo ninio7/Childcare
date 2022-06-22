@@ -12,7 +12,7 @@
           園より<strong>お知らせ</strong>が公開されました。
           <%= "(#{time_ago_in_words(notification.created_at)} 前)" %>
         </td>
-        <td><%= link_to admin_newses_path(notification.news) do %><i class="fas fa-angle-double-right"></i><% end %></td>
+        <td><%= link_to admin_news_path(notification.news) do %><i class="fas fa-angle-double-right"></i><% end %></td>
       <% else %>
       <%# つまり連絡%>
         <td>

@@ -1,49 +1,50 @@
 <p class="border-top"></p>
 <strong class="info-title"><i class="fas fa-utensils" style="color: coral;"></i> 昼食</strong>
 <div class="field form-group row">
-  <div class="col-md-5 offset-md-2 mt-3">
-    <%= f.text_area :staple, placeholder: "内容：　食べた量",autofocus: true, size: "70x5", :id => "js-copytext"%>
+  <div class="col-md-5 offset-md-3 offset-1 mt-3">
+    <%= f.text_area :staple, placeholder: "内容：　食べた量",autofocus: true, size: "60x5", :id => "js-copytext"%>
   </div>
 </div>
-<button type="button" id="js-copybtn" class="btn btn-gray text-white rounded-pill py-0 offset-11 offset-md-8 mb-3">copy</button>
-<p class="border-top"></p>
-<div class="field form-group row mt-3">
- <p class="col-md-1 offset-md-2">主食</p>
- <div class="col-md-3 col-6 offset-md-1">
-   <%= f.text_area :staple, placeholder: "内容",autofocus: true, size: "30x1"%>
- </div>
- <div class="col-md-2 col-5 offset-md-1">
-   <%= f.select :staple_quantity,Contact.staple_quantities.keys.map{|k| [I18n.t("enums.contact.staple_quantity.#{k}"),k]} , {}, {class: "form-control"}%>
- </div>
-</div>
-<div class="field form-group row">
-  <p class="col-md-1 offset-md-2">主菜</p>
-  <div class="col-md-3 col-6 offset-md-1">
-    <%= f.text_area :main, placeholder: "内容",autofocus: true, size: "30x1"%>
-  </div>
-  <div class="col-md-2 col-5 offset-md-1">
-    <%= f.select :main_quantity,Contact.main_quantities.keys.map{|k| [I18n.t("enums.contact.main_quantity.#{k}"),k]}, {}, {class: "form-control"} %>
-  </div>
-</div>
+<button type="button" id="js-copybtn" class="btn btn-gray text-white rounded-pill py-0 offset-10 offset-md-8 mb-3">copy</button>
+<!--昼食のフォームを分ける場合-->
+<!--<p class="border-top"></p>-->
+<!--<div class="field form-group row mt-3">-->
+<!-- <p class="col-md-1 offset-md-2">主食</p>-->
+<!-- <div class="col-md-3 col-6 offset-md-1">-->
+<!--   <%#= f.text_area :staple, placeholder: "内容",autofocus: true, size: "30x1"%>-->
+<!-- </div>-->
+<!-- <div class="col-md-2 col-5 offset-md-1">-->
+<!--   <%#= f.select :staple_quantity,Contact.staple_quantities.keys.map{|k| [I18n.t("enums.contact.staple_quantity.#{k}"),k]} , {}, {class: "form-control"}%>-->
+<!-- </div>-->
+<!--</div>-->
+<!--<div class="field form-group row">-->
+<!--  <p class="col-md-1 offset-md-2">主菜</p>-->
+<!--  <div class="col-md-3 col-6 offset-md-1">-->
+<!--    <%#= f.text_area :main, placeholder: "内容",autofocus: true, size: "30x1"%>-->
+<!--  </div>-->
+<!--  <div class="col-md-2 col-5 offset-md-1">-->
+<!--    <%#= f.select :main_quantity,Contact.main_quantities.keys.map{|k| [I18n.t("enums.contact.main_quantity.#{k}"),k]}, {}, {class: "form-control"} %>-->
+<!--  </div>-->
+<!--</div>-->
 
-<div class="field form-group row">
-  <p class="col-md-1 offset-md-2">副菜</p>
-  <div class="col-md-3 col-6 offset-md-1">
-    <%= f.text_area :side, placeholder: "内容",autofocus: true, size: "30x1"%>
-  </div>
-  <div class="col-md-2 col-5 offset-md-1">
-    <%= f.select :side_quantity,Contact.side_quantities.keys.map{|k| [I18n.t("enums.contact.side_quantity.#{k}"),k]} , {}, {class: "form-control"}%>
-  </div>
-</div>
-<div class="field form-group row">
-  <p class="col-md-1 offset-md-2">デザート</p>
-  <div class="col-md-3 col-6 offset-md-1">
-    <%= f.text_area :dessert, placeholder: "内容",autofocus: true, size: "30x1"%>
-  </div>
-  <div class="col-md-2 col-5 offset-md-1">
-    <%= f.select :dessert_quantity,Contact.dessert_quantities.keys.map{|k| [I18n.t("enums.contact.dessert_quantity.#{k}"),k]}, {}, {class: "form-control"} %>
-  </div>
-</div>
+<!--<div class="field form-group row">-->
+<!--  <p class="col-md-1 offset-md-2">副菜</p>-->
+<!--  <div class="col-md-3 col-6 offset-md-1">-->
+<!--    <%#= f.text_area :side, placeholder: "内容",autofocus: true, size: "30x1"%>-->
+<!--  </div>-->
+<!--  <div class="col-md-2 col-5 offset-md-1">-->
+<!--    <%#= f.select :side_quantity,Contact.side_quantities.keys.map{|k| [I18n.t("enums.contact.side_quantity.#{k}"),k]} , {}, {class: "form-control"}%>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="field form-group row">-->
+<!--  <p class="col-md-1 offset-md-2">デザート</p>-->
+<!--  <div class="col-md-3 col-6 offset-md-1">-->
+<!--    <%#= f.text_area :dessert, placeholder: "内容",autofocus: true, size: "30x1"%>-->
+<!--  </div>-->
+<!--  <div class="col-md-2 col-5 offset-md-1">-->
+<!--    <%#= f.select :dessert_quantity,Contact.dessert_quantities.keys.map{|k| [I18n.t("enums.contact.dessert_quantity.#{k}"),k]}, {}, {class: "form-control"} %>-->
+<!--  </div>-->
+<!--</div>-->
 <p class="border-top"></p>
 <strong class="info-title"><i class="far fa-smile" style="color: orange;"></i> 機嫌</strong>
 <div class="field form-group row">
@@ -93,8 +94,8 @@
 <p class="border-top"></p>
 <strong class="info-title"><i class="far fa-comment" style="color: lightcoral;"></i> コメント</strong>
 <div class="field form-group row">
-  <div class="col-md-5 offset-md-2 mt-3">
-    <%= f.text_area :comment, autofocus: true, size: "70x5" %>
+  <div class="col-md-5 offset-md-3 offset-1 mt-3">
+    <%= f.text_area :comment, autofocus: true, size: "60x5" %>
   </div>
   <p class="col-md-8 border-top mt-4"></p>
 </div>

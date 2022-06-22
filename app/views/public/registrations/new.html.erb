@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="col-md-7 text-center my-5">新規会員登録</h2>
+  <h2 class="col-md-4 offset-md-3 text-center my-5 under">新規会員登録</h2>
   <% if admin_signed_in? %>
     <%= form_with(model: @customer, url: customer_registration_path, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
     <div class="col g-3 needs-validation novalidate">
@@ -72,7 +72,7 @@
       </div>
     </div>
     <div class="col-md-9 text-center">
-      <%= f.submit "新規登録", class: "btn btn-gray col-md-4 col-6 rounded-pill  text-white offset-md-6 mt-5 " %>
+      <%= f.submit "新規登録", class: "btn btn-gray col-md-3 col-6 rounded-pill  text-white offset-md-2 mt-5 " %>
     </div>
     <% end %>
   <% end %>

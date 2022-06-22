@@ -1,11 +1,10 @@
 class Admin::ChildrenController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @customer = Customer.find(params[:customer_id])
     @children = Child.where(customer_id:params[:customer_id])
     @child = Child.new
     @groups = Group.all
-    
+
   end
 
   def edit
@@ -17,9 +16,9 @@ class Admin::ChildrenController < ApplicationController
   def create
     @customer = Customer.find(params[:customer_id])
     @child = @customer.children.new(child_params)
+    @children = Child.where(customer_id:params[:customer_id])
       if @child.save
         flash[:notice]="新規登録しました"
-        redirect_to admin_customer_children_path
       else
         @children = Child.all
         render :index
@@ -37,11 +36,11 @@ class Admin::ChildrenController < ApplicationController
     end
   end
 
-   def destroy
+  def destroy
     @child = Child.find(params[:id])
-    @child.destroy
-    redirect_to admin_customer_children_path
-   end
+    @child.delete
+    @children = Child.where(customer_id:params[:customer_id])
+  end
 
 private
 

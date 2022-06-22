@@ -1,11 +1,12 @@
-<div class="row g-3 needs-validation novalidate d-flex justify-content-center">
-  <div class="col-md-8 mt-5 ">
-    <div class="form-group row">
-      <%= f.label :"クラス名" , class: "col-md-3 col-3"%>
-      <%= f.text_field :name, autofocus: true,class:'form-control col-md-3 col-5', required: true %>
-      <div class="invalid-feedback row offset-md-3 offset-3">
+<%= form_with(model: group,url: admin_groups_path, local: false, class: 'needs-validation', html: {novalidate: true}) do |f| %>
+  <div class="form-group row">
+      <%= f.label :"クラス名" , class: "col-md-2 offset-md-2 col-3"%>
+      <%= f.text_field :name, autofocus: true,class:'form-control col-md-3 col-7' , required: true%>
+      <div class="invalid-feedback row offset-md-5 offset-3">
         名前を入力してください。
       </div>
-    </div>
   </div>
-</div>
+  <div class="col-md-10 text-right">
+    <%= f.submit "新規登録", class: "btn btn-gray text-white rounded-pill col-md-2 mt-3 col-3" %>
+  </div>
+<% end %>

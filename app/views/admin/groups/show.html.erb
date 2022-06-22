@@ -1,5 +1,5 @@
 <div class= "container">
-  <h2 class="mt-5 mb-3 col-md-8 text-center"><%= @group.name %> 一覧<span>（<%= @children.count %>名）</span></h2>
+  <h2 class="mt-5 mb-3 col-md-4 offset-md-2 text-center under"><%= @group.name %> 一覧<span>（<%= @children.count %>名）</span></h2>
 <div class="row">
   <div class='col-md-2 mt-5'>
       <%= render "admin/customers/group", groups: @groups %>
@@ -8,8 +8,8 @@
     <table class="table table-hover mt-5">
       <thead>
         <tr>
-          <th class="bg-light">園児氏名</th>
-          <th class="bg-light">年齢</th>
+          <th class="bg-green text-white">園児氏名</th>
+          <th class="bg-green text-white">年齢</th>
         </tr>
       </thead>
       <tbody>

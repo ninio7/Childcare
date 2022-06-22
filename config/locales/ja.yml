@@ -1,84 +1,67 @@
- ja:
-  Mon: "月"
-  Tue: "火"
-  Wed: "水"
-  Thu: "木"
-  Fri: "金"
-  Sat: "土"
-  Sun: "日"
-  time:
-    formats:
-      default: "%Y年%m月%d日(%a) %H時%M分"
-      long: "%Y年%m月%d日(%a) %H時%M分%S秒"
-      short: "%Y年%m月%d日(%a)"
-  enums:
-    contact:
-      dinner_quantity:
-        completed: "完食"
-        largely: "少し残した"
-        half: "半分"
-        little: "ほとんど残した"
-      breakfast_quantity:
-        completed: "完食"
-        largely: "少し残した"
-        half: "半分"
-        little: "ほとんど残した"
-      staple_quantity:
-        completed: "完食"
-        largely: "少し残した"
-        half: "半分"
-        little: "ほとんど残した"
-      main_quantity:
-        completed: "完食"
-        largely: "少し残した"
-        half: "半分"
-        little: "ほとんど残した"
-      side_quantity:
-        completed: "完食"
-        largely: "少し残した"
-        half: "半分"
-        little: "ほとんど残した"
-      dessert_quantity:
-        completed: "完食"
-        largely: "少し残した"
-        half: "半分"
-        little: "ほとんど残した"
-      humor:
-        good: "良い"
-        usually: "普通"
-        bad: "悪い"
-      defecation:
-        didnot: "排便なし"
-        normal: "普通"
-        soft: "軟便"
-        diarrhea: "下痢"
-        hard: "硬便"
-      sleep_degree:
-        deep: "よく眠った"
-        shallow: "眠りが浅い"
-      pool:
-        off: "NO"
-        ok: "OK"
-      weather:
-        sunny: "晴れ"
-        cloudy: "曇り"
-        rain: "雨"
-      status:
-        published: "公開"
-        draft: "下書き"
+ja:
+    enums:
+      contact:
+        dinner_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        breakfast_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        staple_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        main_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        side_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        dessert_quantity:
+          completed: "完食"
+          largely: "少し残した"
+          half: "半分"
+          little: "ほとんど残した"
+        humor:
+          good: "良い"
+          usually: "普通"
+          bad: "悪い"
+        defecation:
+          didnot: "排便なし"
+          normal: "普通"
+          soft: "軟便"
+          diarrhea: "下痢"
+          hard: "硬便"
+        sleep_degree:
+          deep: "よく眠った"
+          shallow: "眠りが浅い"
+        pool:
+          off: "NO"
+          ok: "OK"
+        weather:
+          sunny: "晴れ"
+          cloudy: "曇り"
+          rain: "雨"
+        status:
+          published: "公開"
+          draft: "下書き保存"
+
       absent:
         kind:
           absence: "欠席"
           lateness: "遅刻"
+
       customer:
         is_deleted:
           true: "退会"
           false: "有効"
-  views:
-    pagination:
-    first: "&laquo; 最初"
-    last: "最後 &raquo;"
-    previous: "&lsaquo; 前"
-    next: "次 &rsaquo;"
-    truncate: "..."
 

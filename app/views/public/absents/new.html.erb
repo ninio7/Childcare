@@ -1,8 +1,8 @@
 <div class="container">
-  <h2 class="my-5 col-md-10 text-center">欠席・遅刻連絡</h2>
+  <h2 class="my-5 col-md-4 offset-md-3 text-center under">欠席・遅刻連絡</h2>
    <%= form_with model: @absent , url: absents_path, method: :post do |f| %>
   <div class="row mb-3">
-    <h4 class="col-md-4 col-7 mb-3 mt-3 offset-md-2"><%= @absent.date %> </h4>
+    <h4 class="col-md-4 col-7 mb-3 mt-3 offset-md-2"><%= I18n.l(DateTime.now, format: :short) %></h4>
     <div class="col-md-5 col-5 mt-3 mb-3">
       <%= f.select :child_id,options_from_collection_for_select(Child.all, :id, :name), {}, class: "form-control col-md-5"%>
     </div>

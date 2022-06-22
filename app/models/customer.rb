@@ -9,4 +9,10 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :games, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  
+  validates :name, presence: true
+  validates :kana_name, presence: true
+  validates :postal_code, presence: true, length: {maximum: 7}
+  validates :address, presence: true
+  validates :phone_number, presence: true, length: {maximum: 11}
 end

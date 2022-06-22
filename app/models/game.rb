@@ -12,7 +12,10 @@ class Game < ApplicationRecord
 
   scope :latest, -> {order(created_at: :desc)}
   scope :favorite, -> { includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}}
-
+  
+  validates :title, presence: true, length: {maximum: 20}
+  validates :body, presence: true
+  validates :images, presence: true
 
      # イメージが登録されなかった場合、デフォルトの画像をアタッチする
   def get_image

@@ -1,7 +1,7 @@
 class Admin::NewsController < ApplicationController
   before_action :authenticate_admin!, except: [:show]
   def index
-    @news = News.page(params[:page]).per(10)
+    @news = News.page(params[:page]).per(10).reverse_order
   end
 
   def new
@@ -19,7 +19,8 @@ class Admin::NewsController < ApplicationController
        @news.group.customers.each do |customer|
         @news.create_notification_by_admin(current_admin, customer)
        end
-       redirect_to admin_newses_path
+       flash[:notice]="新規登録しました"
+       redirect_to admin_news_index_path
     else
        render :new
     end
@@ -28,7 +29,7 @@ class Admin::NewsController < ApplicationController
   def destroy
     @news =  News.find(params[:id])
     @news.destroy
-    redirect_to admin_newses_path
+    redirect_to admin_news_index_path
   end
 
   private

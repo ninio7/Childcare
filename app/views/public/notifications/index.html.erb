@@ -1,12 +1,12 @@
 <div class="container">
-  <h2 class="mt-5 offset-md-1">お知らせ一覧</h2>
+  <h2 class="mt-5 offset-md-1 under col-md-3 text-center">お知らせ一覧</h2>
 　<div class="row mt-3">
   <% if @notifications.exists? %>
     <div class="col-md-10 col offset-md-1">
       <%= render @notifications %>
     </div>
   <% else %>
-    <div class="col mt-3">
+    <div class="col mt-3 offset-md-1">
       <p>通知はありません</p>
     </div>
   <% end %>

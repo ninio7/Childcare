@@ -3,10 +3,10 @@
     <div class="col-md-10 mt-5 offset-md-1">
       <%= form_with(model: @customer, url: customer_path, method: :patch, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
       <div class="row">
-        <div class="col-md-8 mb-3"><strong class="info-title">マイページ編集</strong></div>
+        <h4 class="col-md-8 mb-3"><strong class="info-title">マイページ編集</strong></h4>
       </div>
       <div class="row needs-validation novalidate">
-        <div class="col mb-5 p-5 info_edit_form">
+        <div class="col mb-5 p-5 my-page-info">
           <%= f.label :"氏名", class:"col-md-3 control-label mt-3" %>
           <%= f.text_field :name, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" , required: true %><br>
           <div class="invalid-feedback row offset-md-3 offset-1">
@@ -44,7 +44,7 @@
           </div>
           <div class="row mt-3">
             <div class="col-md-8 offset-md-6 text-center">
-              <%= button_tag(type: "submit", class:"btn info_edit_save text-white") do %>
+              <%= button_tag(type: "submit", class:"btn btn-gray text-white") do %>
                 編集内容を保存
               <% end %>
             </div>

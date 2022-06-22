@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mt-3 col-md-3 text-center">遊び編集</h2>
+  <h2 class="mt-5 under offset-md-4 col-md-3 text-center">遊び編集</h2>
   <%= form_with model: @game ,url: admin_game_path,method: :patch  do |f| %>
     <%= render partial: "admin/games/form", locals: { f: f } %>
     <div class="col d-flex justify-content-center">
