@@ -5,11 +5,11 @@ Admin.create!(
 )
 
 
-# ユーザーを5人生成
-(1..5).each do |i|
-    user=Customer.new(email: "test#{i+10}"+"@"+"test",password: 'aaaaaa', name: "山田 太郎#{i}",kana_name: "ヤマダ タロウ#{i}",postal_code: "000-1234",phone_number: "000-8888-8888",address: "東京都千代田区千代田test#{i}")
-    user.save!
-end
+# # ユーザーを5人生成
+# (1..5).each do |i|
+#     user=Customer.new(email: "test#{i+10}"+"@"+"test",password: 'aaaaaa', name: "山田 太郎#{i}",kana_name: "ヤマダ タロウ#{i}",postal_code: "000-1234",phone_number: "000-8888-8888",address: "東京都千代田区千代田test#{i}")
+#     user.save!
+# end
 
 #会員を作成
 Customer.create!(
@@ -19,7 +19,7 @@ Customer.create!(
     kana_name: "やまだ たろう",
     postal_code: "0001234",
     phone_number: "000-8888-8888",
-    address: "東京都千代田区千代田test")
+    address: "東京都千代田区千代田test"
 )
 
 Customer.create!(
@@ -29,7 +29,7 @@ Customer.create!(
     kana_name: "青木 太郎",
     postal_code: "0001234",
     phone_number: "000-8888-8888",
-    address: "東京都千代田区千代田test")
+    address: "東京都千代田区千代田test"
 )
 
 Customer.create!(
@@ -39,7 +39,7 @@ Customer.create!(
     kana_name: "すずき たろう",
     postal_code: "0001234",
     phone_number: "000-8888-8888",
-    address: "東京都千代田区千代田test")
+    address: "東京都千代田区千代田test"
 )
 
 # This file should contain all the record creation needed to seed the database with its default values.

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 202206021075631) do
+ActiveRecord::Schema.define(version: 2022_06_21_075631) do
 
   create_table "absents", force: :cascade do |t|
     t.integer "customer_id"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 202206021075631) do
     t.integer "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_id"
+    t.integer "customer_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -189,12 +191,12 @@ ActiveRecord::Schema.define(version: 202206021075631) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.boolean "send_by_admin", default: false, null: false
-    t.integer "contact_id"
-    t.integer "absent_id"
-    t.integer "news_id"
-    t.integer "admin_id", null: false
+    t.bigint "contact_id"
+    t.bigint "absent_id"
+    t.bigint "news_id"
+    t.bigint "admin_id", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

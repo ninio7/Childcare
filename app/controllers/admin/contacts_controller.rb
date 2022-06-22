@@ -12,7 +12,7 @@ class Admin::ContactsController < ApplicationController
     @contact_contacts = ContactContact.where(admin_id: current_admin.id, customer_id: @customer.id)
     @day = params[:day]
   end
-  
+
   #中間テーブル（contact_contact）を使わないとき↓
   # def show
   #   @customer = Customer.find(params[:customer_id])
