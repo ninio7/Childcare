@@ -4,13 +4,14 @@ Admin.create!(
     password: 'aaaaaa'
 )
 
-# # ユーザーを5人生成
-# (1..5).each do |i|
-#     user=Customer.new(email: "test#{i+10}"+"@"+"test",password: 'aaaaaa', name: "山田 太郎#{i}",kana_name: "ヤマダ タロウ#{i}",postal_code: "0001234",phone_number: "000-8888-8888",address: "東京都千代田区千代田test#{i}")
-#     user.save!
-# end
 
-#会員を1人作成
+# ユーザーを5人生成
+(1..5).each do |i|
+    user=Customer.new(email: "test#{i+10}"+"@"+"test",password: 'aaaaaa', name: "山田 太郎#{i}",kana_name: "ヤマダ タロウ#{i}",postal_code: "000-1234",phone_number: "000-8888-8888",address: "東京都千代田区千代田test#{i}")
+    user.save!
+end
+
+#会員を作成
 Customer.create!(
     email: "test1"+"@"+"test",
     password: 'aaaaaa',
