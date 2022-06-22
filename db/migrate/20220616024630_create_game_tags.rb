@@ -1,8 +1,8 @@
 class CreateGameTags < ActiveRecord::Migration[6.1]
   def change
     create_table :game_tags do |t|
-      t.references :game, foreign_key: true, type: :integer
-      t.references :tag, foreign_key: true, type: :integer
+      t.references :game, foreign_key: true, type: :bigint
+      t.references :tag, foreign_key: true, type: :bigint
 
       t.timestamps
     end
