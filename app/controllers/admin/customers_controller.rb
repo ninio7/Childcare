@@ -1,8 +1,8 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
-    @customers = Customer.order(created_at: :desc).page(params[:page]).per(10)
+    @customers = Customer.order(created_at: :desc).order("kana_name").page(params[:page]).per(10)
     @groups = Group.all
   end
 
@@ -36,10 +36,10 @@ class Admin::CustomersController < ApplicationController
   end
 
   private
-  
+
    def customer_params
      params.require(:customer).permit(:child_id, :name,:kana_name,:email,:postal_code,:address,:phone_number,:encrypted_password,:is_deleted)
    end
-   
+
 end
 
