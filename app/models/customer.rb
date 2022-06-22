@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
   
   validates :name, presence: true
   validates :kana_name, presence: true
-  validates :postal_code, presence: true, length: {maximum: 7}
+  validates :postal_code, presence: true
   validates :address, presence: true
-  validates :phone_number, presence: true, length: {maximum: 11}
+  validates :phone_number, presence: true
 end
