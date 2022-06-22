@@ -4,7 +4,7 @@ class CreateContactContacts < ActiveRecord::Migration[6.1]
 
       t.integer :customer_contact_id
       t.integer :admin_contact_id
-      t.date :day
+      t.integer :day
       t.timestamps
     end
   end
