@@ -1,7 +1,8 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
-    @customers = Customer.page(params[:page]).per(10)
+    @customers = Customer.order(created_at: :desc).page(params[:page]).per(10)
     @groups = Group.all
   end
 
@@ -23,30 +24,22 @@ class Admin::CustomersController < ApplicationController
     end
   end
 
-  def confirm
+  def search
+    if params[:name].present?
+      @customers = Customer.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @customers = Customer.none
+    end
      @customer_name=params[:name]
-    @contacts = current_admin.contacts.draft.page(params[:page]).reverse_order
-     @customer = Customer.find(params[:customer_id])
-       # @contacts = @contacts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
-     @contacts_all_count=Contact.all.count
+     @customers_all_count=Customer.where("name LIKE ?","%#{@customer_name}%").count
+     @groups = Group.all
   end
 
-   def search
-     if params[:name].present?
-       @customers = Customer.where('name LIKE ?', "%#{params[:name]}%")
-     else
-       @customers = Customer.none
-     end
-  # end
-    @customer_name=params[:name]
-  #   @customers = Group.where("name LILE ?", "%#{@customer_name}%").page(params[:page])
-    @customers_all_count=Customer.where("name LIKE ?","%#{@customer_name}%").count
-    @groups = Group.all
-   end
-
   private
+  
    def customer_params
      params.require(:customer).permit(:child_id, :name,:kana_name,:email,:postal_code,:address,:phone_number,:encrypted_password,:is_deleted)
    end
+   
 end
 

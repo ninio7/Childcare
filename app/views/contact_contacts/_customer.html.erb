@@ -1,0 +1,82 @@
+<% if contactsPair.customer_contact(day) %>
+<p><strong class="info-title"><i class="fas fa-utensils" style="color: coral;"></i> 昼食</strong></p>
+  <div class="field form-group row">
+    <p class="col-md-2 col-3 offset-md-2">前日夕食</p>
+    <div class="col-md-3 col-5">
+      <%=safe_join(contactsPair.customer_contact(day).dinner.split("\n"),tag(:br))%>
+    </div>
+    <div class="col-md-1 col-2">
+      <%= contactsPair.customer_contact(day).dinner_quantity_i18n %>
+    </div>
+     <div class="col-md-1 col-2">
+      <%= contactsPair.customer_contact(day).dinner_time.strftime('%H:%M')%>
+    </div>
+  </div>
+  <div class="field form-group row mt-3">
+    <p class="col-md-2 col-3 offset-md-2">朝食</p>
+    <div class="col-md-3 col-5">
+     <%=safe_join(contactsPair.customer_contact(day).breakfast.split("\n"),tag(:br))%>
+    </div>
+      <div class="col-md-1 col-2">
+      <%= contactsPair.customer_contact(day).breakfast_quantity_i18n %>
+    </div>
+     <div class="col-md-1 col-2">
+      <%= contactsPair.customer_contact(day).breakfast_time.strftime('%H:%M')%>
+    </div>
+  </div>
+  <p class="col border-top"></p>
+  <strong class="info-title"><i class="far fa-smile" style="color: orange;"></i> 機嫌</strong>
+  <div class="field form-group row">
+    <div class="col-md-3 offset-4 offset-md-4 mt-3">
+      <%= contactsPair.customer_contact(day).humor_i18n %>
+    </div>
+  </div>
+  <p class="col border-top"></p>
+  <strong class="info-title"><i class="fas fa-bed" style="color: cadetblue;"></i> 睡眠</strong>
+  <div class="field form-group row">
+    <div class="col-md-3 col-4 offset-4 offset-md-4 mt-3">
+      <%= contactsPair.customer_contact(day).sleep_started_at.strftime('%H:%M') %> ～
+      <%= contactsPair.customer_contact(day).sleep_finished_at.strftime('%H:%M')%>
+    </div>
+    <div class="col-md-3 col-3 offset-1 offset-md-0 mt-3">
+      <%= contactsPair.customer_contact(day).sleep_degree_i18n %>
+    </div>
+  </div>
+  <p class="col border-top"></p>
+  <strong class="info-title"><i class="fas fa-thermometer" style="color: darkseagreen;"></i> 検温</strong>
+  <div class="field form-group row">
+    <div class="col-md-1 col-2 offset-4 offset-md-4 mt-3">
+      <%= contactsPair.customer_contact(day).temperture%>   ℃
+    </div>
+    <div class="col-md-3 col-2 offset-3 offset-md-2 mt-3">
+     <%= contactsPair.customer_contact(day).tempertured_at.strftime('%H:%M') %>
+    </div>
+  </div>
+  <p class="col border-top"></p>
+  <strong class="info-title"><i class="fas fa-poo" style="color: peru;"></i> 排便</strong>
+  <div class="field form-group row">
+    <div class="col-md-1 col-3 offset-4 offset-md-4 mt-3">
+      <%= contactsPair.customer_contact(day).defecation_i18n %>
+    </div>
+    <div class="col-md-3 col-2 offset-2 offset-md-2 mt-3">
+      <%= contactsPair.customer_contact(day).defecation_number%> 回
+    </div>
+  </div>
+  <p class="col border-top"></p>
+  <strong class="info-title"><i class="fas fa-user" style="color: skyblue;"></i> お迎え</strong>
+  <div class="field form-group row">
+    <div class="col-md-2 col-2 offset-4 offset-md-4  mt-3">
+      <%= contactsPair.customer_contact(day).pickup_person %>
+    </div>
+    <div class="col-md-3 col-2 offset-3 offset-md-1 mt-3">
+     <%= contactsPair.customer_contact(day).pickuped_at.strftime('%H:%M')%>
+    </div>
+  </div>
+  <p class="col border-top"></p>
+  <strong class="info-title"><i class="far fa-comment" style="color: lightcoral;"></i> コメント</strong>
+  <div class="field form-group row">
+    <div class="col-md-5 offset-4 offset-md-4 mb-5 mt-3">
+     <%=safe_join(contactsPair.customer_contact(day).comment.split("\n"),tag(:br))%>
+    </div>
+  </div>
+<% end %>

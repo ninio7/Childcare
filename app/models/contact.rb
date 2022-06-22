@@ -1,9 +1,11 @@
 class Contact < ApplicationRecord
-  has_one_attached :image
+  has_many_attached :images
   belongs_to :customer
   belongs_to :admin, optional: true
   belongs_to :child
   has_many :notifications, dependent: :destroy
+
+  self.inheritance_column = :_type_disabled
 
   # 保護者が連絡を作った時
   def create_notification_by_customer(current_customer, target_admin)
@@ -28,8 +30,7 @@ class Contact < ApplicationRecord
   end
 
  
-
-
+  
   # 主食量の設定
   enum staple_quantity:{
     completed:0,
@@ -117,12 +118,30 @@ class Contact < ApplicationRecord
     published:0,
     draft:1,
   }
-end
 
-def day
-  Date.today.wday
-end
-def days
- ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+  validates :humor, presence: true
+  validates :temperture, presence: true
+  validates :tempertured_at, presence: true
+  validates :nap_started_at, presence: true
+  validates :nap_finished_at, presence: true
+  validates :dinner_time, presence: true
+  validates :breakfast_time, presence: true
+  validates :pickuped_at, presence: true
+  validates :sleep_started_at, presence: true
+  validates :sleep_finished_at, presence: true
+  
+  # I18nを使用しない場合↓
+  # def weeks
+  #   ["日","月","火","水","木","金","土"]
+  # end
+
+  # def week
+  #   weeks[Date.today.wday]
+  # end
+
+  # def date
+  #   Date.current.strftime("%Y年%m月%d日 (#{week})")
+  # end
+
 end
 

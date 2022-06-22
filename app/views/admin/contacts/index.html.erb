@@ -1,24 +1,19 @@
 <div class="container">
-  <div class="row">
-    <h2 class="col-md-5 mt-5"><%= @customer.name %> さんの連絡帳</h2>
-     <div class="col-md-2 mt-5 d-inline-block">
+  <div class="row d-flex justify-content-center">
+    <h2 class="col-md-6 mt-5 text-center under offset-md-2"><i class="far fa-clipboard"></i> <%= @customer.name %> さんの連絡帳一覧</h2>
+    <div class="col-md-2 col-4 mt-5 offset-1 offset-md-0">
       <%= link_to new_admin_customer_contact_path do %>
-        <p class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 連絡帳新規登録</p>
+        <p class= "btn btn-yellow text-secondary"><i class="fas fa-edit" aria-hidden="true"></i> 連絡帳作成</p>
       <% end %>
     </div>
-      <div class="col-md-2 mt-5 d-inline-block">
+    <div class="col-md-2 col-5 mt-5 ">
       <%= link_to admin_customer_absents_path do %>
-        <p class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 欠席・遅刻連絡</p>
-      <% end %>
-    </div>
-    <div class="col-md-2 mt-5 d-inline-block">
-      <%= link_to admin_customer_confirm_path(@customer.id) do %>
-        <p class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 連絡帳下書き一覧</p>
+        <p class= "btn btn-yellow text-secondary"><i class="fas fa-notes-medical" aria-hidden="true"></i> 欠席・遅刻連絡</p>
       <% end %>
     </div>
   </div>
-    <%= render "admin/contacts/index", contacts: @contacts %>
-    <div class="text-center mx-auto">
-      <%= paginate @contacts %>
-    </div>
+  <%= render "admin/contacts/index", contacts: @contacts %>
+  <div class="text-center mx-auto">
+    <%= paginate @contacts %>
   </div>
+</div>

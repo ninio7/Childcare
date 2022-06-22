@@ -1,16 +1,12 @@
 class Public::AbsentsController < ApplicationController
+  before_action :authenticate_customer!, except: [:show]
   def new
     @absent = Absent.new
-    @date = Date.current.strftime('%Y年 %m月 %d日')
-    @weekday = days[day]
-
-
   end
 
   def index
     @customer = current_customer
-    @absents = current_customer.absents.page(params[:page]).per(10)
-    @absents_all_count = Absent.all.count
+    @absents = current_customer.absents.page(params[:page]).per(10).reverse_order
   end
 
   def show
@@ -29,14 +25,10 @@ class Public::AbsentsController < ApplicationController
       flash[:notice]="新規登録しました"
       redirect_to absents_path
     else
-      @absents = absent.all
-      render :index
+       render :new
     end
   end
 
-
-  def edit
-  end
 
   private
 

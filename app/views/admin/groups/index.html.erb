@@ -1,46 +1,16 @@
 <div class="container">
-  <h2 class="col-md-5 mt-3 border-bottom text-center">クラス登録/一覧</h2>
-  <%= form_with(model: @group,url: admin_groups_path, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
-  <div class="row g-3 needs-validation novalidate mt-5">
-    <div class="col-md-5 mt-3 ">
-      <div class="form-group row ml-3">
-        <%= f.label :"クラス名" , class: "col-md-3 "%>
-        <%= f.text_field :name, autofocus: true,class:'form-control col-md-6', required: true %>
-        <div class="invalid-feedback row offset-3">
-          クラス名を入力してください。
-        </div>
-
-      </div>
-    </div>
-    <div class="col-md-4 mt-5 ">
-       <%= f.submit "新規登録", class: "btn btn-secondary text-white rounded-pill col-md-4 mt-2" %>
+  <h2 class="col-md-4 offset-md-4 mt-5 text-center under">クラス登録/一覧</h2>
+  <div class="ml-4 mt-5" id="new">
+    <%= render "form", group: @group %>
   </div>
+  <div id="index" class="mt-4 col-md-8 offset-md-2">
+    <%= render "index", groups: @groups %>
   </div>
-  <% end %>
-
-  <div class="row">
-    <div class="col-md-7 mt-5 table-responsive">
-      <table class="table table-bordered text-nowrap">
-        <thead class="thead-light">
-          <tr class="">
-            <th>クラス名</th>
-            <th></th>
-          </tr>
-        </thead>
-         <tbody>
-          <% @groups.each do |group| %>
-            <tr>
-              <td><%= group.name %></td>
-              <td class="text-center">
-                <%= link_to "編集する", edit_admin_group_path(group.id),class: "btn btn-outline-secondary rounded-pill" %>
-                <%= link_to "削除する", admin_group_path(group.id), class: "btn btn-outline-danger rounded-pill ml-3", method: :delete %></td>
-            </tr>
-          <% end %>
-         </tbody>
-     </table>
-    </div>
-  </div>
-  <div class="col offset-5 text-center">
+  <div class="col offset-md-8 offset-3 mt-5">
     <%= paginate @groups %>
   </div>
 </div>
+
+
+
+

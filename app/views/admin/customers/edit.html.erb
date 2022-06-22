@@ -1,56 +1,70 @@
 <div class="container">
- <div class="row">
-  <div class="col mt-5">
-  <h2 class="border-bottom text-dark text-center col-md-6 mt-2"><%= @customer.name %>さんの会員情報編集</h2>
-   <%= form_with model: @customer,url: admin_customer_path(@customer), local: true do |f| %>
-
-    <div class="field form-group row mt-5">
-      <%= f.label :"会員ＩⅮ" , class: "col-md-3"%>
-   <%= @customer.id %>
+  <div class="row">
+    <div class="col mt-5">
+      <h2 class="text-dark text-center col-md-7 offset-md-2 mt-2 under"><%= @customer.name %>さんの会員情報編集</h2>
+      <%= form_with(model: @customer,url: admin_customer_path(@customer), local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
+      <div class="col g-3 needs-validation novalidate">
+        <div class="field form-group row mt-5 offset-md-2">
+          <%= f.label :"会員ＩⅮ" , class: "col-md-4 col-4"%>
+          <%= @customer.id %>
+        </div>
+        <div class="field form-group row offset-md-2">
+          <%= f.label :"氏名" , class: "col-md-4"%>
+          <%= f.text_field :name,placeholder: "山田 太郎",autofocus: true, class: 'form-control col-md-3 ', required: true %>
+          <div class="invalid-feedback row offset-3">
+            氏名を入力してください。
+          </div>
+        </div>
+        <div class="field form-group row offset-md-2">
+          <%= f.label :"ふりがな" , class: "col-md-4"%>
+          <%= f.text_field :kana_name,placeholder: "やまだ たろう" ,autofocus: true, class: 'form-control col-md-3 ', required: true %>
+          <div class="invalid-feedback row offset-3">
+            ふりがなを入力してください。
+          </div>
+        </div>
+        <div class="field form-group row offset-md-2">
+          <%= f.label :"メールアドレス", class: "col-md-4" %>
+          <%= f.text_field :email, autofocus: true,placeholder: "samplie@example.com" ,autocomplete: "email" ,　autofocus: true, class: 'form-control col-md-3 ', required: true %>
+          <div class="invalid-feedback row offset-3">
+            メールアドレスを入力してください。
+          </div>
+        </div>
+        <div class="field form-group row offset-md-2">
+          <%= f.label :"郵便番号（ハイフンなし）", class: "col-md-4" %>
+          <%= f.text_field :postal_code,placeholder: "0000000",autofocus: true, class: 'form-control col-md-3 ', required: true  %>
+          <div class="invalid-feedback row offset-3">
+            郵便番号を入力してください。
+          </div>
+        </div>
+        <div class="field form-group row offset-md-2">
+          <%= f.label :"住所", class: "col-md-4" %>
+          <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町0-0",autofocus: true, class: 'form-control col-md-7', required: true   %>
+          <div class="invalid-feedback row offset-3">
+            住所を入力してください。
+          </div>
+        </div>
+        <div class="field form-group row offset-md-2">
+          <%= f.label :"電話番号（ハイフンなし）" , class: "col-md-4" %>
+          <%= f.text_field :phone_number,placeholder: "00000000000",autofocus: true, class: 'form-control col-md-3 ', required: true %>
+           <div class="invalid-feedback row offset-3">
+            電話番号を入力してください。
+           </div>
+        </div>
+        <div class="field form-group row offset-md-2">
+        <%= f.label :"会員ステータス", class: "col-md-4 col-4 mt-3" %>
+        <div class="field form-group col-md-2 col-3 mt-3">
+      　<%= f.radio_button :is_deleted, false%>
+        <%= f.label :is_deleted, "有効", {value: :ok, style: "display: inline-block;"} %>
+    　  </div>
+    　  <div class="field form-group col-md-2 col-3 mt-3">
+       　<%= f.radio_button :is_deleted, true %>
+         <%= f.label :is_deleted, "退会", {value: :no, style: "display: inline-block;"} %>
+       </div>
+     </div>
+     <div class="col-md-9 text-center">
+      <%= f.submit "変更", class: "btn btn-gray col-md-4 col-6 rounded-pill  text-white offset-md-6 mt-5 " %>
+     </div>
+    <% end %>
     </div>
-
-   <div class="field form-group row">
-     <%= f.label :"氏名" , class: "col-md-3"%>
-     <%= f.text_field :name,placeholder: "山田 太郎", class: "col-md-2 control-label"%>
-    </div>
-
-   <div class="field form-group row">
-     <%= f.label :"ふりがな" , class: "col-md-3"%>
-     <%= f.text_field :kana_name,placeholder: "やまだ　たろう", class: "col-md-2 control-label mr-3" %>
-   </div>
-
-    <div class="field form-group row">
-     <%= f.label :"郵便番号（ハイフンなし）", class: "col-md-3" %>
-     <%= f.text_field :postal_code,placeholder: "0000000" , class: "col-md-2 control-label" %>
-   </div>
-
-   <div class="field form-group row">
-     <%= f.label :"住所", class: "col-md-3 " %>
-     <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町0-0", class: "col-md-6 control-label"  %>
-   </div>
-
-   <div class="field form-group row">
-     <%= f.label :"電話番号（ハイフンなし）" , class: "col-md-3" %>
-     <%= f.text_field :phone_number,placeholder: "00000000000", class: "col-md-2 control-label" %>
-   </div>
-
-   <div class="field form-group row">
-     <%= f.label :"メールアドレス", class: "col-md-3" %>
-     <%= f.text_field :email, autofocus: true,placeholder: "samplie@example.com" ,autocomplete: "email", class: "col-md-2 control-label"%>
-   </div>
-   <div class="field form-group row">
-      <%= f.label :"会員ステータス", class: "col-md-3" %>
-      <div class="field form-group col-md-2">
-    　<%= f.radio_button :is_deleted, false %>
-      <%= f.label :is_deleted, "有効", {value: :ok, style: "display: inline-block;"} %>
-    　</div>
-    　<div class="field form-group col-md-2">
-    　<%= f.radio_button :is_deleted, true %>
-      <%= f.label :is_deleted, "退会", {value: :no, style: "display: inline-block;"} %>
-      </div>
-   </div>
-   <%= f.submit :変更を保存, class: "btn btn-secondary rounded-pill col-md-3 text-white offset-3 " %>
-   <% end %>
-    </div>
- </div>
+  </div>
 </div>

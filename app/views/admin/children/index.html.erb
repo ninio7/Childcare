@@ -1,73 +1,49 @@
 <div class="container">
-  <h2 class="col-md-5 mt-3 border-bottom text-center">子ども情報登録/一覧</h2>
-   <%= form_with(model: @child, url: admin_customer_children_path, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
-     <div class="row g-3 needs-validation novalidate">
-      <div class="col-md-8 mt-3 ">
-        <div class="form-group row">
-          <%= f.label :"名前" , class: "col-md-5 "%>
-          <%= f.text_field :name, autofocus: true,class:'form-control col-md-3', required: true %>
-          <div class="invalid-feedback row offset-5">
-            名前を入力してください。
-          </div>
-       </div>
-       <div class="form-group row">
-         <%= f.label :"ふりがな", class: "col-md-5" %>
-         <%= f.text_field :kana_name, autofocus: true, class:'form-control col-md-7', required: true %>
-           <div class="invalid-feedback row offset-5">
-            カナ名を入力してください。
-           </div>
-       </div>
-       <div class="form-group row">
-         <%= f.label :"誕生日", class: "col-md-5"%>
-         <%= f.date_field :birthday, autofocus: true, class:'form-control col-md-3', required: true %>
-         <div class="invalid-feedback row offset-5">
-           誕生日を入力してください。
-         </div>
-       </div>
-       <div class="form-group row">
-         <%= f.label :group_id,"クラス", class: "col-md-5"%>
-         <%= f.select :group_id,options_from_collection_for_select(Group.all, :id, :name, prompt: "--選択してください--"), class:"col-md-5"%>
-         <div class="invalid-feedback row offset-5">
-           クラスを選択してください。
-         </div>
-       </div>
-      </div>
-      <div class="col-md-4 mt-5 pt-5">
-        <%= f.submit "新規登録", class: "btn btn-secondary text-white rounded-pill mt-5 col-md-4 " %>
-      </div>
-     </div>
-     <% end %>
-     <div class="row">
-       <div class="col-md-9 mt-5 table-responsive">
-        <table class="table table-bordered text-nowrap">
-         <thead class="thead-light">
-           <tr class="">
-             <th>名前</th>
-             <th>ふりがな</th>
-             <th>誕生日</th>
-             <th>年齢</th>
-             <th>クラス</th>
-             <th></th>
-           </tr>
-         </thead>
-        <tbody>
-        <% @children.each do |child| %>
-           <tr>
-             <td><%= child.name %></td>
-             <td><%= child.kana_name %></td>
-             <td><%= child.birthday %></td>
-             <td><%= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳
-                 <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100).to_s.split("")[-1] %> カ月
-             </td>
-             <td><%= child.group.name %></td>
-             <td class="text-center"><%= link_to "編集する", edit_admin_customer_child_path(@customer, child), class: "btn btn-outline-secondary rounded-pill text-dark text-center mr-3" %>
-               <%= link_to "削除する", admin_customer_child_path(@customer, child.id), class: "btn btn-outline-danger rounded-pill", method: :delete , "data-confirm" => "本当に削除してよろしいでしょうか?"%></td>
-             </td>
-           </tr>
-        <% end %>
-        </tbody>
-      </table>
-     </div>
-    </div>
+  <h2 class="col-md-7 mt-5 text-center">子ども情報登録/一覧</h2>
+  <%#= form_with(model: @child, url: admin_customer_children_path, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
+    <%#= render partial: "admin/children/form", locals: { f: f } %>
+    <!--<div class="col-md-10 text-right">-->
+    <!--  <%#= f.submit "新規登録", class: "btn btn-gray text-white rounded-pill col-md-2 col-4 mt-3 " %>-->
+    <!--</div>-->
+  <%# end %>
+  <div class="ml-4 mt-5" id="new">
+    <%= render "form", child: @child %>
+  </div>
+  <div id="index" class="mt-4 col-md-8 offset-md-2">
+    <%= render "index", children: @children %>
+  </div>
+
+  <!--<div class="row d-flex justify-content-center">-->
+  <!--  <div class="col-md-9 mt-5 table-responsive">-->
+    <!-- <table class="table table-bordered text-nowrap">-->
+    <!--  <thead class="thead-light">-->
+    <!--    <tr class="">-->
+    <!--      <th>名前</th>-->
+    <!--      <th>ふりがな</th>-->
+    <!--      <th>誕生日</th>-->
+    <!--      <th>年齢</th>-->
+    <!--      <th>クラス</th>-->
+    <!--      <th></th>-->
+    <!--    </tr>-->
+    <!--  </thead>-->
+    <!-- <tbody>-->
+    <!-- <%# @children.each do |child| %>-->
+    <!--    <tr>-->
+    <!--      <td><%#= child.name %></td>-->
+    <!--      <td><%#= child.kana_name %></td>-->
+    <!--      <td><%#= child.birthday %></td>-->
+    <!--      <td><%#= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳-->
+    <!--          <%#= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100).to_s.split("")[-1] %> カ月-->
+    <!--      </td>-->
+    <!--      <td><%#= child.group.name %></td>-->
+    <!--      <td class="text-center"><%#= link_to "編集する", edit_admin_customer_child_path(@customer, child), class: "btn btn-outline-secondary rounded-pill text-dark text-center mr-3" %>-->
+    <!--        <%#= link_to "削除する", admin_customer_child_path(@customer, child.id), class: "btn btn-outline-danger rounded-pill", method: :delete , "data-confirm" => "本当に削除してよろしいでしょうか?"%></td>-->
+    <!--      </td>-->
+    <!--    </tr>-->
+    <!--  <%# end %>-->
+    <!--  </tbody>-->
+    <!--</table>-->
+  <!--  </div>-->
+  <!--</div>-->
 </div>
 

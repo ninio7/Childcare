@@ -1,43 +1,50 @@
 <div class="container">
-  <h2 class="mt-5 col-md-5 text-center">欠席・遅刻連絡</h2>
-  <div class="form-group row">
-    <div class="col-md-4 mt-3">
-      <h3><%= @absent.created_at.strftime('%Y年 %m月 %d日') %></h3>
+  <h2 class="my-5 col-md-4 offset-md-3 text-center under">欠席・遅刻連絡</h2>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-4 col-7 mt-3 text-left">
+      <h4><%=I18n.l(@absent.created_at, format: :short) %></h4>
     </div>
-    <div class="col-md-4 mt-3">
-      <h3><%= @absent.child.name %> さん</h3>
+    <div class="col-md-4 col-5 mt-3">
+      <h4><%= @absent.child.name %> さん</h4>
     </div>
   </div>
-  <p class="col-md-8 border-top"></p>
-  <i class="far fa-check-circle"></i> 種別
-  <div class="field form-group row">
-    <div class="col-md-4 offset-2">
+  <p class="col-md-8 border-top mt-5 offset-md-1"></p>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-1">
+      <strong class="info-title"><i class="far fa-check-circle" style="color: coral;"></i> 種別</strong>
+    </div>
+    <div class="col-md-4 mt-5 mb-4 offset-md-2 offset-5">
       <%= @absent.kind_i18n %>
     </div>
   </div>
-  <p class="col-md-8 border-top"></p>
-  <i class="far fa-calendar-alt"></i> 期間
-  <div class="field form-group row">
-    <div class="col-md-4 offset-2">
+  <p class="col-md-8 border-top mt-3 offset-md-1"></p>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-1">
+      <strong class="info-title"><i class="far fa-calendar-alt" style="color: gold;"></i> 期間</strong>
+    </div>
+    <div class="col-md-4 mt-5 mb-4  offset-md-2 offset-5">
       <%= @absent.started_on %> ～
       <%= @absent.finished_on%>
     </div>
   </div>
-  <p class="col-md-8 border-top"></p>
-  <i class="fas fa-notes-medical"></i> 症状
-  <div class="field form-group row">
-    <div class="col-md-3 offset-2">
+  <p class="col-md-8 border-top mt-3 offset-md-1"></p>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-1">
+     <strong class="info-title"><i class="fas fa-notes-medical" style="color: skyblue;"></i> 症状</strong>
+    </div>
+    <div class="col-md-4 mt-5 mb-4  offset-md-2 offset-5">
      <%= @absent.symptom %>
     </div>
-   </div>
-  <p class="col-md-8 border-top"></p>
-  <i class="far fa-comment"></i> 備考
-  <div class="field form-group row">
-    <div class="col-md-5 offset-2">
+  </div>
+  <p class="col-md-8 border-top mt-3 offset-md-1"></p>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-1">
+      <strong class="info-title"><i class="far fa-comment" style="color: lightcoral;"></i> 備考</strong>
+    </div>
+    <div class="col-md-4 mt-5 mb-4  offset-md-2 offset-5">
       <%= @absent.note %>
     </div>
   </div>
-
 </div>
 
 

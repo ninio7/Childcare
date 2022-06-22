@@ -1,43 +1,40 @@
 <div class="container mb-5">
-  <div class="row">
-    <h2 class="col-md-3 mt-5 text-center">連絡帳</h2>
-    <div class="col-md-2 mt-5 d-inline-block">
+  <div class="row d-flex justify-content-center">
+    <h2 class="col-md-3 mt-5 text-center under offset-md-1"><i class="far fa-clipboard"></i>&ensp;連絡帳一覧</h2>
+    <div class="col-md-2 col-5 mt-5 text-right">
       <%= link_to new_contact_path do %>
-        <h4 class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 新規登録</h4>
+        <p class= "btn btn-yellow text-secondary"> <i class="fas fa-edit" aria-hidden="true"></i> 連絡帳作成</p>
       <% end %>
     </div>
-    <div class="col-md-3 mt-5 d-inline-block">
+    <div class="col-md-3 col-6 mt-5 text-left">
       <%= link_to absents_path do %>
-        <h4 class="mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 欠席・遅刻連絡</h4>
-     <% end %>
+        <p class= "btn btn-yellow text-secondary"> <i class="far fa-clipboard" aria-hidden="true"></i> 欠席・遅刻連絡</p>
+      <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-8 mt-5">
-      <table class="table table-hover">
-        <tbody>
-          <% @contacts.each do |contact| %>
-          <% date = contact.created_at.to_s(:detetime)%>
-            <tr>
-              <td><% weeks = ["日","月","火","水","木","金","土"]%>
-                  <% week = weeks[contact.created_at.wday]%>
-                  <% if contact.admin_id? %>
-                    <%= link_to admin_customer_contact_path(@customer,contact)  do %>
-                      <p class="text-secondary mt-1 mb-0">【 園 】<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
-                    <% end %>
-                  <% elsif contact.customer_id?%>
-                    <%= link_to contact_path(contact) do %>
-                      <p class="text-secondary mt-1 mb-0">【家庭】<%=contact.created_at.strftime("%Y年%m月%d日 (#{week})") %></p>
-                    <% end %>
-                  <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 mt-5 d-flex justify-content-center">
+     <table class="table table-hover">
+      <tbody>
+        <% @contacts.each do |contact| %>
+        <% date = contact.created_at.to_s(:detetime)%>
+          <tr>
+            <td>
+              <% contact_contact = @contact_contacts.where(day: contact.created_at.day).first %>
+              <% if contact_contact.present? %>
+                <%= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
+                  <p class="text-secondary mt-1 mb-0"><i class="fas fa-square"></i>&emsp;<%= l(contact.created_at, format: :short) %></p>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+   </div>
+  </div>
+  <div class="offset-md-8 offset-sm-6">
+    <%= paginate @contacts %>
+  </div>
+</div>
 
-  </div>
-  <div class="offset-6 ">
-     <%= paginate @contacts %>
-    </div>

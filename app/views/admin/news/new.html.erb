@@ -1,0 +1,37 @@
+<div class="container">
+  <h2 class="my-5 col-md-10 text-center ">お知らせ新規登録</h2>
+   <%= form_with model: @news, url: admin_news_index_path, method: :post do |f| %>
+  <div class="row mb-3">
+    <div class="col-md-5 col-5 mt-3 mb-3">
+      <%= f.select :group_id,options_from_collection_for_select(Group.all, :id, :name), {}, class: "form-control col-md-5"%>
+    </div>
+  </div>
+
+  <p class="border-top"></p>
+  <i class="fas fa-book-open" style="color: skyblue;"></i> タイトル
+  <div class="field form-group row">
+    <div class="col-md-4 col-8 offset-3 offset-md-4">
+      <%= f.text_area :title, autofocus: true, size: "40x1" %>
+    </div>
+  </div>
+  <p class="border-top"></p>
+  <i class="far fa-calendar-alt" style="color: gold;"></i> 期間
+  <div class="field form-group row">
+    <div class="col-md-4 offset-4 mt-3">
+      <%= f.date_field :started_on, autofocus: true %> ～
+      <%= f.date_field :finished_on, autofocus: true ,class: "mr-2"%>
+    </div>
+  </div>
+  <p class="border-top"></p>
+  <i class="far fa-comment" style="color: lightcoral;"></i> 詳細
+  <div class="field form-group row">
+    <div class="col-md-4 col-8 offset-3 offset-md-4">
+      <%= f.text_area :body, autofocus: true, size: "40x5" %>
+    </div>
+  </div>
+  <div class="col-md-11 text-center">
+      <%= f.submit "登録", class: "btn btn-gray text-white rounded-pill mt-5 col-md-2 col-4 offset-md-1" %>
+  </div>
+  <% end %>
+</div>
+

@@ -1,9 +1,7 @@
 class Admin::NotificationsController < ApplicationController
+  before_action :authenticate_admin!
   def index
-# @absent = Absent.find(params[:id])
-    # @contact = Contact.where(params[:id])
-    @notifications = current_admin.notifications.where(send_by_admin: true).order(created_at: :desc).page(params[:page]).per(10)
-    # @notifications = current_admin.notification.all
+    @notifications = Notification.where(send_by_admin: true).order(created_at: :desc).page(params[:page]).per(10)
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end

@@ -1,13 +1,17 @@
-    <div class="field form-group row mt-5">
+    <div class="field form-group row mt-5 offset-md-2 ">
       <%= f.label :"タイトル", class: "col-md-2" %>
-      <%= f.text_field :title,autofocus: true%>
+      <%= f.text_field :title,autofocus: true, class: "form-control col-md-6 col-10 offset-md-0 offset-1"%>
     </div>
-    <div class="field form-group row mt-5">
-      <%= f.label :"遊び方の詳細", class: "col-md-2" %>
-      <%= f.text_area :body,autofocus: true, size: "80x5"%>
+    <div class="field form-group row mt-5 offset-md-2">
+      <%= f.label :"遊び方の詳細", class: "col-md-2 col-4" %>
+      <%= f.text_area :body,autofocus: true, size: "40x5", class: " col-md-6 col-10 offset-md-0 offset-1 form-control "%>
     </div>
-    <div class="field form-group row mt-5">
+    <div class="field form-group row mt-5 offset-md-2">
       <%= f.label :"写真", class: "col-md-2" %>
-      <%= f.file_field :images, multiple: true %>
+      <%= f.file_field :images, multiple: true, class: " col-md-6 col-10 offset-md-0 offset-1" , required: true%>
+    </div>
+    <div class="field mt-5 offset-md-4">
+      <%= f.label"タグ ( ,で区切ると複数タグ登録できます)" %>
+      <%= f.text_field :name,value: @tag_list,class:"form-control col-md-7 col-10 offset-md-0 offset-1"%>
     </div>
 

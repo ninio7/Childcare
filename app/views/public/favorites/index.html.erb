@@ -1,0 +1,29 @@
+<div class="container">
+  <div class='row'>
+  <h2 class="col-md-6 mt-5">遊び集　お気に入り一覧</h2>
+      <div class='col-md-12 justify-content-end'>
+        <div class='row px-md-0 ml-2 mt-5'>
+       <% if @favorites.exists? %>
+          <% @favorites.each do |favorite| %>
+            <div class='card mx-1 border border-0 mr-3'>
+          <%= link_to game_path(favorite.game_id) do %>
+           <%= image_tag favorite.game.images[0],size: "240x160" %>
+          <% end %>
+          <%= link_to game_path(favorite.game_id), class:"text-secondary" do %>
+            <%= favorite.game.title %>
+          <% end %>
+          <%= link_to game_path(favorite.game_id) , class:"text-secondary" do %>
+            <i class="fas fa-heart" aria-hidden="true" style="color:red;"></i>
+            <%= favorite.game.favorites.count %> いいね
+          <% end %>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="text-center mx-auto">
+         <%= paginate @favorites %>
+        </div>
+      </div>
+    </div>
+</div>
+

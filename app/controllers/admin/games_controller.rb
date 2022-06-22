@@ -1,38 +1,43 @@
 class Admin::GamesController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @game =Game.new
   end
 
   def edit
     @game =Game.find(params[:id])
+    @tag_list=@game.tags.pluck(:name).join(',')
   end
 
   def index
-    @games = Game.page(params[:page]).per(6)
+    @games = Game.all.order(created_at: :desc).page(params[:page])
     @games_all_count= Game.all.count
-
-    # @admin = current_admin
+    @tag_list = Tag.all
   end
 
   def create
-    # binding.pry
-       @game=Game.new(game_params)
+    @game=Game.new(game_params)
+    @game.admin_id = current_admin.id
+    tag_list = params[:game][:name].split(',')
     if @game.save
+       @game.save_tags(tag_list)
       flash[:notice]="新規登録しました"
       redirect_to admin_games_path
     else
-      render new_admin_game_path
+      render :new
     end
   end
 
   def update
     @game = Game.find(params[:id])
+    tag_list = params[:game][:name].split(',')
     if @game.update(game_params)
-      flash[:notice]="変更しました"
-      redirect_to games_path
+       @game.save_tags(tag_list)
+       flash[:notice]="変更しました"
+       redirect_to games_path
     else
-      flash[:notice] = "入力してください"
-      render :edit
+       flash[:notice] = "入力してください"
+       render :edit
     end
   end
 
@@ -44,6 +49,7 @@ class Admin::GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @game_tags = @game.tags
   end
 
 
@@ -61,11 +67,10 @@ class Admin::GamesController < ApplicationController
     end
   end
 
-
   private
 
   def game_params
-    params.require(:game).permit(:title, :body, images: [])
+    params.require(:game).permit(:title, :body,  images: [])
   end
 
 end

@@ -1,48 +1,57 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10 mt-5">
-      <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
-      <%= render "public/shared/error_messages", resource: @customer %>
+    <div class="col-md-10 mt-5 offset-md-1">
+      <%= form_with(model: @customer, url: customer_path, method: :patch, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
       <div class="row">
-        <div class="col-md-8 mt-5"><h4 class="info_edit_title">会員情報を編集する</h4></div>
+        <h4 class="col-md-8 mb-3"><strong class="info-title">マイページ編集</strong></h4>
       </div>
+      <div class="row needs-validation novalidate">
+        <div class="col mb-5 p-5 my-page-info">
+          <%= f.label :"氏名", class:"col-md-3 control-label mt-3" %>
+          <%= f.text_field :name, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" , required: true %><br>
+          <div class="invalid-feedback row offset-md-3 offset-1">
+           氏名を入力してください。
+          </div>
 
-      <div class="row">
-        <div class="col mb-5 p-5 info_edit_form">
-           <%= f.label :"氏名", class:"col-sm-2 control-label" %>
-          <%= f.text_field :name, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
+          <%= f.label :"ふりがな", class:"col-md-3 control-label mt-3" %>
+          <%= f.text_field :kana_name, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area", required: true  %><br>
+          <div class="invalid-feedback row offset-md-3 offset-1">
+           ふりがなを入力してください。
+          </div>
 
-          <%= f.label :"かな", class:"col-sm-2 control-label" %>
-          <%= f.text_field :kana_name, autofocus: true, class:"col-sm-7 ml-1 form-control-static input_area" %><br>
+          <%= f.label :"郵便番号", class:"col-md-3 control-label mt-3" %>
+          <%= f.text_field :postal_code, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area", required: true  %><br>
+          <div class="invalid-feedback row offset-md-3 offset-1">
+           郵便番号を入力してください。
+          </div>
 
+          <%= f.label :"住所", class:"col-md-3 control-label mt-3" %>
+          <%= f.text_field :address, autofocus: true, class:"col-md-5 ml-1 form-control-static input_area" , required: true %><br>
+          <div class="invalid-feedback row offset-md-3 offset-1">
+           住所を入力してください。
+          </div>
 
-           <%= f.label :"郵便番号", class:"col-sm-2 control-label" %>
-          <%= f.text_field :postal_code, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
+          <%= f.label :"電話番号", class:"col-md-3 control-label mt-3" %>
+          <%= f.text_field :phone_number, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" , required: true %><br>
+          <div class="invalid-feedback row offset-md-3 offset-1">
+           電話番号を入力してください。
+          </div>
 
-          <%= f.label :"住所", class:"col-sm-2 control-label" %>
-          <%= f.text_field :address, autofocus: true, class:"col-sm-7 ml-1 form-control-static input_area" %><br>
-
-          <%= f.label :"電話番号", class:"col-sm-2 control-label" %>
-          <%= f.text_field :phone_number, autofocus: true, class:"col-sm-2 ml-1 form-control-static input_area" %><br>
-
-          <%= f.label :"メールアドレス", class:"col-sm-2 control-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-2 ml-1 form-control-static input_area" %>
-
+          <%= f.label :"メールアドレス", class:"col-md-3 control-label mt-3" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-md-5 ml-1 form-control-static input_area", required: true  %>
+          <div class="invalid-feedback row offset-md-3 offset-1">
+           メールアドレスを入力してください。
+          </div>
           <div class="row mt-3">
-            <div class="col-md-8 ml-3 text-center">
-              <%= button_tag(type: "submit", class:"btn info_edit_save") do %>
-               編集内容を保存
+            <div class="col-md-8 offset-md-6 text-center">
+              <%= button_tag(type: "submit", class:"btn btn-gray text-white") do %>
+                編集内容を保存
               <% end %>
             </div>
           </div>
-
         </div>
       </div>
-
       <% end %>
     </div>
-
-    <div class="col-md-1"></div>
   </div>
 </div>

@@ -1,12 +1,19 @@
 <div class="container">
-  <h2 class="border-bottom mt-3 col-md-3 text-center">会員一覧</h2>
-  <div class="form-inline d-block text-right">
-    <%= form_with url: admin_search_path ,local: true, method: :get do |f| %>
-      <%= f.text_field :name ,class: "form-control",placeholder: "名前で検索"%>
-      <%= button_tag :type => "submit", :class =>"btn btn-outline-secondary" do %>
-        <i class="fas fa-search"></i>
+  <h2 class="mt-5 mb-3 col-md-3 offset-md-2 text-center under">会員一覧</h2>
+  <div class="row">
+    <div class="col-md-4 form-inline d-block text-right">
+      <%= link_to new_customer_registration_path do%>
+        <p class= "btn btn-yellow text-secondary"><i class="far fa-address-card "></i>会員新規登録</p>
       <% end %>
-    <% end %>
+    </div>
+    <div class="col-md-7 form-inline d-block text-right">
+      <%= form_with url: admin_search_path ,local: true, method: :get do |f| %>
+        <%= f.text_field :name ,class: "form-control col-md-4",placeholder: "名前で検索"%>
+        <%= button_tag :type => "submit", :class =>"btn btn-outline-secondary" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <div class='col-md-2 mt-5'>
@@ -16,10 +23,10 @@
     <table class="table table-hover mt-5">
       <thead>
         <tr>
-          <th class="bg-light">会員ID</th>
-          <th class="bg-light">氏名</th>
-          <th class="bg-light">メールアドレス</th>
-          <th class="bg-light">ステータス</th>
+          <th class="bg-green text-white">会員ID</th>
+          <th class="bg-green text-white">氏名</th>
+          <th class="bg-green text-white">電話番号</th>
+          <th class="bg-green text-white">ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +34,7 @@
         <tr onclick='window.location="<%= admin_customer_path(customer) %>"' role="link">
           <td><%= customer.id %></td>
           <td><%= customer.name %></td>
-          <td><%= customer.email %></td>
+          <td><%= customer.phone_number %></td>
           <td id="is_deleted<%= customer.id %>" class="text-success">
             <%= I18n.t("enums.customer.is_deleted.#{customer.is_deleted}") %>
             <script>
