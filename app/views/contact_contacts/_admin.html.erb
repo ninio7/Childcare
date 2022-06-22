@@ -1,3 +1,5 @@
+<% contactsPair = ContactContact.find_by("admin_contact_id IS NOT NULL AND day = " + contactsPair.day.to_s) %>
+
 <% if contactsPair.admin_contact(day) && (contactsPair.admin_contact(day).status == "published"|| admin_signed_in? ) %>
   <p class="mt-5"><strong class="info-title"><i class="fas fa-utensils" style="color: coral;"></i> 昼食</strong></p>
   <div class="field form-group row ">

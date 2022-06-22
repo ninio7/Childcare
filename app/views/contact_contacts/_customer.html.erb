@@ -1,3 +1,4 @@
+<% contactsPair = ContactContact.find_by("customer_contact_id IS NOT NULL AND day = " + contactsPair.day.to_s) %>
 <% if contactsPair.customer_contact(day) %>
 <p><strong class="info-title"><i class="fas fa-utensils" style="color: coral;"></i> 昼食</strong></p>
   <div class="field form-group row">

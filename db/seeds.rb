@@ -26,7 +26,7 @@ Customer.create!(
     email: "test2"+"@"+"test",
     password: 'aaaaaa',
     name: "青木 太郎",
-    kana_name: "青木 太郎",
+    kana_name: "あおき たろう",
     postal_code: "0001234",
     phone_number: "000-8888-8888",
     address: "東京都千代田区千代田test"

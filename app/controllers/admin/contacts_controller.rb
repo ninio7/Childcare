@@ -7,7 +7,7 @@ class Admin::ContactsController < ApplicationController
 
   def index
     @customer = Customer.find(params[:customer_id])
-    @contacts = Contact.where(type: 'admin', user_id: current_admin.id).page(params[:page]).per(10).reverse_order
+    @contacts = Contact.where(type: 'admin', child_id: @customer.children.ids).page(params[:page]).per(10).reverse_order
     @contacts_all_count = Contact.all.count
     @contact_contacts = ContactContact.where(admin_id: current_admin.id, customer_id: @customer.id)
     @day = params[:day]

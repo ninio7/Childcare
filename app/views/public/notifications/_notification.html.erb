@@ -20,7 +20,7 @@
           園より<strong>連絡帳</strong>が公開されました。
           <%= "(#{time_ago_in_words(notification.created_at)} 前)" %>
         </td>
-        <td><%= link_to admin_customer_contacts_path(notification.customer) do %><i class="fas fa-angle-double-right"></i><% end %></td>
+        <td><%= link_to contacts_path do %><i class="fas fa-angle-double-right"></i><% end %></td>
       <% end %>
       </tr>
     </tbody>

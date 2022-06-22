@@ -48,17 +48,14 @@
 <p class="border-top"></p>
 <strong class="info-title"><i class="far fa-smile" style="color: orange;"></i> 機嫌</strong>
 <div class="field form-group row">
- <div class="col-sm-2">
-    <%= f.label :humor,"良い" ,class:"mr-3 form-label"%>
-  </div>
-  <div class="col-sm-10 btn-group" data-toggle="buttons">
-    <label class="btn btn-outline-secondary active" style="width:50%">
+  <div class="col-sm-3 btn-group offset-4" data-toggle="buttons">
+    <label class="btn btn-outline-green active text-secondary"  style="width:50%">
      <%= f.radio_button :humor, 0, {checked: true} %>良い
     </label>
-    <label class="btn btn-outline-secondary active" style="width:50%">
+    <label class="btn btn-outline-green active text-secondary" autocomplete="off" style="width:50%">
      <%= f.radio_button :humor, 1, {} %>普通
     </label>
-    <label class="btn btn-outline-secondary active" style="width:50%">
+    <label class="btn btn-outline-yellow active text-secondary" style="width:50%">
      <%= f.radio_button :humor, 2, {} %>悪い
     </label>
   </div>
