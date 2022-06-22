@@ -78,11 +78,9 @@ ActiveRecord::Schema.define(version: 202206021075631) do
   create_table "contact_contacts", force: :cascade do |t|
     t.integer "customer_contact_id"
     t.integer "admin_contact_id"
-    t.date "day"
+    t.integer "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "admin_id"
-    t.integer "customer_id"
   end
 
   create_table "contacts", force: :cascade do |t|
