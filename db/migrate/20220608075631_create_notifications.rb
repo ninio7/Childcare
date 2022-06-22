@@ -6,7 +6,7 @@ class CreateNotifications < ActiveRecord::Migration[6.1]
       t.references :contact, foreign_key: true, null: true, type: :bigint
       t.references :absent, foreign_key: true, null: true, type: :bigint
       t.references :news, foreign_key: true, null: true, type: :bigint
-      t.references :admin, foreign_key: true, null: false, type: :ibigint
+      t.references :admin, foreign_key: true, null: false, type: :bigint
       t.boolean :checked, default: false, null: false
 
       t.timestamps
