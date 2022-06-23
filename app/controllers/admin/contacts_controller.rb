@@ -7,10 +7,7 @@ class Admin::ContactsController < ApplicationController
 
   def index
     @customer = Customer.find(params[:customer_id])
-    @contacts = Contact.where(type: 'admin', child_id: @customer.children.ids).page(params[:page]).per(10).reverse_order
-    @contacts_all_count = Contact.all.count
-    @contact_contacts = ContactContact.where(admin_id: current_admin.id, customer_id: @customer.id)
-    @day = params[:day]
+    @contacts = @customer.contacts.group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
   end
 
   #中間テーブル（contact_contact）を使わないとき↓
@@ -23,17 +20,18 @@ class Admin::ContactsController < ApplicationController
 
   def create
     @customer = Customer.find(params[:customer_id])
-    @contact = @customer.contacts.new(contact_params)
-    @contact.type = 'admin'
-    @contact.user_id = current_admin.id
+    @contact = @customer.contacts.build(contact_params)
+    # @contact.type = 'admin'
+    # @contact.user_id = current_admin.id
+    @contact.admin_id = current_admin.id
     if @contact.save
       @contact.create_notification_by_admin(current_admin, @customer)
-      if ContactContact.check_customer_contact(@contact.created_at.day, @customer)
-       contact = ContactContact.find_by(day: @contact.created_at.day)
-       contact.update(admin_contact_id: @contact.id)
-      else
-        ContactContact.create(admin_contact_id: @contact.id, day: @contact.created_at.day, admin_id: current_admin.id, customer_id: @customer.id)
-      end
+      # if ContactContact.check_customer_contact(@contact.created_at.day, @customer)
+      # contact = ContactContact.find_by(day: @contact.created_at.day)
+      # contact.update(admin_contact_id: @contact.id)
+      # else
+        # ContactContact.create(admin_contact_id: @contact.id, day: @contact.created_at.day, admin_id: current_admin.id, customer_id: @customer.id)
+      # end
       flash[:notice]="新規登録しました"
       redirect_to admin_customer_contacts_path
     else

@@ -23,16 +23,16 @@
     <table class="table table-hover mt-5">
       <thead>
         <tr>
-          <th class="bg-green text-white">会員ID</th>
+          <!--<th class="bg-green text-white" style="width: 10%">会員ID</th>-->
           <th class="bg-green text-white">氏名</th>
           <th class="bg-green text-white">電話番号</th>
-          <th class="bg-green text-white">ステータス</th>
+          <th class="bg-green text-white" style="width: 20%"></th>
         </tr>
       </thead>
       <tbody>
       <% @customers.each do |customer| %>
         <tr onclick='window.location="<%= admin_customer_path(customer) %>"' role="link">
-          <td><%= customer.id %></td>
+          <!--<td><%#= customer.id %></td>-->
           <td><%= customer.name %></td>
           <td><%= customer.phone_number %></td>
           <td id="is_deleted<%= customer.id %>" class="text-success">

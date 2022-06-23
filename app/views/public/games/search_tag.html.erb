@@ -1,19 +1,23 @@
 <div class="container">
   <div class="row">
     <% if params[:title].present? %>
-      <h2 class="mb-5 mt-5 under">"<%= @game_title %>"検索結果一覧<span>（全<%= @games_all_count %>件）</span></h2>
+      <div class="col-md-5 mt-5 text-center offset-md-1">
+        <h2 class="mb-5 mt-5 under">"<%= @game_title %>" 検索結果</h2>
+      </div>
     <% elsif params[:tag_id].present?%>
+    <div class="col-md-5 mt-5 text-center offset-md-1">
       <h2 class="mb-5 mt-5 under">"<%= @tag.name %>"検索結果一覧<span>（全<%= @games.size %>件）</span></h2>
+    </div>
     <% end %>
     <div class="col text-right mb-5 mt-4">
       <%= render 'layouts/sort_game', link: games_path %>
     </div>
   </div>
-  <div class='row px-md-0'>
-    <div class='col-md-12 justify-content-end'>
+  <div class='row'>
+    <div class='col d-flex justify-content offset-1 offset-md-0'>
       <div class='row mb-5'>
         <% @games.each do |game| %>
-        <div class='card mx-2 border mb-5'>
+        <div class='card border mx-3 my-3'>
           <%= link_to game_path(game) do %>
             <%= image_tag game.images[0] ,size: "240x160"%>
           <% end %>

@@ -1,15 +1,16 @@
- <div class="container">
-  <h2 class="col-md-4 offset-md-4 mt-5 text-center under">クラス編集</h2>
-  <%= form_with(model: @group,url: admin_group_path , method: :patch, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
-    <div class="form-group row mt-5">
-      <%= f.label :"クラス名" , class: "col-md-2 offset-md-3 col-3"%>
-      <%= f.text_field :name, autofocus: true,class:'form-control col-md-3 col-7' , required: true %>
-      <div class="invalid-feedback row offset-md-5 offset-3">
+<div class="container">
+  <h2 class="col-md-4 offset-md-4 mt-5 text-center under">クラス登録/一覧</h2>
+  <div class="ml-4 mt-5">
+    <%= form_with(model: @group,url: admin_groups_path, local: false, class: 'needs-validation', html: {novalidate: true}) do |f| %>
+    <div class="form-group row">
+      <%= f.label :"クラス名" , class: "col-md-2 col-4 offset-md-3 col-3"%>
+      <%= f.text_field :name, autofocus: true,class: 'form-control col-md-3 col-10' , required: true%>
+      <div class="invalid-feedback row offset-md-4 offset-1">
         名前を入力してください。
       </div>
     </div>
-    <div class="col-md-10 text-right">
-      <%= f.submit "変更", class: "btn btn-gray text-white rounded-pill col-md-2 mt-3 col-3" %>
+    <div class="col-md-9 text-right">
+      <%= f.submit "変更", class: "btn btn-gray text-white rounded-pill col-md-2 mt-3 col-4" %>
     </div>
   <% end %>
-</div>
+ </div>

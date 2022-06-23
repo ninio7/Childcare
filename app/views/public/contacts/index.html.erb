@@ -1,46 +1,45 @@
 <div class="container mb-5">
+  <h2 class="col-md-3 mt-5 text-center under offset-md-2"><i class="far fa-clipboard"></i>&ensp;連絡帳一覧</h2>
   <div class="row d-flex justify-content-center">
-    <h2 class="col-md-3 mt-5 text-center under offset-md-1"><i class="far fa-clipboard"></i>&ensp;連絡帳一覧</h2>
-    <div class="col-md-2 col-5 mt-5 text-right">
+    <div class="col-md-8 col-12 mt-3 text-right">
       <%= link_to new_contact_path do %>
-        <p class= "btn btn-yellow text-secondary"> <i class="fas fa-edit" aria-hidden="true"></i> 連絡帳作成</p>
+        <p class= "btn btn-yellow text-secondary mr-3"> <i class="fas fa-edit" aria-hidden="true"></i> 連絡帳作成</p>
       <% end %>
-    </div>
-    <div class="col-md-3 col-6 mt-5 text-left">
       <%= link_to absents_path do %>
-        <p class= "btn btn-yellow text-secondary"> <i class="far fa-clipboard" aria-hidden="true"></i> 欠席・遅刻連絡</p>
+        <p class= "btn btn-yellow text-secondary mr-3"> <i class="far fa-clipboard" aria-hidden="true"></i> 欠席・遅刻連絡</p>
       <% end %>
     </div>
   </div>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-8 mt-5 d-flex justify-content-center">
+    <div class="col-md-8 mt-3 d-flex justify-content-center">
      <table class="table table-hover">
       <tbody>
-        <% 
-          # 日付 + 子供の名前の組み合わせで文字を作る
-          # その文字列が存在している場合、既に表示させているのでスキップするようにする
-        %>
-        <% check_list = {} %>
+        <!--日付 + 子供の名前の組み合わせで文字を作る-->
+        <!--その文字列が存在している場合、既に表示させているのでスキップするようにする-->
+        <%# check_list = {} %>
         <% @contacts.each do |contact| %>
-        <% date = contact.created_at.to_s(:detetime)%>
-      
-        <% target_key = contact.created_at.strftime("%Y-%m-%d " + contact.child.name) %>
-        <% if check_list.key?(target_key) %>
-          <% next %>
-        <% end %>
-        <% check_list[target_key] = true %>
-        
+        <%# date = contact.created_at.to_s(:detetime)%>
+        <%# target_key = contact.created_at.strftime("%Y-%m-%d " + contact.child.name) %>
+        <%# if check_list.key?(target_key) %>
+          <%# next %>
+        <%# end %>
+        <%# check_list[target_key] = true %>
           <tr>
             <td>
-              <% contact_contact = @contact_contacts.where(day: contact.created_at.day).first %>
-              <% if contact_contact.present? %>
-                <%= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
-                  <p class="text-secondary mt-1 mb-0"><i class="fas fa-square"></i>&emsp;<%= l(contact.created_at, format: :short) %></p>
-                <% end %>
-              <% end %>
+               <%= created_at = contact.created_at.to_date.to_s %>
+               <% child = contact.child %>
+               <%= child.name %>
+               <%= link_to "詳細", show_contact_path(created_at: created_at, child_id: child.id) %>
+
+              <!--<%# contact_contact = @contact_contacts.where(day: contact.created_at.day).first %>-->
+              <%# if contact_contact.present? %>
+                <%#= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
+                  <!--<p class="text-secondary mt-1 mb-0"><i class="fas fa-square"></i>&emsp;<%#= l(contact.created_at, format: :short) %></p>-->
+                <%# end %>
+              <%# end %>
             </td>
             <td>
-              <span class ="text-secondary"><%= contact.child.name %></span>
+              <!--<span class ="text-secondary"><%#= contact.child.name %></span>-->
             </td>
           </tr>
         <% end %>

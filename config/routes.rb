@@ -35,13 +35,15 @@ Rails.application.routes.draw do
     resources :games, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
     end
-    resources :contacts
+    resources :contacts, only: [:index, :new, :create, :edit, :update, :destroy]
+    get 'contact', to: 'contacts#show', as: 'show_contact'
     resources :absents, only: [:index, :show, :create,:new]
     resources :customers, only:[:show, :edit, :update]
     resources :notifications, only:[:index]
     resources :favorites, only:[:index]
     get "search_tag"=>"games#search_tag"
   end
+
 
 end
 

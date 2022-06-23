@@ -1,5 +1,5 @@
 class Public::ContactsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, only: [:new, :index]
   def new
     @customer = current_customer
     @contact = Contact.new()
@@ -7,19 +7,23 @@ class Public::ContactsController < ApplicationController
 
   def index
     @customer = current_customer
-    @contacts = current_customer.contacts.where(status: "published").page(params[:page]).per(10).reverse_order
-    @contacts_all_count=Contact.all.count
-    @contact_contacts = ContactContact.where(customer_id: current_customer.id)
+    @contacts = current_customer.contacts.where(status: "published").group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
+    # @contact_contacts = ContactContact.where(customer_id: current_customer.id)
   end
-  
+
   #中間テーブルを使用しない場合↓
-  # def show
+  def show
+
+    @child = Child.find(params[:child_id])
+    date_begin = Time.zone.parse(params[:created_at]).beginning_of_day
+    date_end = Time.zone.parse(params[:created_at]).end_of_day
+    @contacts = Contact.where(created_at: date_begin..date_end, child_id: @child.id).order(:admin_id)
   #   @customer = current_customer
   #   @contact = Contact.find(params[:id])
   #   園の投稿（customerが投稿した日と同じ日の投稿）を取得
   #   @contact_from_en = Contact.where(customer_id: @contact.customer.id, created_at: @contact.created_at.all_day).map{|c| c if c.admin_id.present?}.compact.first
   #   @contact_from_en = @contact.admin_contact(@contact.created_at.day)
-  # end
+  end
 
   def cotact_contacts
     @contactsPair = ContactContacts.find(params[:id])
