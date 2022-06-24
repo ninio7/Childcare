@@ -1,3 +1,4 @@
+  <% if contact.status == "published" || admin_signed_in?%>
   <p class="mt-5"><strong class="info-title"><i class="fas fa-utensils" style="color: coral;"></i> 昼食</strong></p>
   <div class="field form-group row ">
     <div class="col-md-3 col-5 offset-4">
@@ -108,3 +109,4 @@
       </div>
     </div>
   <% end %>
+<% end %>

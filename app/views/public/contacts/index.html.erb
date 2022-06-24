@@ -1,5 +1,7 @@
 <div class="container mb-5">
-  <h2 class="col-md-3 mt-5 text-center under offset-md-2"><i class="far fa-clipboard"></i>&ensp;連絡帳一覧</h2>
+  <%= link_to contacts_path do %>
+    <h2 class="col-md-3 mt-5 text-center under offset-md-2 text-dark"><i class="far fa-clipboard"></i>&ensp;連絡帳一覧</h2>
+  <% end %>
   <div class="row d-flex justify-content-center">
     <div class="col-md-8 col-12 mt-3 text-right">
       <%= link_to new_contact_path do %>
@@ -10,37 +12,28 @@
       <% end %>
     </div>
   </div>
+  <div class="col-md-10 form-inline flex-row-reverse">
+  <%= form_with url: contacts_path ,local: true, method: :get do |f| %>
+    <%=  f.date_field :created_at ,class: "form-control col-md-10"%>
+       <%= f.button :type => "submit", class: 'btn btn-outline-secondary' do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+ <% end %>
+  </div>
   <div class="row d-flex justify-content-center">
     <div class="col-md-8 mt-3 d-flex justify-content-center">
      <table class="table table-hover">
       <tbody>
-        <!--日付 + 子供の名前の組み合わせで文字を作る-->
-        <!--その文字列が存在している場合、既に表示させているのでスキップするようにする-->
-        <%# check_list = {} %>
+        <thead>
+          <th class="bg-green text-white col-7">投稿日</th>
+          <th class="bg-green text-white col-5"></th>
+        </thead>
         <% @contacts.each do |contact| %>
-        <%# date = contact.created_at.to_s(:detetime)%>
-        <%# target_key = contact.created_at.strftime("%Y-%m-%d " + contact.child.name) %>
-        <%# if check_list.key?(target_key) %>
-          <%# next %>
-        <%# end %>
-        <%# check_list[target_key] = true %>
-          <tr>
-            <td>
-               <%= created_at = contact.created_at.to_date.to_s %>
-               <% child = contact.child %>
-               <%= child.name %>
-               <%= link_to "詳細", show_contact_path(created_at: created_at, child_id: child.id) %>
-
-              <!--<%# contact_contact = @contact_contacts.where(day: contact.created_at.day).first %>-->
-              <%# if contact_contact.present? %>
-                <%#= link_to contact_contact_path(contact_contact.id, day: contact.created_at.day)  do %>
-                  <!--<p class="text-secondary mt-1 mb-0"><i class="fas fa-square"></i>&emsp;<%#= l(contact.created_at, format: :short) %></p>-->
-                <%# end %>
-              <%# end %>
-            </td>
-            <td>
-              <!--<span class ="text-secondary"><%#= contact.child.name %></span>-->
-            </td>
+        <% created_at = contact.created_at.to_date.to_s %>
+          <% child = contact.child %>
+          <tr onclick='window.location="<%= show_contact_path(created_at: created_at, child_id: child.id)  %>"' role="link">
+            <td><%=I18n.l(contact.created_at, format: :short) %></td>
+            <td><%= contact.child.name %></td>
           </tr>
         <% end %>
       </tbody>
@@ -48,7 +41,7 @@
    </div>
   </div>
   <div class="offset-md-8 offset-sm-6">
-    <%= paginate @contacts %>
+    <%= paginate @contact_page %>
   </div>
 </div>
 

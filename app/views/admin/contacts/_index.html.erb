@@ -7,33 +7,22 @@
           <th class="bg-green text-white col-5">子ども</th>
           <th class="bg-green text-white col-3"></th>
         </thead>
-
         <% @contacts.each do |contact| %>
-
-            <tr>
-              <td>
-               <%= created_at = contact.created_at.to_date.to_s %>
-               <% child = contact.child %>
-               <%= child.name %>
-               <%= link_to "詳細", show_contact_path(created_at: created_at, child_id: child.id) %>
-
-              </td>
-              <td>
-                <span class ="text-secondary"><%= contact.child.name %></span>
-              </td>
-              <% if contact.status == "published" %>
-              <td>
+          <% created_at = contact.created_at.to_date.to_s %>
+          <% child = contact.child %>
+          <tr onclick='window.location="<%= show_contact_path(created_at: created_at, child_id: child.id)  %>"' role="link">
+            <td><%=I18n.l(contact.created_at, format: :short) %></td>
+            <td><%= contact.child.name %></td>
+            <td>
+              <% if contact.status == "published"  %>
                 <span class ="text-secondary"><%= contact.status_i18n %></span>
-              </td>
               <% elsif contact.status == "draft" %>
-              <td>
                 <span class ="text-success"><%= contact.status_i18n %></span>
-              </td>
-             <% end %>
-            </tr>
-          <% end %>
-
-      </tbody>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
     </table>
   </div>
 </div>

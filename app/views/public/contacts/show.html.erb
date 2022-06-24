@@ -21,12 +21,11 @@
   <div class="tab-content" id="myTabContent">
     <!--園からの連絡帳-->
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-     <%#= Contact.pluck(:id, :child_id, :admin_id, :created_at) %>
      <%= render "admin", contact: @contacts.where.not(admin_id: nil).first if @contacts.where.not(admin_id: nil).any? %>
     </div>
 　  <!--家庭からの連絡帳-->
 　  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-　     <%= render "customer", contact: @contacts.where( admin_id: nil ).first if @contacts.where(admin_id: nil).any? %>
+　    <%= render "customer", contact: @contacts.where(admin_id: nil).first if @contacts.where(admin_id: nil).any? %>
     </div>
   </div>
 </div>

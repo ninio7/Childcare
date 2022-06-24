@@ -75,16 +75,6 @@ ActiveRecord::Schema.define(version: 2022_06_21_075631) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "contact_contacts", force: :cascade do |t|
-    t.integer "customer_contact_id"
-    t.integer "admin_contact_id"
-    t.integer "day"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "admin_id"
-    t.integer "customer_id"
-  end
-
   create_table "contacts", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "admin_id"
@@ -121,8 +111,6 @@ ActiveRecord::Schema.define(version: 2022_06_21_075631) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "type"
-    t.integer "user_id"
   end
 
   create_table "customers", force: :cascade do |t|
