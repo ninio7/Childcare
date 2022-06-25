@@ -7,13 +7,12 @@ class Admin::ContactsController < ApplicationController
 
   def index
     @customer = Customer.find(params[:customer_id])
-    if params[:created_at].present?
-      @contacts = @customer.contacts.where(status: "published").where('created_at LIKE ?', "%#{params[:created_at]}%").group("date(created_at)", :child_id)
+    if params[:created_at_from].present? && params[:created_at_to].present?
+      @contacts = @customer.contacts.where(status: "published").where(created_at: DateTime.strptime(params[:created_at_from], '%Y-%m-%d')..DateTime.strptime(params[:created_at_to], '%Y-%m-%d').end_of_day).group("date(created_at)", :child_id)
     else
-      @contacts = @customer.contacts.group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
+      @contacts = @customer.contacts.group("date(created_at)", :child_id).page(params[:page]).per(15).reverse_order
     end
-
-    @contact_page = @customer.contacts.group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
+    @contact_page = @customer.contacts.group("date(created_at)", :child_id).page(params[:page]).per(15).reverse_order
   end
 
   def create

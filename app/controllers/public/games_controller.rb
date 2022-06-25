@@ -2,17 +2,18 @@ class Public::GamesController < ApplicationController
   def index
     case params[:sort_games]
     when "old"
-      @games = Game.page(params[:page]).per(8)
+      @games = Game.page(params[:page])
     when "lot_favorite"
-       @games = Game.all.page(params[:page]).per(8).favorite
+       @games = Game.all.page(params[:page]).favorite
     when "few_favorite"
-      @games = Game.all.page(params[:page]).per(8).favorite.reverse
+      @games = Game.all.page(params[:page]).favorite.reverse
     else # default(new)
-      @games = Game.latest.page(params[:page]).per(8)
+      @games = Game.latest.page(params[:page])
     end
+    @sort_games = params[:sort_games]
     @games_all_count= Game.all.count
     @game = Game.new
-    @pages = Game.all.order(created_at: :desc).page(params[:page]).per(8)
+    @pages = Game.all.order(created_at: :desc).page(params[:page])
     @tag_list = Tag.all
   end
 
@@ -33,7 +34,11 @@ class Public::GamesController < ApplicationController
       @games = Game.where('title LIKE ?', "%#{params[:title]}%").page(params[:page])
       @game_title=params[:title]
       @games_all_count=Game.where("title LIKE ?","%#{@game_title}%").count
+    else
+      # @games = Game.none
     end
+    @sort_games = params[:sort_games]
+    @gamse = Game.all
   end
 
   private

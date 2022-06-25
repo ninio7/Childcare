@@ -12,14 +12,15 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-10 form-inline flex-row-reverse">
   <%= form_with url: contacts_path ,local: true, method: :get do |f| %>
-    <%=  f.date_field :created_at ,class: "form-control col-md-10"%>
-       <%= f.button :type => "submit", class: 'btn btn-outline-secondary' do %>
+  <div class="col-md-10 form-inline justify-content-end">
+    <%= f.date_field :created_at_from ,class: "form-control my-w40"%> ~
+    <%= f.date_field :created_at_to,class: "form-control my-w40"%>
+    <%= f.button :type => "submit", class: 'btn btn-outline-secondary' do %>
       <i class="fas fa-search"></i>
     <% end %>
- <% end %>
   </div>
+ <% end %>
   <div class="row d-flex justify-content-center">
     <div class="col-md-8 mt-3 d-flex justify-content-center">
      <table class="table table-hover">

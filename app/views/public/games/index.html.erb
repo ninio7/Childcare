@@ -8,8 +8,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col text-right mb-5 mt-4">
-      <%= render 'layouts/sort_game', link: games_path %>
+    <div class="col mb-5 mt-4">
+      <%= render 'layouts/sort_game', link: games_path, sort_games: @sort_games  %>
     </div>
   </div>
   <div class='row'>

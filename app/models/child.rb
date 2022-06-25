@@ -5,5 +5,7 @@ class Child < ApplicationRecord
   validates :name, presence: true
   validates :kana_name, presence: true
   validates :birthday, presence: true
+  
+ 
 
 end

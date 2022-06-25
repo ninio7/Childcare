@@ -36,13 +36,13 @@
   <div class="field form-group row ml-4">
     <div class="btn-group btn-group-toggle offset-3 offset-md-4" data-toggle="buttons">
     <label class="btn btn-yellow active text-white pb-0">
-      <%= f.radio_button :humor, 0, {checked: true} %><strong><i class="far fa-laugh-beam" style="color: orang; font-size: 2em;"></i></strong><br>良い
+      <%= f.radio_button :humor, "good" , {checked: true}%><strong><i class="far fa-laugh-beam" style="color: orang; font-size: 2em;"></i></strong><br>良い
     </label>
     <label class="btn btn-green active text-white">
-       <%= f.radio_button :humor, 1, {} %><strong><i class="far fa-smile" style="color: orang; font-size: 2em;"></i></strong><br>普通
+       <%= f.radio_button :humor, "usually"%><strong><i class="far fa-smile" style="color: orang; font-size: 2em;"></i></strong><br>普通
     </label>
     <label class="btn btn-gray active text-white">
-      <%= f.radio_button :humor, 2, {} %><strong><i class="far fa-tired" style="color: blu; font-size: 2em;"></i></strong><br>悪い
+      <%= f.radio_button :humor , "bad"%><strong><i class="far fa-tired" style="color: blu; font-size: 2em;"></i></strong><br>悪い
     </label>
     </div>
   </div>

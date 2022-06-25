@@ -25,9 +25,8 @@
               <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100 ).to_s.split("")[-1] %> カ月
             </td>
             <td>
-              <%= child.customer.contacts.created_today.inspect%>
               <% if child.customer.contacts.created_today.present? %>投稿済
-            　<% else %>未投稿
+              <% else %>未投稿
            　  <% end %>
             </td>
           </tr>

@@ -5,8 +5,12 @@ class Contact < ApplicationRecord
   belongs_to :child
   has_many :notifications, dependent: :destroy
 
-  scope :created_today, -> {where("created_at >= ?", Time.zone.now.beginning_of_day)}
- 
+  scope :created_today, -> {published.where("created_at >= ? AND admin_id IS NOT NULL", Time.zone.now.beginning_of_day)}
+
+
+  scope :created_at_from, -> (from) { where('? <= created_at', from) if from.present? }
+  scope :created_at_to, -> (to) { where('created_at <= ?', to) if to.present? }
+
   # 保護者が連絡を作った時
   def create_notification_by_customer(current_customer, target_admin)
     notification = Notification.new(

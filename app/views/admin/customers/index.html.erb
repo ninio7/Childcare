@@ -8,10 +8,12 @@
     </div>
     <div class="col-md-7 form-inline d-block text-right">
       <%= form_with url: admin_search_path ,local: true, method: :get do |f| %>
-        <%= f.text_field :name ,class: "form-control col-md-4",placeholder: "名前で検索"%>
-        <%= button_tag :type => "submit", :class =>"btn btn-outline-secondary" do %>
-          <i class="fas fa-search"></i>
-        <% end %>
+      <%= f.search_field :name, class: "form-control search col-md-10", placeholder: "検索内容を入力" , required: true %><i class="fas fa-search"></i>
+
+        <!--<%#= f.text_field :name ,class: "form-control col-md-4",placeholder: "名前で検索", required: true%>-->
+        <!--<%#= button_tag :type => "submit", :class =>"btn btn-outline-secondary" do %>-->
+        <!--  <i class="fas fa-search"></i>-->
+        <!--<%# end %>-->
       <% end %>
     </div>
   </div>

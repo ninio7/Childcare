@@ -7,10 +7,10 @@ class Public::ContactsController < ApplicationController
 
   def index
     @customer = current_customer
-    if params[:created_at].present?
-      @contacts = current_customer.contacts.where(status: "published").where('created_at LIKE ?', "%#{params[:created_at]}%").group("date(created_at)", :child_id)
+    if params[:created_at_from].present? && params[:created_at_to].present?
+      @contacts = current_customer.contacts.where(status: "published").where(created_at: DateTime.strptime(params[:created_at_from], '%Y-%m-%d')..DateTime.strptime(params[:created_at_to], '%Y-%m-%d').end_of_day).group("date(created_at)", :child_id)
     else
-       @contacts = current_customer.contacts.where(status: "published").group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
+      @contacts = current_customer.contacts.where(status: "published").group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
     end
     @contact_page = current_customer.contacts.where(status: "published").group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
   end
