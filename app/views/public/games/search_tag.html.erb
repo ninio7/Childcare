@@ -2,7 +2,7 @@
   <div class="row">
     <% if params[:title].present? %>
       <div class="col-md-5 mt-5 text-center offset-md-1">
-        <h2 class="mb-5 mt-5 under">"<%= @game_title %>" 検索結果</h2>
+        <h2 class="mb-5 mt-5 under">"<%= @game_title %>" 検索結果<span>（全<%= @games_all_count %>件）</span></h2>
       </div>
     <% elsif params[:tag_id].present?%>
     <div class="col-md-5 mt-5 text-center offset-md-1">

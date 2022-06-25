@@ -83,13 +83,13 @@
     <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, class: "form-control " %>
   </div>
   <div class="col-xs-3 mt-1">
-    <%= f.text_field :defecation_number, autofocus: true , placeholder: "回数", size: "1x1"%>
+    <%= f.text_field :defecation_number, autofocus: true , placeholder: "回数", size: "3x3"%>
   </div>
 </div>
 <p class="border-top"></p>
 <strong class="info-title"><i class="fas fa-camera" style="color: gray;"></i> 写真</strong>
 <div class="field form-group row">
-  <div class="col-md-5 offset-1 mt-3 offset-md-4">
+  <div class="col-md-5 offset-2 mt-3 offset-md-4">
     <%= f.file_field :images, multiple: true %>
    </div>
 </div>
