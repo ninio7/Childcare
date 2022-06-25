@@ -1,35 +1,42 @@
 <div class= "container">
   <h2 class="mt-5 mb-3 col-md-5 offset-md-2 text-center under"><%= @group.name %> 一覧<span>（<%= @children.count %>名）</span></h2>
-<div class="row">
-  <div class='col-md-2 mt-5'>
+  <div class="row">
+    <div class='col-md-2 mt-5'>
       <%= render "admin/customers/group", groups: @groups %>
-  </div>
-  <div class="col-md-9">
-    <table class="table table-hover mt-5">
-      <thead>
-        <tr>
-          <th class="bg-green text-white">園児氏名</th>
-          <th class="bg-green text-white">年齢</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @children.each do |child| %>
-        <tr onclick='window.location="<%= new_admin_customer_contact_path(customer_id: child.customer.id) %>"' role="link">
-          <td>
-            <%= link_to new_admin_customer_contact_path(customer_id: child.customer.id) do %>
-              <span class="text-dark"><%= child.name %></span>
-            <% end %>
-          </td>
-          <td><%= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳
-            <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100 ).to_s.split("")[-1] %> カ月
-          </td>
-        </tr>
+    </div>
+    <div class="col-md-9">
+      <table class="table table-hover mt-5">
+        <thead>
+          <tr>
+            <th class="bg-green text-white">園児氏名</th>
+            <th class="bg-green text-white">年齢</th>
+            <th class="bg-green text-white">連絡帳状況</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @children.each do |child| %>
+          <tr onclick='window.location="<%= new_admin_customer_contact_path(customer_id: child.customer.id) %>"' role="link">
+            <td>
+              <%= link_to new_admin_customer_contact_path(customer_id: child.customer.id) do %>
+                <span class="text-dark"><%= child.name %></span>
+              <% end %>
+            </td>
+            <td><%= (Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) / 10000  %> 歳
+              <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100 ).to_s.split("")[-1] %> カ月
+            </td>
+            <td>
+              <%= child.customer.contacts.created_today.inspect%>
+              <% if child.customer.contacts.created_today.present? %>投稿済
+            　<% else %>未投稿
+           　  <% end %>
+            </td>
+          </tr>
         <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
+    <div class="col offset-5 text-center">
+      <%= paginate @children %>
+    </div>
   </div>
-  <div class="col offset-5 text-center">
-    <%= paginate @children %>
-  </div>
-</div>
 </div>

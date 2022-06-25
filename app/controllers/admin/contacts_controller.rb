@@ -12,6 +12,7 @@ class Admin::ContactsController < ApplicationController
     else
       @contacts = @customer.contacts.group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
     end
+
     @contact_page = @customer.contacts.group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
   end
 

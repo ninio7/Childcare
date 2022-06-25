@@ -1,9 +1,9 @@
 <div class="container">
   <h2 class="mt-5 mb-3 col-md-3 offset-md-4 text-center under">連絡帳</h2>
   <%= form_with model: @contact , url: contacts_path, method: :post do |f| %>
-  <div class="row mb-3">
-    <h4 class="col-md-4 col-10 my-3 offset-md-2"><%= I18n.l(DateTime.now, format: :short) %></h4>
-    <div class="col-md-5 col-7 my-3">
+  <h4 class="col-md-6 mt-3"><%= I18n.l(DateTime.now, format: :short) %></h4>
+  <div class="row my-3">
+    <div class="col-md-6 col-9">
       <%= f.select :child_id,options_from_collection_for_select(@customer.children.all, :id, :name) , {}, class: "form-control col-md-5"%>
     </div>
   </div>
@@ -33,15 +33,17 @@
   </div>
   <p class="col border-top"></p>
   <strong class="info-title"><i class="far fa-smile" style="color: orange;"></i> 機嫌</strong>
-  <div class="field form-group row">
-    <div class="col-md-6 mt-3 offset-4">
-      <!--</%= f.select :humor,Contact.humors.keys.map{|k| [I18n.t("enums.contact.humor.#{k}"),k]} %>-->
-      <%= f.radio_button :humor, "good", required: true %>
-      <%= f.label :humor,"良い" ,class:"mr-3"%>
-      <%= f.radio_button :humor, "usually" %>
-      <%= f.label :humor,"普通" ,class:"mr-3"%>
-      <%= f.radio_button :humor, "bad" %>
-      <%= f.label :humor,"悪い" %>
+  <div class="field form-group row ml-4">
+    <div class="btn-group btn-group-toggle offset-3 offset-md-4" data-toggle="buttons">
+    <label class="btn btn-yellow active text-white pb-0">
+      <%= f.radio_button :humor, 0, {checked: true} %><strong><i class="far fa-laugh-beam" style="color: orang; font-size: 2em;"></i></strong><br>良い
+    </label>
+    <label class="btn btn-green active text-white">
+       <%= f.radio_button :humor, 1, {} %><strong><i class="far fa-smile" style="color: orang; font-size: 2em;"></i></strong><br>普通
+    </label>
+    <label class="btn btn-gray active text-white">
+      <%= f.radio_button :humor, 2, {} %><strong><i class="far fa-tired" style="color: blu; font-size: 2em;"></i></strong><br>悪い
+    </label>
     </div>
   </div>
   <p class="col border-top"></p>

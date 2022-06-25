@@ -5,8 +5,8 @@ class Contact < ApplicationRecord
   belongs_to :child
   has_many :notifications, dependent: :destroy
 
-  self.inheritance_column = :_type_disabled
-
+  scope :created_today, -> {where("created_at >= ?", Time.zone.now.beginning_of_day)}
+ 
   # 保護者が連絡を作った時
   def create_notification_by_customer(current_customer, target_admin)
     notification = Notification.new(
@@ -28,24 +28,6 @@ class Contact < ApplicationRecord
       )
      notification.save if notification.valid?
   end
-
-# scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数
-#     return if search_params.blank?      #検索フォームに値がなければ以下の手順は行わない
-
-#     name_like(search_params[:name])
-#       .created_at_from(search_params[:created_at_from])
-#       .created_at_to(search_params[:created_at_to])
-#       #下記で定義しているscopeメソッドの呼び出し。「.」で繋げている
-#   end
-
-#   scope :name_like, -> (name_kana) { where('name_kana LIKE ?', "%#{name_kana}%") if name_kana.present? }  #scopeを定義。
-  # scope :created_at_from, -> (from) { where('? <= created_at', from) if from.present? }
-  # scope :created_at_to, -> (to) { where('created_at <= ?', to) if to.present? }
-#   #日付の範囲検索をするため、fromとtoをつけている
-
-
-
-
 
   # 主食量の設定
   enum staple_quantity:{

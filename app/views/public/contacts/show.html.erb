@@ -25,7 +25,8 @@
     </div>
 　  <!--家庭からの連絡帳-->
 　  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-　    <%= render "customer", contact: @contacts.where(admin_id: nil).first if @contacts.where(admin_id: nil).any? %>
+　    <%#= @contacts.inspect %>
+　     <%= render "customer", contact: @contacts.where(admin_id: nil).first if @contacts.where(admin_id: nil).any? %>
     </div>
   </div>
 </div>
