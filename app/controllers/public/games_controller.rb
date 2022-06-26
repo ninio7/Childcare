@@ -7,7 +7,7 @@ class Public::GamesController < ApplicationController
        @games = Game.all.page(params[:page]).favorite
     when "few_favorite"
       @games = Game.all.page(params[:page]).favorite.reverse
-    else # default(new)
+    else
       @games = Game.latest.page(params[:page])
     end
     @sort_games = params[:sort_games]
@@ -24,7 +24,6 @@ class Public::GamesController < ApplicationController
   end
 
   def search_tag
-    @tag_lists = Tag.all
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @tags = Tag.where('name LIKE ?', "%#{params[:name]}%")
@@ -33,12 +32,11 @@ class Public::GamesController < ApplicationController
     elsif params[:title].present?
       @games = Game.where('title LIKE ?', "%#{params[:title]}%").page(params[:page])
       @game_title=params[:title]
-      @games_all_count=Game.where("title LIKE ?","%#{@game_title}%").count
     else
-      # @games = Game.none
+      @games = Game.all.page(params[:page])
+      render :index
     end
     @sort_games = params[:sort_games]
-    @gamse = Game.all
   end
 
   private

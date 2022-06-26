@@ -25,14 +25,14 @@ class Admin::CustomersController < ApplicationController
   end
 
   def search
+    @customer_name=params[:name]
+    @groups = Group.all
     if params[:name].present?
-      @customers = Customer.where('name LIKE ?', "%#{params[:name]}%")
+      @customers = Customer.where('name LIKE ?', "%#{params[:name]}%").page(params[:page])
     else
-      @customers = Customer.none
+      @customers = Customer.all.page(params[:page])
+      render :index
     end
-     @customer_name=params[:name]
-     @customers_all_count=Customer.where("name LIKE ?","%#{@customer_name}%").count
-     @groups = Group.all
   end
 
   private

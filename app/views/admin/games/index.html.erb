@@ -6,22 +6,22 @@
         <p class="btn btn-yellow text-secondary mt-3"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 新規登録</p>
       <% end %>
     </div>
-    <div class="col text-right mb-5 ">
+    <div class="col text-right mb-5 mt-4">
       <%= render 'layouts/sort_game', link: games_path , sort_games: @sort_games%>
     </div>
   </div>
   <div class='row'>
-    <div class='col d-flex justify-content-senter'>
-      <div class='row mb-5 offset-1 offset-md-0'>
+    <div class='col d-flex justify-content'>
+      <div class='row mb-5'>
         <% @games.each do |game| %>
-        <div class='card border border mx-2 mt-3'>
+        <div class='card border border mx-auto games_card mt-3'>
           <%= link_to game_path(game) do %>
             <%= image_tag game.images[0] ,size: "240x160"%>
           <% end %>
-          <%= link_to game_path(game) , class:"text-secondary" do %>
+          <%= link_to game_path(game) , class: "text-secondary" do %>
             <%= game.title %>
           <% end %>
-          <%= link_to game_path(game) , class:"text-secondary" do %>
+          <%= link_to game_path(game) , class: "text-secondary" do %>
             <i class="fas fa-heart" aria-hidden="true" style="color:red;"></i>
             <%= game.favorites.count %> いいね
           <% end %>

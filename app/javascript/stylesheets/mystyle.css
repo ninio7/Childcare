@@ -443,10 +443,6 @@ a.text-gray:hover, a.text-gray:focus {
   border-radius: 5px;
 }
 
-.border-10 {
-    border-width: 10px !important;
-}
-
 .under {
     background: linear-gradient(transparent 80%, #f0f8ff 50%);
 }
@@ -472,5 +468,17 @@ a.text-gray:hover, a.text-gray:focus {
 @media screen and (max-width: 576px){
     .my-w40{
         width: 40%;
+    }
+}
+
+.hoge {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+
+@media screen and (min-width: 485px){
+    .games_card{
+       margin-right: 15px !important;
     }
 }

@@ -1,5 +1,5 @@
 <div class= "container">
-  <h2 class="mt-5 mb-3 col-md-5 offset-md-2 text-center under"><%= @group.name %> 一覧<span>（<%= @children.count %>名）</span></h2>
+  <h2 class="mt-5 mb-3 col-md-7 offset-md-3 text-center under"><%= @group.name %> 一覧<span>（<%= @children.count %>名）</span></h2>
   <div class="row">
     <div class='col-md-2 mt-5'>
       <%= render "admin/customers/group", groups: @groups %>
@@ -26,7 +26,7 @@
             </td>
             <td>
               <% if child.customer.contacts.created_today.present? %>投稿済
-              <% else %>未投稿
+              <% else %><span class="text-info">未投稿</span>
            　  <% end %>
             </td>
           </tr>

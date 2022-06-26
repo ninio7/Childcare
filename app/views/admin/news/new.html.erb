@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="my-5 col-md-11 text-center ">お知らせ新規登録</h2>
+  <h2 class="my-5 col-md-5 offset-md-3 text-center under">お知らせ新規登録</h2>
    <%= form_with model: @news, url: admin_news_index_path, method: :post do |f| %>
   <div class="row mb-3">
     <div class="col-md-7 col-10 mt-3 mb-3 offset-1 offset-md-0">
@@ -10,8 +10,8 @@
   <p class="border-top"></p>
   <i class="fas fa-book-open" style="color: skyblue;"></i> タイトル
   <div class="field form-group row">
-    <div class="col-md-4 col-8 offset-md-4 offset-1 mt-3">
-      <%= f.text_area :title, autofocus: true, size: "40x1" %>
+    <div class="col-md-8 offset-md-4 offset-1 mt-3">
+      <%= f.text_area :title, autofocus: true, class: "col-md-6", rows: "1"%>
     </div>
   </div>
   <p class="border-top"></p>
@@ -24,12 +24,12 @@
   <p class="border-top"></p>
   <i class="far fa-comment" style="color: lightcoral;"></i> 詳細
   <div class="field form-group row">
-    <div class="col-md-12 col-8 offset-md-4 mt-3 offset-1">
-      <%= f.text_area :body, autofocus: true, size: "40x5" %>
+    <div class="col-md-8 offset-md-4 mt-3 offset-1">
+      <%= f.text_area :body, autofocus: true, class: "col-md-6" ,rows: "6" %>
     </div>
   </div>
   <div class="col-md-11 text-center">
-      <%= f.submit "登録", class: "btn btn-gray text-white rounded-pill mt-5 col-md-2 col-4 offset-md-1" %>
+      <%= f.submit "登録", class: "btn btn-gray text-white rounded-pill mt-5 col-md-2 col-6 offset-md-1" %>
   </div>
   <% end %>
 </div>

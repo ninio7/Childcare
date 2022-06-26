@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 mt-5">
-      <h2 class="under text-center">遊び集<span>（全<%= @games_all_count %>件）</span></h2>
+      <h2 class="under text-center">遊び集<span>（全<%= @games.count %>件）</span></h2>
       <% if customer_signed_in? %>
         <%= link_to favorites_path do %>
          <p class="btn btn-danger text-white rounded-pill mt-3"><i class="far fa-heart"></i></p>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="text-center mx-auto">
-      <%= paginate @pages %>
+      <%= paginate @customers %>
     </div>
   </div>
 </div>
