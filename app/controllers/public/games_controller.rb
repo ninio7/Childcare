@@ -11,7 +11,6 @@ class Public::GamesController < ApplicationController
       @games = Game.latest.page(params[:page])
     end
     @sort_games = params[:sort_games]
-    @games_all_count= Game.all.count
     @game = Game.new
     @pages = Game.all.order(created_at: :desc).page(params[:page])
     @tag_list = Tag.all
