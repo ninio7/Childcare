@@ -12,7 +12,7 @@ class Public::GamesController < ApplicationController
     end
     @sort_games = params[:sort_games]
     @game = Game.new
-    @pages = Game.all.order(created_at: :desc).page(params[:page])
+    @games = Game.all.order(created_at: :desc).page(params[:page])
     @tag_list = Tag.all
   end
 
