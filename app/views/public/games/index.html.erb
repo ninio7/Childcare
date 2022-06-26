@@ -13,10 +13,10 @@
     </div>
   </div>
   <div class='row'>
-    <div class='col d-flex justify-content offset-1 offset-md-0'>
+    <div class='col d-flex justify-content-start offset-2 offset-md-0'>
       <div class='row mb-5'>
         <% @games.each do |game| %>
-        <div class='card border mx-3 my-3'>
+        <div class='card border mr-3 mt-3'>
           <%= link_to game_path(game) do %>
             <%= image_tag game.images[0] ,size: "240x160"%>
            <% end %>

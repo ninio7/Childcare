@@ -479,6 +479,6 @@ a.text-gray:hover, a.text-gray:focus {
 
 @media screen and (min-width: 485px){
     .games_card{
-       margin-right: 15px !important;
+       margin-right: 15px 
     }
 }

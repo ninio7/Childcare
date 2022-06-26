@@ -14,12 +14,14 @@
             <td><%=I18n.l(contact.created_at, format: :short) %></td>
             <td><%= contact.child.name %></td>
             <td>
-              <% if contact.status == "published"  %>
-                <span class ="text-secondary"><%= contact.status_i18n %></span>
-              <% elsif contact.status == "draft" %>
+              <% if contact.admin_id.present? && contact.status == "published" %>
+                <span><%= contact.status_i18n %></span>
+              <% elsif contact.admin_id.present? && contact.status == "draft" %>
                 <span class ="text-success"><%= contact.status_i18n %></span>
+              <% else %>
+                <span class ="text-secondary">未作成</span>
               <% end %>
-            </td>
+　          </td>
           </tr>
         <% end %>
         </tbody>

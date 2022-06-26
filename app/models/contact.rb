@@ -7,7 +7,6 @@ class Contact < ApplicationRecord
 
   scope :created_today, -> {published.where("created_at >= ? AND admin_id IS NOT NULL", Time.zone.now.beginning_of_day)}
 
-
   scope :created_at_from, -> (from) { where('? <= created_at', from) if from.present? }
   scope :created_at_to, -> (to) { where('created_at <= ?', to) if to.present? }
 
