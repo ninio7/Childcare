@@ -45,6 +45,4 @@ https://docs.google.com/spreadsheets/d/1DCXVUR1hDjGWjebLETgANCTnbPs1LlxxTnPu9XpP
 - JS ライブラリ：jQuery
 - IDE：Cloud9
 
-## 画像
-https://www.photo-ac.com/
 
