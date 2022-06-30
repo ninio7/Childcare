@@ -15,7 +15,7 @@
         </thead>
         <tbody>
         <% @children.each do |child| %>
-          <tr onclick='window.location="<%= new_admin_customer_contact_path(customer_id: child.customer.id) %>"' role="link">
+          <tr>
             <td>
               <%= link_to new_admin_customer_contact_path(customer_id: child.customer.id) do %>
                 <span class="text-dark"><%= child.name %></span>
@@ -25,11 +25,21 @@
               <%= ((Date.today.strftime("%Y%m%d").to_i - child.birthday.strftime("%Y%m%d").to_i) /100 ).to_s.split("")[-1] %> カ月
             </td>
             <td>
-              <% if child.customer.contacts.created_today.present? %>投稿済
-              <% else %><span class="text-info">未投稿</span>
+              <% if child.customer.contacts.created_today.present? %>
+                <%= link_to admin_customer_contacts_path(customer_id: child.customer.id)do %>
+                  <span class="text-dark">投稿済</span>
+                <% end %>
+              <% elsif child.customer.contacts.created_today_draft.present? %>
+                <%= link_to admin_customer_contacts_path(customer_id: child.customer.id)do %>
+                  <span class="text-info">下書き</span>
+                <% end %>
+              <% else %>
+                <%= link_to new_admin_customer_contact_path(customer_id: child.customer.id) do %>
+                  <span class="text-secondary">未作成</span>
+                <% end %>
            　  <% end %>
             </td>
-          </tr>
+           </tr>
         <% end %>
         </tbody>
       </table>

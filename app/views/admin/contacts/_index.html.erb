@@ -5,7 +5,6 @@
         <thead>
           <th class="bg-green text-white col-4">投稿日</th>
           <th class="bg-green text-white col-5">子ども</th>
-          <th class="bg-green text-white col-3"></th>
         </thead>
         <% @contacts.each do |contact| %>
           <% created_at = contact.created_at.to_date.to_s %>
@@ -13,15 +12,6 @@
           <tr onclick='window.location="<%= show_contact_path(created_at: created_at, child_id: child.id)  %>"' role="link">
             <td><%=I18n.l(contact.created_at, format: :short) %></td>
             <td><%= contact.child.name %></td>
-            <td>
-              <% if contact.admin_id.present? && contact.status == "published" %>
-                <span><%= contact.status_i18n %></span>
-              <% elsif contact.admin_id.present? && contact.status == "draft" %>
-                <span class ="text-success"><%= contact.status_i18n %></span>
-              <% else %>
-                <span class ="text-secondary">未作成</span>
-              <% end %>
-　          </td>
           </tr>
         <% end %>
         </tbody>
