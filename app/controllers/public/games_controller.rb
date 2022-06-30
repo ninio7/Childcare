@@ -2,17 +2,17 @@ class Public::GamesController < ApplicationController
   def index
     case params[:sort_games]
     when "old"
-      @games = Game.page(params[:page])
+      @games = Game.page(params[:page]).per(8)
     when "lot_favorite"
-       @games = Game.all.page(params[:page]).favorite
+       @games = Game.all.page(params[:page]).per(8).favorite
     when "few_favorite"
-      @games = Game.all.page(params[:page]).favorite.reverse
+      @games = Game.all.page(params[:page]).per(8).favorite.reverse
     else
-      @games = Game.latest.page(params[:page])
+      @games = Game.latest.page(params[:page]).per(8)
     end
     @sort_games = params[:sort_games]
     @game = Game.new
-    @games = Game.all.order(created_at: :desc).page(params[:page])
+    # @pages = Game.all.order(created_at: :desc).page(params[:page])
     @tag_list = Tag.all
   end
 
