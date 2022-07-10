@@ -45,7 +45,7 @@ https://docs.google.com/spreadsheets/d/1DCXVUR1hDjGWjebLETgANCTnbPs1LlxxTnPu9XpP
 ## 使用素材
 フリー画像：https://www.photo-ac.com/
 
-##機能一覧
+## 機能一覧
 会員（保護者）
 - ログイン・ログアウト機能
 - 会員情報編集機能
