@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3 mt-5">
+  <div class="row mt-5">
+    <div class="col-md-3">
       <h2 class="under text-center">遊び集<span>（全<%= @games.count %>件）</span></h2>
       <% if customer_signed_in? %>
         <%= link_to favorites_path do %>
@@ -8,7 +8,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col mb-5 mt-4">
+    <div class="col mb-5">
       <%= render 'layouts/sort_game', link: games_path, sort_games: @sort_games  %>
     </div>
   </div>
@@ -16,17 +16,17 @@
     <div class='col d-flex justify-content-start offset-2 offset-md-0'>
       <div class='row mb-5'>
         <% @games.each do |game| %>
-        <div class='card border mr-3 mt-3'>
-          <%= link_to game_path(game) do %>
-            <%= image_tag game.images[0] ,size: "240x160"%>
-           <% end %>
-          <%= link_to game_path(game) , class:"text-secondary" do  %>
-            <%= game.title %>
-          <% end %>
-          <span id = "game_<%= game.id %>">
-           <%= render "public/favorites/btn" , game: game%>
-          </span>
-        </div>
+          <div class='card border mr-3 mt-3'>
+            <%= link_to game_path(game) do %>
+              <%= image_tag game.images[0] ,size: "240x160"%>
+             <% end %>
+            <%= link_to game_path(game) , class: "text-secondary" do  %>
+              <%= game.title %>
+            <% end %>
+            <span id = "game_<%= game.id %>">
+             <%= render "public/favorites/btn" , game: game%>
+            </span>
+          </div>
         <% end %>
       </div>
     </div>

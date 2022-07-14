@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="col-md-8 col-lg-5 mt-5 offset-md-2 under text-center">お知らせ一覧<span>（全<%= @news.count %>件）</span></h2>
+  <h2 class="col-md-8 col-lg-5 mt-5 offset-md-3 under text-center">お知らせ一覧<span>（全<%= @news.count %>件）</span></h2>
   <div class="row">
 
      <div class="col-md-4 offset-md-6 text-right">
@@ -10,7 +10,7 @@
   </div>
   <div class="row d-flex justify-content-center">
     <div class="col-md-8">
-      <table class="table table-hover">
+      <table class="table table-hover text-nowrap">
         <thead>
           <tr>
             <th class="bg-green text-white">投稿日</th>
@@ -22,11 +22,11 @@
           <% @news.each do |news| %>
           <% date = news.created_at.to_s(:detetime)%>
             <tr>
-              <td style="width: 40%">
-               <%= link_to admin_news_path(news) do %><p class="text-secondary"><i class="fas fa-square"></i>&emsp;<%= I18n.l(news.created_at, format: :short) %></p><% end %>
+              <td>
+               <%= link_to admin_news_path(news) do %><p class="text-secondary"><%= I18n.l(news.created_at, format: :short) %></p><% end %>
               </td>
-              <td style="width: 40%"><%= link_to admin_news_path(news) do %><p class="text-secondary"><%= news.title %></p><% end %></td>
-              <td><%= link_to "削除する", admin_news_path(news), class: "btn btn-outline-danger rounded-pill ml-3", method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %></td>
+              <td><%= link_to admin_news_path(news) do %><p class="text-secondary"><%= news.title %></p><% end %></td>
+              <td><%= link_to "削除", admin_news_path(news), class: "btn btn-outline-danger rounded-pill ml-3", method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %></td>
             </tr>
           <% end %>
         </tbody>

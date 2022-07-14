@@ -19,12 +19,12 @@
     <% @game_tags.each do |tag| %>
       <%= link_to search_tag_path(tag_id: tag.id) do %><p class="btn btn-light text-secondary rounded-pill mx-1 py-0"><%=tag.name %></p><% end %>
     <% end %>
-    </div>
-    <div class="row d-flex justify-content-center">
-      <% if admin_signed_in?  %>
-        <%= link_to "編集", edit_admin_game_path(@game.id) ,class:"btn btn-sm btn-gray text-white col-md-1 col-2 ml-3 mt-5" %>
-        <%= link_to "削除", admin_game_path(@game.id), class:"btn btn-sm btn-danger col-md-1 col-2 ml-3 mt-5", method: :delete, "data-confirm" => "Are you sure?" %>
-      <% end %>
-    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <% if admin_signed_in?  %>
+      <%= link_to "編集", edit_admin_game_path(@game.id) ,class:"btn btn-sm btn-gray text-white col-md-1 col-2 ml-3 mt-5" %>
+      <%= link_to "削除", admin_game_path(@game.id), class:"btn btn-sm btn-danger col-md-1 col-2 ml-3 mt-5", method: :delete, "data-confirm" => "Are you sure?" %>
+    <% end %>
+  </div>
 </div>
 

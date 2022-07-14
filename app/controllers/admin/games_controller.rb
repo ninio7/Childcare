@@ -12,7 +12,7 @@ class Admin::GamesController < ApplicationController
   def index
     @games = Game.all.order(created_at: :desc).page(params[:page]).per(12)
     @sort_games = params[:sort_games]
-    # @tag_list = Tag.all ←一覧にタグを表示させる場合
+    @tags= Tag.all
   end
 
   def create

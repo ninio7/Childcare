@@ -13,9 +13,9 @@
     </div>
   </div>
   <%= form_with url: contacts_path ,local: true, method: :get do |f| %>
-  <div class="col-md-10 form-inline justify-content-end">
-    <%= f.date_field :created_at_from ,class: "form-control my-w40"%> ~
-    <%= f.date_field :created_at_to,class: "form-control my-w40"%>
+  <div class="form-inline offset-md-6">
+    <%= f.date_field :created_at_from ,class: "form-control date-w40"%>&ensp;~&ensp;
+    <%= f.date_field :created_at_to,class: "form-control date-w40"%>
     <%= f.button :type => "submit", class: 'btn btn-outline-secondary' do %>
       <i class="fas fa-search"></i>
     <% end %>

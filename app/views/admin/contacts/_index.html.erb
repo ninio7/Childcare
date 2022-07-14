@@ -3,8 +3,8 @@
     <table class="table table-hover">
       <tbody>
         <thead>
-          <th class="bg-green text-white col-4">投稿日</th>
-          <th class="bg-green text-white col-5">子ども</th>
+          <th class="bg-green text-white">投稿日</th>
+          <th class="bg-green text-white">子ども</th>
         </thead>
         <% @contacts.each do |contact| %>
           <% created_at = contact.created_at.to_date.to_s %>

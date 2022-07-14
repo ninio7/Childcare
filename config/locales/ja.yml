@@ -53,7 +53,7 @@ ja:
           rain: "雨"
         status:
           published: "公開"
-          draft: "下書き保存"
+          draft: "下書き"
 
       absent:
         kind:

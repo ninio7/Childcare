@@ -1,6 +1,6 @@
 <div class="container">
   <%= link_to admin_customer_contacts_path(@customer) do %>
-    <h2 class="col-md-7 my-5 text-center under offset-md-2 text-dark"><i class="far fa-clipboard"></i> <%= @customer.name %> さんの連絡帳一覧</h2>
+    <h2 class="col-md-8 my-5 text-center under offset-md-2 text-dark"><%= @customer.name %>さん 連絡帳一覧</h2>
   <% end %>
   <div class="row d-flex justify-content-center">
     <div class="col-md-8 col-12 text-right">
@@ -12,15 +12,16 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-10 form-inline flex-row-reverse">
-  　<%= form_with url: admin_customer_contacts_path ,local: true, method: :get do |f| %>
-      <%= f.date_field :created_at_from ,class: "form-control"%> ~
-      <%= f.date_field :created_at_to,class: "form-control"%>
-      <%= button_tag :type => "submit", :class =>"btn btn-outline-secondary" do %>
+  <%= form_with url: admin_customer_contacts_path ,local: true, method: :get do |f| %>
+    <div class="form-inline offset-md-6">
+      <%= f.date_field :created_at_from ,class: "form-control date-w40"%>&ensp;~&ensp;
+      <%= f.date_field :created_at_to,class: "form-control date-w40"%>
+      <%= f.button :type => "submit", class: 'btn btn-outline-secondary' do %>
         <i class="fas fa-search"></i>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+
   <%= render "admin/contacts/index", contacts: @contacts %>
   <div class="text-center mx-auto">
     <%= paginate @contact_page %>

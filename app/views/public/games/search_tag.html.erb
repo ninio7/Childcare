@@ -9,9 +9,6 @@
       <h2 class="mb-5 mt-5 under">"<%= @tag.name %>"検索結果一覧<span>（全<%= @games.count %>件）</span></h2>
     </div>
     <% end %>
-    <div class="col text-right mb-5 mt-4">
-      <%= render 'layouts/sort_game', link: games_path, sort_games: @sort_games %>
-    </div>
   </div>
   <div class='row'>
     <div class='col d-flex justify-content offset-1 offset-md-0'>
@@ -28,7 +25,7 @@
            <%= render "public/favorites/btn" , game: game%>
           </span>
 
-        <!--一覧にタグを載せたい場合↓-->
+        <!--一覧にタグを載せたい場合-->
         <!--  <div class="row">-->
         <!--    <%# @tag_list.each do |list|%>-->
         <!--      <div>-->

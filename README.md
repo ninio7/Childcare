@@ -33,7 +33,10 @@
 https://docs.google.com/spreadsheets/d/19WgdfbKNuCy3r3OUmtFo-dI6e5_o6CNcHaVJa8YVZA4/edit?usp=sharing
 
 テーブル定義書  
-https://docs.google.com/spreadsheets/d/1DCXVUR1hDjGWjebLETgANCTnbPs1LlxxTnPu9XpPyo8/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1DCXVUR1hDjGWjebLETgANCTnbPs1LlxxTnPu9XpPyo8/edit?usp=sharing  
+
+ER図  
+https://drive.google.com/file/d/1R-TcSq63nYKvCIZc1pBNN7bFlfwdG-mi/view?usp=sharing
 
 ## 開発環境
 

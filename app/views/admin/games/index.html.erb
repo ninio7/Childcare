@@ -1,20 +1,23 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3 mt-5">
+  <div class="row mt-5">
+     <div class="col-md-3">
       <h2 class="under text-center">遊び集<span>（全<%= @games.count %>件）</span></h2>
-      <%= link_to new_admin_game_path do %>
-        <p class="btn btn-yellow text-secondary mt-3"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 新規登録</p>
+        <%= link_to new_admin_game_path do %>
+        <p class="btn btn-yellow text-secondary mt-2"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 新規登録</p>
       <% end %>
-    </div>
-    <div class="col text-right mb-5 mt-4">
+      </div>
+
+
+    <div class="col mb-5">
       <%= render 'layouts/sort_game', link: games_path , sort_games: @sort_games%>
     </div>
+
   </div>
   <div class='row'>
     <div class='col d-flex justify-content-start offset-2 offset-md-0'>
       <div class='row mb-5'>
         <% @games.each do |game| %>
-        <div class='card border border mr-3 mt-3'>
+        <div class='card border border mx-3 mt-3'>
           <%= link_to game_path(game) do %>
             <%= image_tag game.images[0] ,size: "240x160"%>
           <% end %>

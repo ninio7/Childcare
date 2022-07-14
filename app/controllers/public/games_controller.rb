@@ -13,7 +13,7 @@ class Public::GamesController < ApplicationController
     @sort_games = params[:sort_games]
     @game = Game.new
     @pages = Game.all.order(created_at: :desc).page(params[:page])
-    # @tag_list = Tag.all ←一覧にタグを表示させる場合
+    @tags = Tag.all 
   end
 
   def show

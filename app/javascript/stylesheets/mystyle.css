@@ -466,7 +466,7 @@ a.text-gray:hover, a.text-gray:focus {
 
 
 @media screen and (max-width: 576px){
-    .my-w40{
+    .date-w40{
         width: 40%;
     }
 }
