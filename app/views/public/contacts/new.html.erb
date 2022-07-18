@@ -69,8 +69,8 @@
     <strong class="info-title"><i class="fas fa-thermometer" style="color: darkseagreen;"></i> 検温</strong>
     <div class="field form-group row">
       <div class="col-md-4 mt-3 offset-4">
-        <%= f.text_field :temperture, placeholder: "温度", autofocus: true , size: "3x5"%><span>℃</span>
-        <%= f.time_field :tempertured_at, autofocus: true , class: "ml-3", required: true%>
+        <%= f.text_field :temperture, autofocus: true, placeholder: "体温", class: "col-lg-3 col-4 mr-1" %><span>℃</span>
+        <%= f.time_field :tempertured_at, autofocus: true , class: "ml-3",required: true%>
       </div>
     </div>
     <p class="border-top"></p>
@@ -80,7 +80,7 @@
         <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, class: "form-control " %>
       </div>
       <div class="col-3 mt-1 offset-md-1">
-        <%= f.text_field :defecation_number, autofocus: true , placeholder: "回数", size: "3x5"%>
+        <%= f.select :defecation_number, *[0..10] %><span class="ml-1">回</span>
       </div>
     </div>
     <p class="col border-top"></p>
