@@ -82,7 +82,7 @@
         <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, class: "form-control " %>
       </div>
       <div class="col-3 mt-3 offset-md-1 offset-4">
-        <%= f.select :defecation_number, *[0..10] %><span class="ml-1">回</span>
+        <%= f.select :defecation_number, *[0..5] %>
       </div>
     </div>
     <p class="col border-top"></p>

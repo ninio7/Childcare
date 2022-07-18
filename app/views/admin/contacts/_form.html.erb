@@ -71,10 +71,12 @@
 <p class="border-top"></p>
 <strong class="info-title"><i class="fas fa-thermometer" style="color: darkseagreen;"></i> 検温</strong>
 <div class="field form-group row">
-  <div class="col-md-6 col-xs-12 mt-3 offset-3 offset-md-4">
-   <%= f.text_field :temperture, placeholder: "体温", autofocus: true , size: "5x4", required: true%><span>℃</span>
-   <%= f.time_field :tempertured_at, autofocus: true , class: "ml-1", required: true%>
-  </div>
+  <div class="col-md-2 col-4 mt-3 offset-3 offset-md-4">
+        <%= f.text_field :temperture, autofocus: true, placeholder: "体温", class: "col-9 mr-1" %><span>℃</span>
+      </div>
+      <div class="col-3 mt-3">
+        <%= f.time_field :tempertured_at, autofocus: true, required: true%>
+      </div>
 </div>
 <p class="border-top"></p>
 <strong class="info-title"><i class="fas fa-poo" style="color: peru;"></i> 排便</strong>
@@ -82,8 +84,8 @@
   <div class="col-5 col-md-3 col-lg-2 offset-3 offset-md-4">
     <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, class: "form-control" %>
   </div>
-  <div class="col-xs-3 mt-1">
-    <%= f.text_field :defecation_number, autofocus: true , placeholder: "回数", size: "3x3"%>
+  <div class="col-3 mt-2 ml-3">
+    <%= f.select :defecation_number, *[0..5] %>
   </div>
 </div>
 <p class="border-top"></p>
