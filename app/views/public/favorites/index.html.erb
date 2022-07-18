@@ -1,6 +1,6 @@
 <div class="container">
-  <div class='row offset-lg-1'>
-    <h2 class="col-lg-6 under text-center my-5">お気に入り一覧<span>（全<%= @favorites.count %>件）</span></h2>
+  <div class='row'>
+    <h2 class="col-lg-7 under text-center my-5 offset-lg-3">お気に入り一覧<span>（全<%= @favorites_all_count %>件）</span></h2>
   </div>
   <div class='row d-flex justify-content-start'>
     <div class='row mb-5 offset-2 offset-lg-1 offset-sm-0'>
@@ -21,9 +21,9 @@
         <% end %>
       <% end %>
     </div>
-    <div class="text-center mx-auto">
-      <%= paginate @favorites %>
-    </div>
+  </div>
+  <div class="d-flex justify-content-center mx-auto">
+    <%= paginate @favorites %>
   </div>
 </div>
 

@@ -13,6 +13,7 @@ class Admin::GamesController < ApplicationController
     @games = Game.all.order(created_at: :desc).page(params[:page]).per(8)
     @sort_games = params[:sort_games]
     @tags= Tag.all
+    @games_all_count= Game.all.count
   end
 
   def create
