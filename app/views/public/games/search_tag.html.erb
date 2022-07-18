@@ -11,11 +11,11 @@
   <% end %>
   </div>
   <div class='row'>
-    <div class='row mb-5 offset-2 offset-lg-1 offset-md-0 offset-sm-1'>
+    <div class='row mb-5 offset-2 offset-lg-1 offset-sm-0'>
       <% @games.each do |game| %>
-        <div class='card border ml-2 mt-3'>
+        <div class='card border ml-3 mt-3'>
           <%= link_to game_path(game) do %>
-            <%= image_tag game.images[0] ,size: "230x160"%>
+            <%= image_tag game.images[0] ,size: "225x160"%>
           <% end %>
           <%= link_to game_path(game) , class: "text-secondary" do %>
             <%= game.title %>

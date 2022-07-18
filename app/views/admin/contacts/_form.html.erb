@@ -64,8 +64,8 @@
 <strong class="info-title"><i class="fas fa-bed" style="color: cadetblue;"></i> 午睡</strong>
 <div class="field form-group row">
   <div class="col-md-6 col-12 mt-3 offset-3 offset-md-4">
-    <%= f.time_field :nap_started_at, autofocus: true, required: true %> ～
-    <%= f.time_field :nap_finished_at, autofocus: true ,class: "mr-2", required: true%>
+    <%= f.time_field :nap_started_at, autofocus: true, required: true %> <span>～</span>
+    <%= f.time_field :nap_finished_at, autofocus: true, required: true%>
   </div>
  </div>
 <p class="border-top"></p>
@@ -80,7 +80,7 @@
 <strong class="info-title"><i class="fas fa-poo" style="color: peru;"></i> 排便</strong>
 <div class="field form-group row">
   <div class="col-5 col-md-3 col-lg-2 offset-3 offset-md-4">
-    <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, class: "form-control " %>
+    <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, class: "form-control" %>
   </div>
   <div class="col-xs-3 mt-1">
     <%= f.text_field :defecation_number, autofocus: true , placeholder: "回数", size: "3x3"%>

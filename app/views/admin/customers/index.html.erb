@@ -28,7 +28,6 @@
       <tbody>
       <% @customers.each do |customer| %>
         <tr onclick='window.location="<%= admin_customer_path(customer) %>"' role="link">
-          <!--<td><%#= customer.id %></td>-->
           <td><%= customer.name %></td>
           <td><%= customer.phone_number %></td>
           <td id="is_deleted<%= customer.id %>" class="text-success">

@@ -8,13 +8,13 @@
       </div>
     </div>
     <p class="border-top"></p>
-    <div class="row">
+    <div class="field form-group row">
       <div class="col-12">
         <strong class="info-title"><i class="fas fa-utensils" style="color: coral;"></i> 食事</strong>
       </div>
       <p class="col-md-2 mt-3">前日夕食</p>
       <div class="col-lg-3 col-md-4 offset-1 mt-3">
-        <%= f.text_area :dinner, placeholder: "内容",autofocus: true, size: "35x3"%>
+        <%= f.text_area :dinner, placeholder: "内容",autofocus: true, size: "33x3"%>
       </div>
       <div class="row">
         <div class="col-8 offset-lg-4 offset-md-3 offset-2">
@@ -26,9 +26,9 @@
       </div>
     </div>
     <div class="row">
-      <p class="col-md-2 mt-3">朝食</p>
+      <p class="col-md-2">朝食</p>
       <div class="col-lg-3 col-md-4 offset-1 mt-3">
-        <%= f.text_area :breakfast, placeholder: "内容",autofocus: true, size: "35x3"%>
+        <%= f.text_area :breakfast, placeholder: "内容",autofocus: true, size: "33x3"%>
       </div>
       <div class="row">
         <div class="col-8 offset-lg-4 offset-md-3 offset-2">
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <p class="col border-top"></p>
+    <p class="col border-top mt-3"></p>
     <strong class="info-title"><i class="far fa-smile" style="color: orange;"></i> 機嫌</strong>
     <div class="field form-group row ml-2">
       <div class="btn-group btn-group-toggle offset-4" data-toggle="buttons">
@@ -58,7 +58,7 @@
     <strong class="info-title"><i class="fas fa-bed" style="color: cadetblue;"></i> 睡眠</strong>
     <div class="field form-group row">
       <div class="col-md-4 col-lg-3 col-8 mt-3 offset-4">
-        <%= f.time_field :sleep_started_at, autofocus: true, required: true %> ～
+        <%= f.time_field :sleep_started_at, autofocus: true, required: true %> <span>～</span>
         <%= f.time_field :sleep_finished_at, autofocus: true ,class: "mr-2", required: true%>
       </div>
       <div class="col-md-3 col-lg-2 col-6 mt-3 offset-md-0 offset-4 ">
@@ -69,8 +69,8 @@
     <strong class="info-title"><i class="fas fa-thermometer" style="color: darkseagreen;"></i> 検温</strong>
     <div class="field form-group row">
       <div class="col-md-4 mt-3 offset-4">
-        <%= f.text_field :temperture, placeholder: "温度", autofocus: true , size: "3x5"%>  ℃
-        <%= f.time_field :tempertured_at, autofocus: true , class:"ml-3", required: true%>
+        <%= f.text_field :temperture, placeholder: "温度", autofocus: true , size: "3x5"%><span>℃</span>
+        <%= f.time_field :tempertured_at, autofocus: true , class: "ml-3", required: true%>
       </div>
     </div>
     <p class="border-top"></p>
