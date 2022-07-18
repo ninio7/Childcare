@@ -1,21 +1,20 @@
 <div class="container">
-  <h2 class="col-md-8 col-lg-5 mt-5 offset-md-3 under text-center">お知らせ一覧<span>（全<%= @news.count %>件）</span></h2>
+  <h2 class="mt-5 mb-3 col-lg-3 offset-lg-2 text-center under">お知らせ一覧</h2>
   <div class="row">
-
-     <div class="col-md-4 offset-md-6 text-right">
+    <div class="col-lg-4 offset-lg-2">
       <%= link_to  new_admin_news_path do %>
         <p class= "btn btn-yellow text-secondary"><i class="fas fa-edit" aria-hidden="true"></i> お知らせ作成</p>
       <% end %>
     </div>
   </div>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-8">
+    <div class="col-lg-8">
       <table class="table table-hover text-nowrap">
         <thead>
           <tr>
-            <th class="bg-green text-white">投稿日</th>
+            <th class="bg-green text-white" style="width: 30%">投稿日</th>
             <th class="bg-green text-white">タイトル</th>
-            <th class="bg-green text-white"></th>
+            <th class="bg-green text-white" style="width: 10%"></th>
         　</tr>
         </thead>
         <tbody>
@@ -32,7 +31,7 @@
         </tbody>
       </table>
     </div>
-    <div class="offset-md-8 offset-sm-6">
+    <div class="offset-lg-8 offset-sm-6">
     <%= paginate @news %>
   </div>
   </div>

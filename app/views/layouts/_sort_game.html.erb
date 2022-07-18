@@ -2,7 +2,7 @@
   <a class="btn btn-outline-secondary py-0" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">表示方法&ensp;<i class="fas fa-angle-down"></i></a>
 </p>
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-6">
     <div class="collapse multi-collapse" id="multiCollapseExample1">
       <div class="card card-body">
         <div class="col">
@@ -12,7 +12,7 @@
         </div>
         <div class="col mt-2">
           <%= form_with url: search_tag_path(tag_id: tag.id) ,local: true, method: :get do |f| %>
-            <%= f.select :tag_id,options_from_collection_for_select(@tags, :id, :name) , {}, class: "form-control", :onchange => 'this.form.submit()' %>
+            <%= f.select :tag_id,options_from_collection_for_select(@tags, :id, :name) , {prompt: 'タグ検索'}, class: 'form-control', :onchange => 'this.form.submit()' %>
           <% end %>
         </div>
         <div class="col mt-2">

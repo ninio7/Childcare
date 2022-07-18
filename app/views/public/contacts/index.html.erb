@@ -1,9 +1,9 @@
 <div class="container mb-5">
   <%= link_to contacts_path do %>
-    <h2 class="col-md-3 mt-5 text-center under offset-md-2 text-dark"><i class="far fa-clipboard"></i>&ensp;連絡帳一覧</h2>
+    <h2 class="col-lg-8 mt-5 mb-3 text-center under offset-lg-2 text-dark">連絡帳一覧</h2>
   <% end %>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-8 col-12 mt-3 text-right">
+    <div class="col-lg-8 col-md-12">
       <%= link_to new_contact_path do %>
         <p class= "btn btn-yellow text-secondary mr-3"> <i class="fas fa-edit" aria-hidden="true"></i> 連絡帳作成</p>
       <% end %>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <%= form_with url: contacts_path ,local: true, method: :get do |f| %>
-  <div class="form-inline offset-md-6">
+  <div class="form-inline offset-sm-3 offset-md-5 offset-lg-6">
     <%= f.date_field :created_at_from ,class: "form-control date-w40"%>&ensp;~&ensp;
     <%= f.date_field :created_at_to,class: "form-control date-w40"%>
     <%= f.button :type => "submit", class: 'btn btn-outline-secondary' do %>
@@ -22,12 +22,12 @@
   </div>
  <% end %>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-8 mt-3 d-flex justify-content-center">
+    <div class="col-lg-9 mt-2">
      <table class="table table-hover">
       <tbody>
         <thead>
-          <th class="bg-green text-white col-7">投稿日</th>
-          <th class="bg-green text-white col-5"></th>
+          <th class="bg-green text-white" style="width: 50%">投稿日</th>
+          <th class="bg-green text-white"></th>
         </thead>
         <% @contacts.each do |contact| %>
         <% created_at = contact.created_at.to_date.to_s %>
@@ -41,7 +41,7 @@
     </table>
    </div>
   </div>
-  <div class="offset-md-8 offset-sm-6">
+  <div class="offset-md-8 offset-sm-7 offset-3 mt-3">
     <%= paginate @contact_page %>
   </div>
 </div>

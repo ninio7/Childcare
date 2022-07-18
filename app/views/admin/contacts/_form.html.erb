@@ -63,7 +63,7 @@
   <p class="border-top"></p>
 <strong class="info-title"><i class="fas fa-bed" style="color: cadetblue;"></i> 午睡</strong>
 <div class="field form-group row">
-  <div class="col-md-3 col-12 mt-3 offset-3 offset-md-4">
+  <div class="col-md-6 col-12 mt-3 offset-3 offset-md-4">
     <%= f.time_field :nap_started_at, autofocus: true, required: true %> ～
     <%= f.time_field :nap_finished_at, autofocus: true ,class: "mr-2", required: true%>
   </div>
@@ -71,7 +71,7 @@
 <p class="border-top"></p>
 <strong class="info-title"><i class="fas fa-thermometer" style="color: darkseagreen;"></i> 検温</strong>
 <div class="field form-group row">
-  <div class="col-md-3 col-xs-12 mt-3 offset-3 offset-md-4">
+  <div class="col-md-6 col-xs-12 mt-3 offset-3 offset-md-4">
    <%= f.text_field :temperture, placeholder: "体温", autofocus: true , size: "5x4", required: true%><span>℃</span>
    <%= f.time_field :tempertured_at, autofocus: true , class: "ml-1", required: true%>
   </div>
@@ -79,7 +79,7 @@
 <p class="border-top"></p>
 <strong class="info-title"><i class="fas fa-poo" style="color: peru;"></i> 排便</strong>
 <div class="field form-group row">
-  <div class="col-5 col-md-2 offset-3 offset-md-4">
+  <div class="col-5 col-md-3 col-lg-2 offset-3 offset-md-4">
     <%= f.select :defecation,Contact.defecations.keys.map{|k| [I18n.t("enums.contact.defecation.#{k}"),k]} , {}, class: "form-control " %>
   </div>
   <div class="col-xs-3 mt-1">
@@ -99,5 +99,5 @@
   <div class="col d-flex justify-content-center mt-3">
     <%= f.text_area :comment, autofocus: true, rows: "5",  cols: "45" %>
   </div>
-  <p class="col-md-8 border-top mt-4"></p>
 </div>
+<p class="border-top mt-4"></p>

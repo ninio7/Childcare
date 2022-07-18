@@ -1,30 +1,36 @@
-<div class="container mb-5">
-  <div class="row d-flex justify-content-center">
-    <h2 class="col-md-5 mt-5 text-center under"><i class="far fa-clipboard"></i>&emsp;欠席・遅刻連絡<span>（全<%= @absents.count %>件）</span></h2>
-     <div class="col-md-3 text-right mt-5 ">
+<div class="container">
+  <h2 class="col-lg-8 mt-5 mb-3 text-center under offset-lg-2">欠席・遅刻連絡<span>（全<%= @absents.count %>件）</span></h2>
+  <div class="row">
+    <div class="col-lg-3 offset-lg-2">
       <%= link_to new_absent_path do %>
         <p class= "btn btn-yellow text-secondary"><i class="fas fa-edit" aria-hidden="true"></i> 欠席・遅刻連絡</p>
       <% end %>
     </div>
   </div>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-8 mt-5">
+    <div class="col-lg-8 mt-5">
       <table class="table table-hover">
         <tbody>
-          <% @absents.each do |absent| %>
-          <% date = absent.created_at.to_s(:detetime)%>
+          <thead>
+            <th class="bg-green text-white">投稿日</th>
+            <th class="bg-green text-white"></th>
+          </thead>
+        <% @absents.each do |absent| %>
+            <% date = absent.created_at.to_s(:detetime)%>
             <tr>
               <td>
                 <%= link_to absent_path(absent) do %>
-                  <p class="text-secondary mt-1 mb-0"><i class="fas fa-square"></i>&emsp;<%= l(absent.created_at, format: :short) %></p>
+                  <span class="text-dark"><%= l(absent.created_at, format: :short) %></span>
                 <% end %>
               </td>
+              <td><%= absent.kind_i18n %>連絡</td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class="offset-md-8 offset-sm-6">
+  </div>
+  <div class="offset-lg-8 offset-sm-6">
     <%= paginate @absents %>
   </div>
-  </div>
+</div>

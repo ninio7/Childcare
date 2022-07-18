@@ -1,4 +1,4 @@
-  <% if contact.status == "published" || admin_signed_in?%>
+<% if contact.status == "published" || admin_signed_in?%>
   <p class="mt-5"><strong class="info-title"><i class="fas fa-utensils" style="color: coral;"></i> 昼食</strong></p>
   <div class="field form-group row ">
     <div class="col-md-3 col-5 offset-4">
@@ -63,17 +63,17 @@
   <p class="col border-top"></p>
   <strong class="info-title"><i class="fas fa-thermometer" style="color: darkseagreen;"></i> 検温</strong>
   <div class="field form-group row">
-    <div class="col-md-1 col-3 offset-4 mt-3">
+    <div class="col-md-2 col-3 offset-4 mt-3">
      <%= contact.temperture %>  ℃
     </div>
     <div class="col-md-3 col-2 offset-1 mt-3">
        <%= contact.tempertured_at.strftime('%H:%M') %>
-      </div>
+    </div>
   </div>
   <p class="col border-top"></p>
   <strong class="info-title"><i class="fas fa-poo" style="color: peru;"></i> 排便</strong>
   <div class="field form-group row">
-    <div class="col-md-1 col-4 offset-4 mt-3">
+    <div class="col-md-2 col-4 offset-4 mt-3">
       <%= contact.defecation_i18n %>
     </div>
     <div class="col-md-3 col-3 offset-md-1 mt-3">
@@ -82,30 +82,31 @@
   </div>
   <p class="col border-top"></p>
   <strong class="info-title"><i class="fas fa-camera" style="color: gray;"></i> 写真</strong>
-  <div class="field form-group row">
-    <div class="offset-md-3"></div>
-    <% if contact.images.present? %>
-      <% contact.images.each do |image| %>
-        <div class='mt-1 d-flex justify-content-start offset-4 offset-md-1'>
-          <%= image_tag(image, width:150) %>
-        </div>
+  <div class='row'>
+    <div class='row mb-5  offset-4 offset-md-4 offset-lg-4'>
+      <% if contact.images.present? %>
+        <% contact.images.each do |image| %>
+          <div class='mr-3 mt-3'>
+            <%= image_tag(image, width:180) %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
   <p class="col border-top"></p>
   <strong class="info-title"><i class="far fa-comment" style="color: lightcoral;"></i> コメント</strong>
   <div class="field form-group row">
-     <div class="col-md-5 offset-1 offset-md-4 mb-5 mt-3">
+     <div class="col-md-5 offset-1 offset-sm-4 offset-md-4 mb-5 mt-3">
       <%=safe_join(contact.comment.split("\n"),tag(:br))%>
      </div>
   </div>
   <% if admin_signed_in? %>
     <div class="row">
-      <div class="col-md-1 col-4 offset-1 offset-md-4 mt-3 border border-gray rounded-pill text-center pt-1">
-        <%= contact.status_i18n  %>
+      <div class="col-md-2 col-5 offset-1 offset-md-4 mt-3 border border-gray rounded-pill text-center pt-2">
+        <%= contact.status_i18n %>
       </div>
       <div class="col-md-6 col-6 mt-3">
-        <%= link_to "編集する", edit_admin_customer_contact_path(contact.customer_id, contact.id), class: "btn btn-gray text-white rounded-pill col-md-3" %>
+        <%= link_to "編集する", edit_admin_customer_contact_path(contact.customer_id, contact.id), class: "btn btn-gray text-white rounded-pill col-md-5 col-lg-4" %>
       </div>
     </div>
   <% end %>

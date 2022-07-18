@@ -1,47 +1,47 @@
 <div class="container">
-  <h2 class="my-5 col-md-4 offset-md-3 text-center under">欠席・遅刻連絡</h2>
+  <h2 class="mt-5 col-lg-6 offset-lg-3 text-center under">欠席・遅刻連絡</h2>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-4 col-7 mt-3 text-left">
+    <div class="col-12 mt-3 text-center">
       <h4><%=I18n.l(@absent.created_at, format: :short) %></h4>
     </div>
-    <div class="col-md-4 col-5 mt-3">
+    <div class="col-12 mt-3 text-center">
       <h4><%= @absent.child.name %> さん</h4>
     </div>
   </div>
-  <p class="col-md-8 border-top mt-5 offset-md-1"></p>
+  <p class="col-lg-8 border-top mt-5 offset-lg-2"></p>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-1">
+    <div class="col-lg-1">
       <strong class="info-title"><i class="far fa-check-circle" style="color: coral;"></i> 種別</strong>
     </div>
-    <div class="col-md-4 mt-5 mb-4 offset-md-2 offset-5">
+    <div class="col-lg-4 mt-5 mb-4 offset-lg-2 offset-5">
       <%= @absent.kind_i18n %>
     </div>
   </div>
-  <p class="col-md-8 border-top mt-3 offset-md-1"></p>
+  <p class="col-lg-8 border-top mt-3 offset-lg-2"></p>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-1">
+    <div class="col-lg-1">
       <strong class="info-title"><i class="far fa-calendar-alt" style="color: gold;"></i> 期間</strong>
     </div>
-    <div class="col-md-4 mt-5 mb-4  offset-md-2 offset-5">
+    <div class="col-lg-4 mt-5 mb-4  offset-lg-2 offset-sm-4 offset-3">
       <%= @absent.started_on %> ～
       <%= @absent.finished_on%>
     </div>
   </div>
-  <p class="col-md-8 border-top mt-3 offset-md-1"></p>
+  <p class="col-lg-8 border-top mt-3 offset-lg-2"></p>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-1">
+    <div class="col-lg-1">
      <strong class="info-title"><i class="fas fa-notes-medical" style="color: skyblue;"></i> 症状</strong>
     </div>
-    <div class="col-md-4 mt-5 mb-4  offset-md-2 offset-5">
+    <div class="col-lg-4 mt-5 mb-4  offset-lg-2 offset-sm-4 offset-3">
      <%= @absent.symptom %>
     </div>
   </div>
-  <p class="col-md-8 border-top mt-3 offset-md-1"></p>
+  <p class="col-lg-8 border-top mt-3 offset-lg-2"></p>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-1">
+    <div class="col-lg-1">
       <strong class="info-title"><i class="far fa-comment" style="color: lightcoral;"></i> 備考</strong>
     </div>
-    <div class="col-md-4 mt-5 mb-4  offset-md-2 offset-5">
+    <div class="col-lg-4 mt-5 mb-4  offset-lg-2 offset-sm-4 offset-3">
       <%= @absent.note %>
     </div>
   </div>

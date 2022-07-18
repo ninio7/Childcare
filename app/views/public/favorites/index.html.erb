@@ -1,29 +1,29 @@
 <div class="container">
-  <div class='row'>
-  <h2 class="col-md-6 under text-center mt-5">遊び集　お気に入り一覧<span>（全<%= @favorites.count %>件）</span></h2>
-      <div class='col-md-12 justify-content-end'>
-        <div class='row px-md-0 ml-2 mt-5'>
-       <% if @favorites.exists? %>
-          <% @favorites.each do |favorite| %>
-            <div class='card mx-1 border border-0 mr-3'>
-          <%= link_to game_path(favorite.game_id) do %>
-           <%= image_tag favorite.game.images[0],size: "240x160" %>
-          <% end %>
-          <%= link_to game_path(favorite.game_id), class:"text-secondary" do %>
-            <%= favorite.game.title %>
-          <% end %>
-          <%= link_to game_path(favorite.game_id) , class:"text-secondary" do %>
-            <i class="fas fa-heart" aria-hidden="true" style="color:red;"></i>
-            <%= favorite.game.favorites.count %> いいね
-          <% end %>
-            </div>
-          <% end %>
-          <% end %>
-        </div>
-        <div class="text-center mx-auto">
-         <%= paginate @favorites %>
-        </div>
-      </div>
+  <div class='row offset-lg-1'>
+    <h2 class="col-lg-6 under text-center my-5">お気に入り一覧<span>（全<%= @favorites.count %>件）</span></h2>
+  </div>
+  <div class='row d-flex justify-content-start'>
+    <div class='row mb-5 offset-2 offset-lg-1 offset-sm-0'>
+      <% if @favorites.exists? %>
+        <% @favorites.each do |favorite| %>
+          <div class='card border ml-3 mt-3'>
+            <%= link_to game_path(favorite.game_id) do %>
+             <%= image_tag favorite.game.images[0],size: "225x160" %>
+            <% end %>
+            <%= link_to game_path(favorite.game_id), class: "text-secondary" do %>
+              <%= favorite.game.title %>
+            <% end %>
+            <%= link_to game_path(favorite.game_id) , class:"text-secondary" do %>
+              <i class="fas fa-heart" aria-hidden="true" style="color:red;"></i>
+              <%= favorite.game.favorites.count %> いいね
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
+    <div class="text-center mx-auto">
+      <%= paginate @favorites %>
+    </div>
+  </div>
 </div>
 

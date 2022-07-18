@@ -1,30 +1,28 @@
 <div class="container">
   <div class="row">
-    <% if params[:title].present? %>
-      <div class="col-md-7 mt-5 text-center offset-md-1">
-        <h2 class="mb-5 mt-5 under">"<%= @game_title %>" 検索結果<span>（全<%= @games.count %>件）</span></h2>
-      </div>
-    <% elsif params[:tag_id].present?%>
-    <div class="col-md-7 mt-5 text-center offset-md-1">
-      <h2 class="mb-5 mt-5 under">"<%= @tag.name %>"検索結果一覧<span>（全<%= @games.count %>件）</span></h2>
+  <% if params[:title].present? %>
+    <div class="col-lg-7 mt-5 text-center offset-lg-1">
+      <h2 class="mb-5 mt-5 under">"<%= @game_title %>" 検索結果<span>（全<%= @games.count %>件）</span></h2>
     </div>
-    <% end %>
+  <% elsif params[:tag_id].present?%>
+    <div class="col-lg-7 mt-5 text-center offset-lg-1">
+      <h2 class="mb-5 mt-5 under">"<%= @tag.name %>"検索結果<span>（全<%= @games.count %>件）</span></h2>
+    </div>
+  <% end %>
   </div>
   <div class='row'>
-    <div class='col d-flex justify-content offset-1 offset-md-0'>
-      <div class='row mb-5'>
-        <% @games.each do |game| %>
-        <div class='card border mx-3 my-3'>
+    <div class='row mb-5 offset-2 offset-lg-1 offset-md-0 offset-sm-1'>
+      <% @games.each do |game| %>
+        <div class='card border ml-2 mt-3'>
           <%= link_to game_path(game) do %>
-            <%= image_tag game.images[0] ,size: "240x160"%>
+            <%= image_tag game.images[0] ,size: "230x160"%>
           <% end %>
-          <%= link_to game_path(game) , class:"text-secondary" do %>
+          <%= link_to game_path(game) , class: "text-secondary" do %>
             <%= game.title %>
           <% end %>
-          <span id = "game_<%= game.id %>">
+          <span id= "game_<%= game.id %>">
            <%= render "public/favorites/btn" , game: game%>
           </span>
-
         <!--一覧にタグを載せたい場合-->
         <!--  <div class="row">-->
         <!--    <%# @tag_list.each do |list|%>-->
@@ -34,11 +32,10 @@
         <!--    <%# end %>-->
         <!--  </div>-->
         </div>
-        <% end %>
-      </div>
-      <div class="text-center mx-auto">
-        <%= paginate @games %>
-      </div>
+      <% end %>
+    </div>
+    <div class="text-center mx-auto">
+      <%= paginate @games %>
     </div>
   </div>
 </div>

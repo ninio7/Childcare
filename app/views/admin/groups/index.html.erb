@@ -1,14 +1,14 @@
 <div class="container">
-  <h2 class="col-md-5 offset-md-3 mt-5 text-center under">クラス登録/一覧</h2>
+  <h2 class="col-lg-5 offset-lg-3 mt-5 text-center under">クラス登録/一覧</h2>
   <div class="ml-4 mt-5" id="new">
     <%= render "form", group: @group %>
   </div>
   <div class="row">
-  <div id="index" class="mt-4 col-md-7 col-xs-10 offset-md-2">
+  <div id="index" class="mt-4 col-lg-7 col-xs-10 offset-lg-2">
     <%= render "index", groups: @groups %>
   </div>
   </div>
-  <div class="col offset-md-8 offset-3 mt-5">
+  <div class="col offset-lg-8 offset-3 mt-5">
     <%= paginate @groups %>
   </div>
 </div>

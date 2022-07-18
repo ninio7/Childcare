@@ -1,53 +1,63 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mt-5 offset-md-1">
+    <div class="col-lg-10 mt-5 offset-lg-1">
       <%= form_with(model: @customer, url: customer_path, method: :patch, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
       <div class="row">
-        <h4 class="col-md-8 mb-3"><strong class="info-title">マイページ編集</strong></h4>
+        <h4 class="col-lg-8 mb-3"><strong class="info-title">マイページ編集</strong></h4>
       </div>
-      <div class="row needs-validation novalidate">
-        <div class="col mb-5 p-5 my-page-info">
-          <%= f.label :"氏名", class:"col-md-3 control-label mt-3" %>
-          <%= f.text_field :name, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" , required: true %><br>
-          <div class="invalid-feedback row offset-md-3 offset-1">
-           氏名を入力してください。
+      <div class="col mb-5 p-5 my-page-info g-3 needs-validation novalidate">
+        <div class="field form-group">
+          <%= f.label :"氏名" , class: "col-lg-3 col-md-5"%>
+          <%= f.text_field :name, autofocus: true, class: 'col-md-6 col-lg-5 input_area', required: true %>
+          <div class="invalid-feedback row offset-1 offset-md-5 offset-lg-3">
+            氏名を入力してください。
           </div>
+        </div>
 
-          <%= f.label :"ふりがな", class:"col-md-3 control-label mt-3" %>
-          <%= f.text_field :kana_name, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area", required: true  %><br>
-          <div class="invalid-feedback row offset-md-3 offset-1">
-           ふりがなを入力してください。
+        <div class="field form-group">
+          <%= f.label :"ふりがな" , class: "col-lg-3 col-md-5"%>
+          <%= f.text_field :kana_name, autofocus: true, class: 'input_area col-md-6 col-lg-5', required: true %>
+          <div class="invalid-feedback row offset-1 offset-md-5 offset-lg-3">
+            ふりがなを入力してください。
           </div>
+        </div>
 
-          <%= f.label :"郵便番号", class:"col-md-3 control-label mt-3" %>
-          <%= f.text_field :postal_code, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area", required: true  %><br>
-          <div class="invalid-feedback row offset-md-3 offset-1">
-           郵便番号を入力してください。
+        <div class="field form-group">
+          <%= f.label :"メールアドレス", class: "col-lg-3 col-md-5" %>
+          <%= f.text_field :email, autofocus: true, autocomplete: "email" ,　autofocus: true, class: 'input_area col-md-6 col-lg-5', required: true %>
+          <div class="invalid-feedback row offset-1 offset-md-5 offset-lg-3">
+            メールアドレスを入力してください。
           </div>
+        </div>
 
-          <%= f.label :"住所", class:"col-md-3 control-label mt-3" %>
-          <%= f.text_field :address, autofocus: true, class:"col-md-5 ml-1 form-control-static input_area" , required: true %><br>
-          <div class="invalid-feedback row offset-md-3 offset-1">
-           住所を入力してください。
+        <div class="field form-group">
+          <%= f.label :"郵便番号", class: "col-lg-3 col-md-5" %>
+          <%= f.text_field :postal_code, autofocus: true, class: 'input_area col-md-6 col-lg-5', required: true %>
+          <div class="invalid-feedback row offset-1 offset-md-5 offset-lg-3">
+            郵便番号を入力してください。
           </div>
+        </div>
 
-          <%= f.label :"電話番号", class:"col-md-3 control-label mt-3" %>
-          <%= f.text_field :phone_number, autofocus: true, class:"col-md-3 ml-1 form-control-static input_area" , required: true %><br>
-          <div class="invalid-feedback row offset-md-3 offset-1">
-           電話番号を入力してください。
+        <div class="field form-group">
+          <%= f.label :"住所", class: "col-lg-3 col-md-5" %>
+          <%= f.text_field :address, autofocus: true, class: 'input_area col-md-6 col-lg-5', required: true %>
+          <div class="invalid-feedback row offset-1 offset-md-5 offset-lg-3">
+            住所を入力してください。
           </div>
+        </div>
 
-          <%= f.label :"メールアドレス", class:"col-md-3 control-label mt-3" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-md-5 ml-1 form-control-static input_area", required: true  %>
-          <div class="invalid-feedback row offset-md-3 offset-1">
-           メールアドレスを入力してください。
-          </div>
-          <div class="row mt-3">
-            <div class="col-md-8 offset-md-6 text-center">
-              <%= button_tag(type: "submit", class:"btn btn-gray text-white") do %>
-                編集内容を保存
-              <% end %>
-            </div>
+        <div class="field form-group">
+          <%= f.label :"電話番号" , class: "col-lg-3 col-md-5" %>
+          <%= f.text_field :phone_number, autofocus: true, class: 'input_area col-md-6 col-lg-5', required: true %>
+           <div class="invalid-feedback row offset-1 offset-md-5 offset-lg-3">
+            電話番号を入力してください。
+           </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-8 offset-md-6 text-center">
+            <%= button_tag(type: "submit", class: "btn btn-gray text-white") do %>
+              編集内容を保存
+            <% end %>
           </div>
         </div>
       </div>
