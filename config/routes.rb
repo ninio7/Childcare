@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
     resources :contacts, only: [:index, :new, :create, :edit, :update, :destroy]
     get 'contact', to: 'contacts#show', as: 'show_contact'
-    resources :absents, only: [:index, :show, :create,:new]
+    resources :absents, only: [:index, :show, :create, :new, :destroy]
     resources :customers, only:[:show, :edit, :update]
     resources :notifications, only:[:index]
     resources :favorites, only:[:index]

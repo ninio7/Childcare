@@ -14,16 +14,16 @@
           <thead>
             <th class="bg-green text-white">投稿日</th>
             <th class="bg-green text-white"></th>
+            <th class="bg-green text-white"></th>
           </thead>
         <% @absents.each do |absent| %>
             <% date = absent.created_at.to_s(:detetime)%>
-            <tr>
+            <tr onclick='window.location="<%= absent_path(absent)  %>"' role="link">
               <td>
-                <%= link_to absent_path(absent) do %>
-                  <span class="text-dark"><%= l(absent.created_at, format: :short) %></span>
-                <% end %>
+                <span class="text-dark"><%= l(absent.created_at, format: :short) %></span>
               </td>
               <td><%= absent.kind_i18n %>連絡</td>
+              <td class="text-right"><%= link_to "削除", absent_path(absent), class: "btn btn-outline-danger rounded-pill", method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %></td>
             </tr>
           <% end %>
         </tbody>

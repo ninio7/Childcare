@@ -17,10 +17,8 @@ class Public::AbsentsController < ApplicationController
   def create
   @absent = Absent.new(absent_params)
   @absent.customer_id = current_customer.id
-  # 管理者は1人しか存在しないハズ
-  # なのでfirstで1件のみを取得するので十分なハズ
+  # 管理者は1人しか存在しないでfirstで1件のみを取得する
   target_admin = Admin.first
-
     if @absent.save
       @absent.create_notification_by_customer(current_customer, target_admin)
       flash[:notice]="新規登録しました"
@@ -28,6 +26,12 @@ class Public::AbsentsController < ApplicationController
     else
        render :new
     end
+  end
+
+  def destroy
+    @absent = Absent.find(params[:id])
+    @absent.destroy
+    redirect_to absents_path
   end
 
 
