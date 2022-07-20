@@ -1,3 +1,4 @@
 $("#index").html("<%= j(render 'admin/groups/index', groups: @groups) %>");
 $("textarea").val("");
 $("input").val("");
+$("#group_form").removeClass("was-validated");

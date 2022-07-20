@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :groups
     resources :notifications, only:[:index]
     get "search_tag"=>"games#search_tag"
+    resources :events
   end
 
    # 会員用

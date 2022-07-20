@@ -1,10 +1,11 @@
 <div class="container">
   <h2 class="mt-5 mb-3 col-lg-3 offset-lg-2 text-center under">お知らせ一覧</h2>
   <div class="row">
-    <div class="col-lg-4 offset-lg-2">
+    <div class="col-lg-5 offset-lg-2">
       <%= link_to  new_admin_news_path do %>
         <p class= "btn btn-yellow text-secondary"><i class="fas fa-edit" aria-hidden="true"></i> お知らせ作成</p>
       <% end %>
+      <span class="h2 ml-3"><%= link_to admin_events_path do %><span class="text-secondary"><i class="far fa-calendar-alt"></i></span><% end %></span>
     </div>
   </div>
   <div class="row d-flex justify-content-center">
@@ -20,11 +21,9 @@
         <tbody>
           <% @news.each do |news| %>
           <% date = news.created_at.to_s(:detetime)%>
-            <tr>
-              <td>
-               <%= link_to admin_news_path(news) do %><p class="text-secondary"><%= I18n.l(news.created_at, format: :short) %></p><% end %>
-              </td>
-              <td><%= link_to admin_news_path(news) do %><p class="text-secondary"><%= news.title %></p><% end %></td>
+            <tr onclick='window.location="<%= admin_news_path(news) %>"' role="link">
+              <td><%= I18n.l(news.created_at, format: :short) %></td>
+              <td><%= news.title %></td>
               <td><%= link_to "削除", admin_news_path(news), class: "btn btn-outline-danger rounded-pill ml-3", method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %></td>
             </tr>
           <% end %>
@@ -32,7 +31,8 @@
       </table>
     </div>
     <div class="offset-lg-8 offset-sm-6">
-    <%= paginate @news %>
+      <%= paginate @news %>
+    </div>
   </div>
-  </div>
+</div>
 

@@ -466,9 +466,9 @@ a.text-gray:hover, a.text-gray:focus {
 
 
 @media screen and (max-width: 576px){
-    .date-w40{
-        width: 40%;
-    }
+  .date-w40{
+    width: 40%;
+  }
 }
 
 .hoge {
@@ -478,7 +478,36 @@ a.text-gray:hover, a.text-gray:focus {
 
 
 @media screen and (min-width: 485px){
-    .games_card{
-       margin-right: 15px 
-    }
+  .games_card{
+    margin-right: 15px
+  }
+}
+
+.day {
+  height: 100px;
+  width: 14%;
+}
+
+.today {
+  background: #FFFFC0
+}
+
+.prev-month {
+  background: #DDD;
+}
+
+.next-month {
+  background: #DDD;
+}
+
+.event-font {
+  font-size: 1px;
+}
+
+.holiday{
+    color: #dc3545;
+}
+
+.holiday_name{
+    font-size: 1px;
 }

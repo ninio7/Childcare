@@ -2,15 +2,16 @@
   <h2 class="col-lg-5 offset-lg-3 mt-5 text-center under">クラス編集</h2>
   <div class="ml-4 mt-5">
     <%= form_with(model: @group,url: admin_group_path(@group), local: false, class: 'needs-validation', html: {novalidate: true}) do |f| %>
-   <div class="form-group row">
-      <%= f.label:"クラス名" , class: "col-lg-2 offset-lg-2 col-md-2 col-5"%>
-      <%= f.text_field :name, autofocus: true,class: 'form-control col-lg-4 col-md-8 col-11' , required: true%>
-      <div class="invalid-feedback row offset-lg-4 offset-md-2 offset-1">
-        名前を入力してください。
+      <div class="form-group row">
+        <%= f.label:"クラス名" , class: "col-lg-2 offset-lg-2 col-md-2 col-5"%>
+        <%= f.text_field :name, autofocus: true,class: 'form-control col-lg-4 col-md-8 col-11' , required: true%>
+        <div class="invalid-feedback row offset-lg-4 offset-md-2 offset-1">
+          名前を入力してください。
+        </div>
       </div>
+      <div class="col text-center">
+        <%= f.submit "変更", class: "btn btn-gray text-white rounded-pill mt-3 col-lg-2 col-md-3 col-6" %>
+      </div>
+    <% end %>
   </div>
-    <div class="col text-center">
-      <%= f.submit "変更", class: "btn btn-gray text-white rounded-pill mt-3 col-lg-2 col-md-3 col-6" %>
-    </div>
-  <% end %>
- </div>
+</div>

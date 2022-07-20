@@ -63,3 +63,5 @@ gem 'rails-i18n'
 group :production do
   gem 'mysql2'
 end
+gem "simple_calendar", "~> 2.4"
+gem "holiday_japan"

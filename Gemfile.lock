@@ -97,6 +97,7 @@ GEM
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    holiday_japan (1.4.4)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -204,6 +205,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    simple_calendar (2.4.3)
+      rails (>= 3.0)
     spring (3.1.1)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
@@ -253,6 +256,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   enum_help
+  holiday_japan
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)
   listen (~> 3.3)
@@ -264,6 +268,7 @@ DEPENDENCIES
   rails-i18n
   sass-rails (>= 6)
   selenium-webdriver
+  simple_calendar (~> 2.4)
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
