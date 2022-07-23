@@ -1,6 +1,7 @@
 class News < ApplicationRecord
   belongs_to :admin
-  belongs_to :group
+  has_many :news_groups, dependent: :destroy
+  has_many :groups, through: :news_groups
   has_many :notifications, dependent: :destroy
 
   # 管理者がお知らせを作った時
@@ -13,11 +14,11 @@ class News < ApplicationRecord
       )
     notification.save if notification.valid?
   end
-  
-  
+
+
   validates :title, presence: true, length: {maximum: 20}
   validates :body, presence: true
   validates :started_on, presence: true
   validates :finished_on, presence: true
-  
+
 end

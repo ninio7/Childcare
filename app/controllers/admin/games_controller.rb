@@ -1,5 +1,6 @@
 class Admin::GamesController < ApplicationController
   before_action :authenticate_admin!
+  
   def new
     @game =Game.new
   end
@@ -63,7 +64,7 @@ class Admin::GamesController < ApplicationController
       @games = Game.order(favorite: "DESC").page(params[:page]).per(8)
     when "low_favorite"
       @games =Game.order(favorite: "ASC").page(params[:page]).per(8)
-    else # default(new)
+    else
       @games = Game.latest.page(params[:page]).per(8)
     end
   end

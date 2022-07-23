@@ -1,6 +1,6 @@
 require "test_helper"
 
-class EventTest < ActiveSupport::TestCase
+class NewsGroupTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,37 +1,44 @@
 <div class="container">
-  <h2 class="mt-5 mb-3 col-lg-3 offset-lg-2 text-center under">お知らせ一覧</h2>
-  <div class="row">
-    <div class="col-lg-5 offset-lg-2">
-      <%= link_to  new_admin_news_path do %>
-        <p class= "btn btn-yellow text-secondary"><i class="fas fa-edit" aria-hidden="true"></i> お知らせ作成</p>
+  <div class="row mt-5">
+    <div class="col col-lg-7 mt-5">
+      <%= month_calendar(attribute: :started_on, end_attribute: :finished_on, events: @news) do |date, news|%>
+        <%= date.day %>
+        <% is_holiday_name = HolidayJapan.name(Date.new(date.year, date.month, date.day)) %>
+        <span class="holiday_name"><%= is_holiday_name %></span>
+        <% news.each do |news| %>
+          <div class="event-font">
+            <%= link_to admin_news_path(news) do %><span class="text-secondary bg-yellow"><%= news.title %></span><% end %>
+          </div>
+        <% end %>
       <% end %>
-      <span class="h2 ml-3"><%= link_to admin_events_path do %><span class="text-secondary"><i class="far fa-calendar-alt"></i></span><% end %></span>
     </div>
-  </div>
-  <div class="row d-flex justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-5">
+      <% if admin_signed_in? %>
+        <%= link_to  new_admin_news_path do %>
+         <p class= "btn btn-yellow text-secondary"><i class="fas fa-edit" aria-hidden="true"></i> お知らせ作成</p>
+        <% end %>
+      <% end %>
       <table class="table table-hover text-nowrap">
         <thead>
           <tr>
-            <th class="bg-green text-white" style="width: 30%">投稿日</th>
+            <th class="bg-green text-white" style="width: 30%">日付</th>
             <th class="bg-green text-white">タイトル</th>
-            <th class="bg-green text-white" style="width: 10%"></th>
         　</tr>
         </thead>
         <tbody>
           <% @news.each do |news| %>
           <% date = news.created_at.to_s(:detetime)%>
+          <% week = %w(日 月 火 水 木 金 土)[news.started_on.wday]%>
             <tr onclick='window.location="<%= admin_news_path(news) %>"' role="link">
-              <td><%= I18n.l(news.created_at, format: :short) %></td>
+              <td><%= news.started_on.strftime("%Y年%m月%d日(#{week})") %></td>
               <td><%= news.title %></td>
-              <td><%= link_to "削除", admin_news_path(news), class: "btn btn-outline-danger rounded-pill ml-3", method: :delete, "data-confirm" => "本当に削除してよろしいですか?" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-    </div>
-    <div class="offset-lg-8 offset-sm-6">
-      <%= paginate @news %>
+      <div class="d-flex justify-content-center mx-auto">
+        <%= paginate @news %>
+      </div>
     </div>
   </div>
 </div>

@@ -484,7 +484,7 @@ a.text-gray:hover, a.text-gray:focus {
 }
 
 .day {
-  height: 100px;
+  height: 80px;
   width: 14%;
 }
 
@@ -500,6 +500,10 @@ a.text-gray:hover, a.text-gray:focus {
   background: #DDD;
 }
 
+.wday-0 {
+    color:#dc3545;
+  }
+
 .event-font {
   font-size: 1px;
 }
@@ -511,3 +515,12 @@ a.text-gray:hover, a.text-gray:focus {
 .holiday_name{
     font-size: 1px;
 }
+
+
+
+@media screen and (max-width: 485px){
+   .simple-calendar td{
+      padding: 4px;
+    }
+  }
+

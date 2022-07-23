@@ -1,5 +1,7 @@
 class Public::AbsentsController < ApplicationController
-  before_action :authenticate_customer!, except: [:show]
+  before_action :authenticate_customer!,except: [:show]
+  before_action :is_login?, only: [:show]
+
   def new
     @customer = current_customer
     @absent = Absent.new
@@ -12,6 +14,9 @@ class Public::AbsentsController < ApplicationController
 
   def show
     @absent = Absent.find(params[:id])
+    if !current_admin.present? && current_customer.id != @absent.customer_id
+      redirect_to absents_path
+    end
   end
 
   def create
@@ -40,4 +45,11 @@ class Public::AbsentsController < ApplicationController
   def absent_params
     params.require(:absent).permit(:customer_id, :child_id, :admin_id, :kind, :started_on, :finished_on, :symptom, :note )
   end
+
+  def is_login?
+    if !current_customer.present? && !current_admin.present?
+      redirect_to customer_session_path
+    end
+  end
+
 end

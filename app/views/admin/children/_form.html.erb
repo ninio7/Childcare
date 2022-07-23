@@ -3,7 +3,7 @@
     <%= form_with(model: child, url: admin_customer_children_path, local: false, class: 'needs-validation', html: {id: "child_form", novalidate: true}) do |f| %>
     <div class="form-group row">
       <%= f.label :"名前" , class: "col-lg-3 col-3"%>
-      <%= f.text_field :name, autofocus: true,class:'form-control col-lg-6 col-8', required: true %>
+      <%= f.text_field :name, autofocus: true, class: 'form-control col-lg-6 col-8', required: true %>
       <div class="invalid-feedback row offset-lg-3 offset-md-3 offset-1">
         名前を入力してください。
       </div>

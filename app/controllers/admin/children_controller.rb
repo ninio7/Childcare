@@ -1,5 +1,6 @@
 class Admin::ChildrenController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
     @children = Child.where(customer_id:params[:customer_id])
     @child = Child.new
@@ -42,7 +43,7 @@ class Admin::ChildrenController < ApplicationController
     @children = Child.where(customer_id:params[:customer_id])
   end
 
-private
+  private
 
   def child_params
     params.require(:child).permit(:name, :kana_name, :group_id, :birthday, :customer_id)

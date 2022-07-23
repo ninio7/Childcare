@@ -1,5 +1,7 @@
 class Public::ContactsController < ApplicationController
-  before_action :authenticate_customer!, only: [:new, :index]
+  before_action :authenticate_customer!,except: [:show]
+  before_action :is_login?, only: [:show]
+
   def new
     @customer = current_customer
     @contact = Contact.new()
@@ -20,13 +22,15 @@ class Public::ContactsController < ApplicationController
     date_begin = Time.zone.parse(params[:created_at]).beginning_of_day
     date_end = Time.zone.parse(params[:created_at]).end_of_day
     @contacts = Contact.where(created_at: date_begin..date_end, child_id: @child.id).order(:admin_id)
+    if !current_admin.present? && current_customer.id != @child.customer_id
+      redirect_to contacts_path
+    end
   end
 
   def create
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
-    # 管理者は1人しか存在しないハズ
-    # なのでfirstで1件のみを取得するので十分なハズ
+    # 管理者は1人しか存在しないのでfirstで1件のみを取得するので十分
     target_admin = Admin.first
 
     if @contact.save
@@ -38,17 +42,9 @@ class Public::ContactsController < ApplicationController
     end
   end
 
-  # def search
-  #   @search_params = contact_search_params
-  #   @contacts = Contact.search(@search_params).joins(:child)
-  # end
-
-
-
   def search
     if params[:created_at].present?
       @contacts = current_customer.contacts.where('created_at LIKE ?', "%#{params[:created_at]}%").group("date(created_at)", :child_id)
-      # @contacts = current_customer.contacts.where(status: "published").group("date(created_at)", :child_id).page(params[:page]).per(10).reverse_order
     else
       @contacts = Contact.none
     end
@@ -62,8 +58,10 @@ class Public::ContactsController < ApplicationController
     params.require(:contact).permit(:customer_id, :child_id, :admin_id, :weather, :staple, :main, :side, :dessert, :staple_quantity, :main_quantity, :side_quantity, :dessert_quantity, :comment, :humor, :defecation, :defecation_number, :temperture, :tempertured_at, :dinner, :dinner_time,:dinner_quantity, :breakfast, :breakfast_time, :breakfast_quantity ,:sleep_started_at, :sleep_finished_at, :sleep_degree, :pickup_person, :pickuped_at, :status)
   end
 
-  # def contact_search_params
-  #   params.fetch(:search,{}).permit(:name, :created_at_form, :created_at_to)
-  # end
+  def is_login?
+    if !current_customer.present? && !current_admin.present?
+      redirect_to customer_session_path
+    end
+  end
 
 end

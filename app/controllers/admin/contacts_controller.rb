@@ -1,5 +1,6 @@
 class Admin::ContactsController < ApplicationController
   before_action :authenticate_admin!
+  
   def new
     @customer = Customer.find(params[:customer_id])
     @contact = Contact.new()

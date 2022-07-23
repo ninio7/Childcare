@@ -3,6 +3,8 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :is_login?
+
   protected
 
   def after_sign_up_path_for(resoure)
@@ -63,4 +65,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def is_login?
+    if !current_admin.present?
+      redirect_to customer_session_path
+    end
+  end
 end
