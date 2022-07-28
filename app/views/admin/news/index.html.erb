@@ -23,6 +23,7 @@
           <tr>
             <th class="bg-green text-white" style="width: 30%">日付</th>
             <th class="bg-green text-white">タイトル</th>
+            <!--<th class="bg-green text-white">クラス名</th>-->
         　</tr>
         </thead>
         <tbody>
@@ -32,6 +33,10 @@
             <tr onclick='window.location="<%= admin_news_path(news) %>"' role="link">
               <td><%= news.started_on.strftime("%Y年%m月%d日(#{week})") %></td>
               <td><%= news.title %></td>
+              <!--<td><%# news.groups.each do |group| %>-->
+              <!--      <#%= group.name %>-->
+              <!--    <%# end %>-->
+              <!--</td>-->
             </tr>
           <% end %>
         </tbody>

@@ -1,49 +1,7 @@
 <div class="container">
   <h2 class="my-5 col-md-6 offset-md-4 text-center under">お知らせ新規登録</h2>
   <%= form_with(model: @news, url: admin_news_index_path, method: :post, local: true, class: 'needs-validation', html: {novalidate: true}) do |f| %>
-  <div class="row mb-3">
-    <div class="col-md-3 mb-4">
-      <%= f.collection_select :group_ids, Group.all, :id, :name, {include_hidden: false},{multiple: true, class: "form-control", required: true} %>
-      <div class="invalid-feedback row offset-sm-0 offset-1">
-        選択してください。
-      </div>
-    </div>
-    <div class="col-md-9">
-      <p class="border-top"></p>
-      <i class="fas fa-book-open" style="color: skyblue;"></i> タイトル
-      <div class="field form-group row">
-        <div class="col offset-md-3 offset-1 mt-3">
-          <%= f.text_area :title, autofocus: true, class: "col-md-9 col-lg-7 form-control", rows: "1", required: true %>
-          <div class="invalid-feedback row offset-sm-0 offset-1">
-            名前を入力してください。
-          </div>
-        </div>
-      </div>
-      <p class="border-top"></p>
-      <i class="far fa-calendar-alt" style="color: gold;"></i> 期間
-      <div class="field form-group row">
-        <div class="col mt-3 offset-sm-3 offset-1">
-          <%= f.date_field :started_on, autofocus: true, required: true %><span> ～ </span><%= f.date_field :finished_on, autofocus: true, required: true  %>
-          <div class="invalid-feedback row offset-sm-0 offset-1">
-            日付を選択してください。
-          </div>
-        </div>
-      </div>
-      <p class="border-top"></p>
-      <i class="far fa-comment" style="color: lightcoral;"></i> 詳細
-      <div class="field form-group row">
-        <div class="col offset-md-3 mt-3 offset-1">
-          <%= f.text_area :body, autofocus: true, class: "col-md-9 col-lg-7 form-control" ,rows: "6", required: true  %>
-          <div class="invalid-feedback row offset-sm-0 offset-1">
-            詳細を入力してください。
-          </div>
-        </div>
-      </div>
-      <div class="col-md-10 text-center">
-        <%= f.submit "登録", class: "btn btn-gray text-white rounded-pill mt-5 col-lg-3 col-md-5 col-6 offset-md-1" %>
-      </div>
-    </div>
-  </div>
+    <%= render partial: "admin/news/form", locals: { f: f } %>
   <% end %>
 </div>
 
