@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root "public/games#index"
-  get "contact_contact/:id" => "contact_contacts#show", as: 'contact_contact'
+  # get "contact_contact/:id" => "contact_contacts#show", as: 'contact_contact'
 
   # 管理者用
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
@@ -18,12 +18,16 @@ Rails.application.routes.draw do
       resources :contact_contacts, only: [:show]
       resources :children
       resources :absents, only: [:index]
-      end
+    end
+
     get "search"=>"customers#search"
-    resources :groups
+    resources :groups do
+      resources :personal_plans
+      resources :annual_plans
+    end
+    get "groups/:id/about"=>"groups#about", as: 'about'
     resources :notifications, only:[:index]
     get "search_tag"=>"games#search_tag"
-    resources :events
   end
 
    # 会員用

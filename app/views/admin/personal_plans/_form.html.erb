@@ -1,0 +1,42 @@
+<%= f.select :child_id,options_from_collection_for_select(@group.children.all, :id, :name) , {}, class: "form-control col-sm-8 col-md-6 col-lg-3 offset-lg-2 mt-3"%>
+<%= f.hidden_field :group_id, value: @group.id %>
+<div class="field form-group row">
+  <div class="col-12 col-lg-10 mt-5 text-right">
+    <%= f.text_field :principal, autofocus: true, placeholder: "園長", class: "mr-1 col-3 col-sm-2" %>
+    <%= f.text_field :lead_teacher, autofocus: true, placeholder: "主任", class: "mr-1 col-3 col-sm-2" %>
+    <%= f.text_field :homeroom_teacher, autofocus: true, placeholder: "担任", class: "mr-1 col-3 col-sm-2" %>
+  </div>
+</div>
+<div class="field form-group row mt-5">
+  <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+    <div class="card-header py-1">今月初めての子どもの姿</div>
+    <%= f.text_area :act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<div class="field form-group row mt-3">
+  <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+    <div class="card-header py-1">ねらい</div>
+    <%= f.text_area :aim, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<div class="field form-group row mt-3">
+  <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+    <div class="card-header py-1">内容</div>
+    <%= f.text_area :contents, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<div class="field form-group row mt-3">
+  <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+    <div class="card-header py-1">保育者の援助</div>
+    <%= f.text_area :support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<div class="field form-group row mt-3">
+  <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+    <div class="card-header py-1">評価</div>
+    <%= f.text_area :evalution, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<div class="col-12 text-center my-5">
+  <%= f.submit "登録", class: "btn btn-gray col-md-3 col-6 rounded-pill  text-white" %>
+</div>

@@ -1,0 +1,2 @@
+module Admin::AnnualPlansHelper
+end

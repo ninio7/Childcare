@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row my-5">
+    <h2 class="col-lg-6 offset-lg-3 text-center under"><%= @group.name %> 指導案</h2>
+    <div class="col-12 text-center mt-5">
+      <%= link_to "年間指導案", admin_group_annual_plans_path(@group.id), class: "btn btn-gray text-white col-5" %>
+    </div>
+    <div class="col-12 text-center mt-3">
+      <%= link_to "月間指導案", admin_group_annual_plans_path(@group.id), class: "btn btn-gray text-white col-5" %>
+    </div>
+    <div class="col-12 text-center mt-3">
+       <%= link_to "週間指導案",admin_group_annual_plans_path(@group.id), class: "btn btn-gray text-white col-5" %>
+    </div>
+    <div class="col-12 text-center mt-3">
+      <%= link_to " 個人指導案", admin_group_personal_plans_path(@group.id) ,class: "btn btn-gray text-white col-5" %>
+    </div>
+    <div class="col-12 text-center mt-3">
+      <%= link_to "ヒヤリハット",admin_group_annual_plans_path(@group.id), class: "btn btn-gray text-white col-5" %>
+    </div>
+  <div class="form-group row">
+<div class="container">

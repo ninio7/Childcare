@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_23_055302) do
+ActiveRecord::Schema.define(version: 2022_07_31_042937) do
 
   create_table "absents", force: :cascade do |t|
     t.integer "customer_id"
@@ -63,6 +63,47 @@ ActiveRecord::Schema.define(version: 2022_07_23_055302) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "annual_plans", force: :cascade do |t|
+    t.integer "admin_id"
+    t.integer "group_id"
+    t.string "principal"
+    t.string "lead_teacher"
+    t.string "homeroom_teacher"
+    t.text "target"
+    t.text "safety"
+    t.text "evaluation"
+    t.text "first_act"
+    t.text "first_aim"
+    t.text "first_nursing"
+    t.text "first_education"
+    t.text "first_environment"
+    t.text "first_support"
+    t.text "first_event"
+    t.text "second_act"
+    t.text "second_aim"
+    t.text "second_nursing"
+    t.text "second_education"
+    t.text "second_environment"
+    t.text "second_support"
+    t.text "second_event"
+    t.text "third_act"
+    t.text "third_aim"
+    t.text "third_nursing"
+    t.text "third_education"
+    t.text "third_environment"
+    t.text "third_support"
+    t.text "third_event"
+    t.text "fourth_act"
+    t.text "fourth_aim"
+    t.text "fourth_nursing"
+    t.text "fourth_education"
+    t.text "fourth_environment"
+    t.text "fourth_support"
+    t.text "fourth_event"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "children", force: :cascade do |t|
@@ -162,6 +203,7 @@ ActiveRecord::Schema.define(version: 2022_07_23_055302) do
   end
 
   create_table "groups", force: :cascade do |t|
+    t.integer "age"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -200,6 +242,22 @@ ActiveRecord::Schema.define(version: 2022_07_23_055302) do
     t.index ["contact_id"], name: "index_notifications_on_contact_id"
     t.index ["customer_id"], name: "index_notifications_on_customer_id"
     t.index ["news_id"], name: "index_notifications_on_news_id"
+  end
+
+  create_table "personal_plans", force: :cascade do |t|
+    t.integer "admin_id"
+    t.integer "group_id"
+    t.integer "child_id"
+    t.string "principal"
+    t.string "lead_teacher"
+    t.string "homeroom_teacher"
+    t.text "act"
+    t.text "aim"
+    t.text "contents"
+    t.text "support"
+    t.text "evalution"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|

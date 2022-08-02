@@ -1,0 +1,32 @@
+<div class="container">
+  <h2 class="col-lg-8 mt-5 mb-3 text-center offset-lg-2 text-dark under"> <%= @group.name %> 個人指導計画</h2>
+  <%= link_to  new_admin_group_personal_plan_path do %>
+    <p class= "btn btn-yellow text-secondary offset-lg-2"><i class="fas fa-edit" aria-hidden="true"></i> 個人指導案作成</p>
+  <% end %>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-9 mt-2">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="bg-green text-white">月度</th>
+            <th class="bg-green text-white">名前</th>
+            <th class="bg-green text-white">年齢</th>
+          </tr>
+        </thead>
+           <tbody>
+          <% @personal_plans.each do |personal_plan| %>
+            <tr onclick='window.location="<%= admin_group_personal_plan_path(@group.id,personal_plan.id)  %>"' role="link">
+              <td><%= personal_plan.created_at.strftime("%Y年%m月") %></td>
+              <td><%= personal_plan.child.name %></td>
+              <td><%= personal_plan.age  %> 歳 <%= personal_plan.months %>カ月</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-center mx-auto">
+    <%= paginate @personal_plans %>
+  </div>
+</div>
+

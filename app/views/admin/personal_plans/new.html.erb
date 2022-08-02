@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5">
+      <h2 class="col-lg-10 text-center"><%= Date.today.year.to_s + "年 " + Date.today.month.to_s %>月度 個人指導計画</h2>
+      <%= form_with model: @personal_plan , url: admin_group_personal_plans_path, method: :post do |f| %>
+        <%= render partial: "form", locals: { f: f } %>
+      <% end %>
+    </div>
+  </div>
+</div>

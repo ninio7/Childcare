@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5">
+      <h2 class="col-lg-8 text-center under offset-lg-2"><%= @personal_plan.created_at.strftime("%Y年%m月")  %> 個人指導計画</h2>
+      <%= form_with model: @personal_plan, url: admin_group_personal_plan_path(@personal_plan), method: :patch  do |f| %>
+        <%= render partial: "form", locals: { f: f } %>
+      <% end %>
+    </div>
+  </div>
+</div>

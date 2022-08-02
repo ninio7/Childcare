@@ -1,6 +1,6 @@
 class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @group = Group.new
     @groups = Group.page(params[:page]).per(10)
@@ -44,10 +44,14 @@ class Admin::GroupsController < ApplicationController
     @group.delete
     @groups = Group.all
   end
+  
+  def about
+    @group =  Group.find(params[:id])
+  end
 
   private
 
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :age)
   end
 end

@@ -1,0 +1,206 @@
+<div class="field form-group row">
+  <%= f.hidden_field :group_id, value: @group.id %>
+  <div class="col-12 mt-5 text-right">
+    <%= f.text_field :principal, autofocus: true, placeholder: "園長", class: "mr-1 col-3 col-sm-2" %>
+    <%= f.text_field :lead_teacher, autofocus: true, placeholder: "主任", class: "mr-1 col-3 col-sm-2" %>
+    <%= f.text_field :homeroom_teacher, autofocus: true, placeholder: "担任", class: "mr-1 col-3 col-sm-2" %>
+  </div>
+</div>
+<div class="field form-group row mt-3">
+  <div class="col-lg-4 mt-2">
+    <div class="card">
+      <div class="card-header py-1">年間目標</div>
+      <%= f.text_area :target, autofocus: true, class: "form-control",rows: "5" %>
+    </div>
+  </div>
+  <div class="col-lg-4 mt-2">
+    <div class="card">
+      <div class="card-header py-1">健康・安全</div>
+      <%= f.text_area :safety, autofocus: true, class: "form-control",rows: "5" %>
+    </div>
+  </div>
+  <div class="col-lg-4 mt-2">
+    <div class="card">
+      <div class="card-header py-1">評価</div>
+      <%= f.text_area :evaluation, autofocus: true, class: "form-control",rows: "5" %>
+    </div>
+  </div>
+</div>
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　子どもの姿</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">1期(4月～6月)</div>
+    <%= f.text_area :first_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">2期(7月～9月)</div>
+    <%= f.text_area :second_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">3期(10月～12月)</div>
+    <%= f.text_area :third_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">4期(1月～3月)</div>
+    <%= f.text_area :fourth_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+      <tr>
+      <th class="bg-green py-1 text-white">　ねらい</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">1期(4月～6月)</div>
+    <%= f.text_area :first_aim, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">2期(7月～9月)</div>
+    <%= f.text_area :second_aim, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">3期(10月～12月)</div>
+    <%= f.text_area :third_aim, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">4期(1月～3月)</div>
+    <%= f.text_area :fourth_aim, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　養護(生命の保持・情緒の安定)</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">1期(4月～6月)</div>
+    <%= f.text_area :first_nursing, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">2期(7月～9月)</div>
+    <%= f.text_area :second_nursing, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">3期(10月～12月)</div>
+    <%= f.text_area :third_nursing, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">4期(1月～3月)</div>
+    <%= f.text_area :fourth_nursing, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　教育(健康・人間関係・環境・言葉・表現)</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">1期(4月～6月)</div>
+    <%= f.text_area :first_education, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">2期(7月～9月)</div>
+    <%= f.text_area :second_education, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">3期(10月～12月)</div>
+    <%= f.text_area :third_education, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">4期(1月～3月)</div>
+    <%= f.text_area :fourth_education, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　環境</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">1期(4月～6月)</div>
+    <%= f.text_area :first_environment, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">2期(7月～9月)</div>
+    <%= f.text_area :second_environment, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">3期(10月～12月)</div>
+    <%= f.text_area :third_environment, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">4期(1月～3月)</div>
+    <%= f.text_area :fourth_environment, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　保護者支援</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">1期(4月～6月)</div>
+    <%= f.text_area :first_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">2期(7月～9月)</div>
+    <%= f.text_area :second_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">3期(10月～12月)</div>
+    <%= f.text_area :third_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">4期(1月～3月)</div>
+    <%= f.text_area :fourth_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　行事</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">1期(4月～6月)</div>
+    <%= f.text_area :first_event, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">2期(7月～9月)</div>
+    <%= f.text_area :second_event, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">3期(10月～12月)</div>
+    <%= f.text_area :third_event, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-3 col-sm-6 mt-2">
+    <div class="card-header py-1">4期(1月～3月)</div>
+    <%= f.text_area :fourth_event, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<div class="col-12 text-center my-5">
+  <%= f.submit "登録", class: "btn btn-gray col-md-3 col-6 rounded-pill  text-white" %>
+</div>

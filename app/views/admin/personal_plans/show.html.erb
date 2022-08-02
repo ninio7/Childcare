@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5">
+      <h2 class="mb-3 text-center">
+        <%= @personal_plan.created_at.strftime("%Y年") %> 個人指導計画</br>
+        <%= @personal_plan.child.group.name %>
+      </h2>
+      <h2 class="mb-5 text-center"><%= @personal_plan.child.name %>
+        ( <%= @personal_plan.age  %> 歳 <%= @personal_plan.months %>カ月 )
+      </h2>
+      <div class="field form-group row">
+        <div class="col-md-2 col-4 mt-3 border d-flex align-items-center offset-md-4" style="height:50px;">
+          園長：<%= @personal_plan.principal %>
+        </div>
+        <div class="col-md-2 col-4 mt-3 border d-flex align-items-center">
+          主任：<%= @personal_plan.lead_teacher %>
+        </div>
+        <div class="col-md-2 col-4 mt-3 border d-flex align-items-center">
+          担任：<%= @personal_plan.homeroom_teacher %>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:170px;">
+            <div class="card-header py-1">今月初めての子どもの姿</div>
+            <p class="py-1 mb-0 px-2 overflow-auto"><%= @personal_plan.act %></p>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:170px;">
+            <div class="card-header py-1">ねらい</div>
+            <p class="py-1 mb-0 px-2 overflow-auto"><%= @personal_plan.aim %></p>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:170px;">
+            <div class="card-header py-1">内容</div>
+            <p class="py-1 mb-0 px-2 overflow-auto"><%= @personal_plan.contents %></p>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:170px;">
+            <div class="card-header py-1">保育者の支援</div>
+            <p class="py-1 mb-0 px-2 overflow-auto"><%= @personal_plan.support %></p>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:170px;">
+            <div class="card-header py-1">評価</div>
+            <p class="py-1 mb-0 px-2 overflow-auto"><%= @personal_plan.evalution %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-center my-5">
+        <%= link_to "編集", edit_admin_group_personal_plan_path(@group.id, @personal_plan.id),class: "btn btn-outline-secondary rounded-pill col-md-3 col-6" %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,289 @@
+ <div class="container">
+    <div class="row">
+      <div class="col mt-5 plan">
+        <h2 class="mb-3"><%= @annual_plan.created_at.strftime("%Y年") %> 年間指導計画</h2>
+        <div class="field form-group row">
+          <div class="col-md-2 col-5 mt-3">
+            <h2><%= @annual_plan.group.age %><span> 歳児</span></h2>
+          </div>
+          <div class="col-md-3 col-7 mt-3">
+            <h2><%= @annual_plan.group.name %></h2>
+          </div>
+          <div class="col-md-2 col-4 mt-3 border d-flex align-items-center offset-md-1" style="height:50px;">
+            園長：<%= @annual_plan.principal %>
+          </div>
+          <div class="col-md-2 col-4 mt-3 border d-flex align-items-center">
+            主任：<%= @annual_plan.lead_teacher %>
+          </div>
+          <div class="col-md-2 col-4 mt-3 border d-flex align-items-center">
+            担任：<%= @annual_plan.homeroom_teacher %>
+          </div>
+        </div>
+        <div class="field form-group row mt-5">
+          <div class="col-lg-4 mt-2">
+            <div class="card" style="height:150px;">
+              <div class="card-header py-1 mb-0">年間目標</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.target&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <div class="card" style="height:150px;">
+              <div class="card-header py-1 mb-0">健康・安全</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.safety&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <div class="card" style="height:150px;">
+              <div class="card-header py-1 mb-0">評価</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.evaluation&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+
+        <table class="table mt-5">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white">　子どもの姿</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">1期(4月～6月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.first_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">2期(7月～9月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.second_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">3期(10月～12月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.third_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">4期(1月～3月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.fourth_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white">　ねらい</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">1期(4月～6月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.first_aim&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">2期(7月～9月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.second_aim&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">3期(10月～12月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.third_aim&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">4期(1月～3月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.fourth_aim&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white">　養護(生命の保持・情緒の安定)</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">1期(4月～6月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.first_nursing&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">2期(7月～9月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.second_nursing&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">3期(10月～12月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.third_nursing&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">4期(1月～3月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.fourth_nursing&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white">　教育(健康・人間関係・環境・言葉・表現)</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">1期(4月～6月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.first_education&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">2期(7月～9月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.second_education&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">3期(10月～12月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.third_education&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">4期(1月～3月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.fourth_education&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white">　環境</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">1期(4月～6月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.first_environment&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">2期(7月～9月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.second_environment&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">3期(10月～12月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.third_environment&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">4期(1月～3月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.fourth_environment&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white">　保護者支援</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">1期(4月～6月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.first_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">2期(7月～9月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.second_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">3期(10月～12月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.third_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">4期(1月～3月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.fourth_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white">　行事</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">1期(4月～6月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.first_event&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">2期(7月～9月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.second_event&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">3期(10月～12月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.third_event&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">4期(1月～3月)</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@annual_plan.fourth_event&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-12 text-center my-5">
+            <%= link_to "編集", edit_admin_group_annual_plan_path(@annual_plan),class: "btn btn-outline-secondary rounded-pill col-md-3 col-6" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+

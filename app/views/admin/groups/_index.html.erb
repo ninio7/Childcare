@@ -1,6 +1,7 @@
 <table class="table text-nowrap">
   <thead class="thead">
     <tr>
+      <th class="bg-green text-white" style="width: 10%">年齢</th>
       <th class="bg-green text-white">クラス名</th>
     　<th class="bg-green text-white"></th>
     </tr>
@@ -8,10 +9,12 @@
   <tbody id="group_form">
   <% groups.each do |group| %>
     <tr>
+      <td><%= group.age %> 歳児</td>
       <td><%= group.name %></td>
       <td class="text-center" style="width: 20%">
         <%= link_to "編集", edit_admin_group_path(group.id),class: "btn btn-outline-secondary rounded-pill" %>
         <%= link_to "削除", admin_group_path(group.id), class: "btn btn-outline-danger rounded-pill ml-3", method: :delete , remote: true %>
+        <%= link_to "指導案", admin_about_path(group.id) ,class: "btn btn-gray text-white ml-3" %>
       </td>
     </tr>
   <% end %>
