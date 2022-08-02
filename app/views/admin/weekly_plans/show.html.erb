@@ -1,0 +1,177 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5 plan">
+      <h2 class="mb-3"><%= @weekly_plan.created_at.strftime("%Y年%m月") %>　第<%= @weekly_plan.weeks %>週　週間指導案</h2>
+      <div class="field form-group row">
+          <div class="col-md-2 col-5 mt-3">
+            <h2><%= @weekly_plan.group.age %><span> 歳児</span></h2>
+          </div>
+          <div class="col-md-3 col-7 mt-3">
+            <h2><%= @weekly_plan.group.name %></h2>
+          </div>
+          <div class="col-md-2 col-4 mt-3 border d-flex align-items-center offset-md-1" style="height:50px;">
+            園長：<%= @weekly_plan.principal %>
+          </div>
+          <div class="col-md-2 col-4 mt-3 border d-flex align-items-center">
+            主任：<%= @weekly_plan.lead_teacher %>
+          </div>
+          <div class="col-md-2 col-4 mt-3 border d-flex align-items-center">
+            担任：<%= @weekly_plan.homeroom_teacher %>
+          </div>
+        </div>
+      <div class="field form-group row mt-5">
+          <div class="col-lg-4 mt-2">
+            <div class="card" style="height:150px;">
+              <div class="card-header py-1 mb-0">年間目標</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.lastweek_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <div class="card" style="height:150px;">
+              <div class="card-header py-1 mb-0">健康・安全</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.aim&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <div class="card" style="height:150px;">
+              <div class="card-header py-1 mb-0">評価</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.event&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+      <table class="table mt-5">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white"> 月曜日</th>
+            </tr>
+          </thead>
+        </table>
+      <div class="row">
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">活動・展開</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.mon_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">環境構成・配慮</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.mon_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+      <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white"> 火曜日</th>
+            </tr>
+          </thead>
+        </table>
+      <div class="row">
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">活動・展開</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.tue_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">環境構成・配慮</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.tue_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+      <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white"> 水曜日</th>
+            </tr>
+          </thead>
+        </table>
+      <div class="row">
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">活動・展開</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.wed_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">環境構成・配慮</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.wed_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+      <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white"> 木曜日</th>
+            </tr>
+          </thead>
+        </table>
+      <div class="row">
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">活動・展開</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.thu_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">環境構成・配慮</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.thu_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+      <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white"> 金曜日</th>
+            </tr>
+          </thead>
+        </table>
+      <div class="row">
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">活動・展開</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.fri_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">環境構成・配慮</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.fri_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+      <table class="table mt-4">
+          <thead>
+            <tr>
+              <th class="bg-green py-1 mb-0 text-white"> 土曜日</th>
+            </tr>
+          </thead>
+        </table>
+      <div class="row">
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">活動・展開</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.sat_act&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6 mt-2">
+            <div class="card" style="height:170px;">
+              <div class="card-header py-1 mb-0">環境構成・配慮</div>
+              <p class="py-1 mb-0 px-2 overflow-auto"><%= safe_join(@weekly_plan.sat_support&.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        </div>
+      <div class="col-12 text-center my-5">
+          <%= link_to "編集", edit_admin_group_weekly_plan_path(@weekly_plan),class: "btn btn-outline-secondary rounded-pill col-md-3 col-6" %>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+

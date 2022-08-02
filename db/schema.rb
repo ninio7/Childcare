@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_31_042937) do
+ActiveRecord::Schema.define(version: 2022_08_02_082919) do
 
   create_table "absents", force: :cascade do |t|
     t.integer "customer_id"
@@ -262,6 +262,32 @@ ActiveRecord::Schema.define(version: 2022_07_31_042937) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weekly_plans", force: :cascade do |t|
+    t.integer "admin_id"
+    t.integer "group_id"
+    t.integer "weeks"
+    t.string "principal"
+    t.string "lead_teacher"
+    t.string "homeroom_teacher"
+    t.text "lastweek_act"
+    t.text "aim"
+    t.text "event"
+    t.text "mon_act"
+    t.text "mon_support"
+    t.text "tue_act"
+    t.text "tue_support"
+    t.text "wed_act"
+    t.text "wed_support"
+    t.text "thu_act"
+    t.text "thu_support"
+    t.text "fri_act"
+    t.text "fri_support"
+    t.text "sat_act"
+    t.text "sat_support"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

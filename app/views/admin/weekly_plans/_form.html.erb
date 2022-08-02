@@ -1,0 +1,138 @@
+<div class="field form-group row">
+  <div class="col">
+    <%= f.hidden_field :group_id, value: @group.id %>
+    <h3>第 <%= f.text_field :weeks, autofocus:true , size: "1x1"%> 週</h3>
+  </div>
+
+  <div class="col-12 mt-5 text-right">
+    <%= f.text_field :principal, autofocus: true, placeholder: "園長", class: "mr-1 col-3 col-sm-2" %>
+    <%= f.text_field :lead_teacher, autofocus: true, placeholder: "主任", class: "mr-1 col-3 col-sm-2" %>
+    <%= f.text_field :homeroom_teacher, autofocus: true, placeholder: "担任", class: "mr-1 col-3 col-sm-2" %>
+  </div>
+</div>
+<div class="field form-group row mt-3">
+  <div class="col-lg-4 mt-2">
+    <div class="card">
+      <div class="card-header py-1">先週の子どもの姿</div>
+      <%= f.text_area :lastweek_act, autofocus:true , class: "form-control",rows: "5" %>
+    </div>
+  </div>
+  <div class="col-lg-4 mt-2">
+    <div class="card">
+      <div class="card-header py-1">ねらい</div>
+      <%= f.text_area :aim, autofocus: true, class: "form-control",rows: "5" %>
+    </div>
+  </div>
+  <div class="col-lg-4 mt-2">
+    <div class="card">
+      <div class="card-header py-1">行事</div>
+      <%= f.text_area :event, autofocus: true, class: "form-control",rows: "5" %>
+    </div>
+  </div>
+</div>
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　月曜日</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">活動・展開</div>
+    <%= f.text_area :mon_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">環境構成・配慮</div>
+    <%= f.text_area :mon_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+      <tr>
+      <th class="bg-green py-1 text-white">　火曜日</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">活動・展開</div>
+    <%= f.text_area :tue_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">環境構成・配慮</div>
+    <%= f.text_area :tue_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　水曜日</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">活動・展開</div>
+    <%= f.text_area :wed_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">環境構成・配慮</div>
+    <%= f.text_area :wed_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　木曜日</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">活動・展開</div>
+    <%= f.text_area :thu_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">環境構成・配慮</div>
+    <%= f.text_area :thu_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　金曜日</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">活動・展開</div>
+    <%= f.text_area :fri_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">環境構成・配慮</div>
+    <%= f.text_area :fri_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="bg-green py-1 text-white">　土曜日</th>
+    </tr>
+  </thead>
+</table>
+<div class="field form-group row mt-3">
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">活動・展開</div>
+    <%= f.text_area :sat_act, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+  <div class="col-lg-6 col-sm-6 mt-2">
+    <div class="card-header py-1">環境構成・配慮</div>
+    <%= f.text_area :sat_support, autofocus: true, class: "form-control",rows: "5" %>
+  </div>
+</div>
+
+<div class="col-12 text-center my-5">
+  <%= f.submit "登録", class: "btn btn-gray col-md-3 col-6 rounded-pill  text-white" %>
+</div>

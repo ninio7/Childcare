@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="col-lg-8 mt-5 mb-3 text-center offset-lg-2 text-dark under"> <%= @group.name %> 週間指導計画</h2>
+  <%= link_to  new_admin_group_weekly_plan_path do %>
+    <p class= "btn btn-yellow text-secondary offset-lg-2"><i class="fas fa-edit" aria-hidden="true"></i> 週案作成</p>
+  <% end %>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-9 mt-2">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="bg-green text-white">月度</th>
+            <th class="bg-green text-white">名前</th>
+          </tr>
+        </thead>
+           <tbody>
+          <% @weekly_plans.each do |weekly_plan| %>
+            <tr onclick='window.location="<%= admin_group_weekly_plan_path(@group.id,weekly_plan.id)  %>"' role="link">
+              <td><%= weekly_plan.created_at.strftime("%Y年%m月") %> 第<%= weekly_plan.weeks %>週</td>
+              <td><%= weekly_plan.group.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-center mx-auto">
+    <%= paginate @weekly_plans %>
+  </div>
+</div>
+

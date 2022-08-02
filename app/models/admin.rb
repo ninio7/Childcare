@@ -9,5 +9,6 @@ class Admin < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :annual_plans, dependent: :destroy
   has_many :persona_plans, dependent: :destroy
+  has_many :weekly_plans, dependent: :destroy
 
 end
