@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5">
+      <h2 class="mb-3 text-center">
+        <%= @accident.group.name %>　ヒヤリハット
+      </h2>
+
+      <div class="field form-group row">
+        <div class="col-md-2 col-4 mt-3 border d-flex align-items-center offset-md-4" style="height:50px;">
+          園長：<%= @accident.principal %>
+        </div>
+        <div class="col-md-2 col-4 mt-3 border d-flex align-items-center">
+          主任：<%= @accident.lead_teacher %>
+        </div>
+        <div class="col-md-2 col-4 mt-3 border d-flex align-items-center">
+          担任：<%= @accident.homeroom_teacher %>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:90px;">
+            <div class="card-header py-1">日時</div>
+            <p class="py-3 mb-0 px-3"><%= (@accident.started_on.strftime("%Y年%m月%d日(#{@accident.week})")) %></p>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:170px;">
+            <div class="card-header py-1">場所</div>
+            <p class="py-1 mb-0 px-2 overflow-auto"><%= @accident.place %></p>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:170px;">
+            <div class="card-header py-1">原因・問題点</div>
+            <p class="py-1 mb-0 px-2 overflow-auto"><%= @accident.situation %></p>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group row mt-3">
+        <div class="col-lg-8 col-sm-12 mt-2 offset-lg-2">
+          <div class="card" style="height:170px;">
+            <div class="card-header py-1">対策</div>
+            <p class="py-1 mb-0 px-2 overflow-auto"><%= @accident.cause %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-center my-5">
+        <%= link_to "編集", edit_admin_group_accident_path(@group.id, @accident.id),class: "btn btn-outline-secondary rounded-pill col-md-3 col-6" %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+

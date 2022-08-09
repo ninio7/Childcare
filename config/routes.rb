@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'weekly_plans/new'
-    get 'weekly_plans/index'
-    get 'weekly_plans/show'
-    get 'weekly_plans/edit'
-  end
   root "public/games#index"
   # get "contact_contact/:id" => "contact_contacts#show", as: 'contact_contact'
 
@@ -31,6 +25,7 @@ Rails.application.routes.draw do
       resources :personal_plans
       resources :annual_plans
       resources :weekly_plans
+      resources :accidents
     end
     get "groups/:id/about"=>"groups#about", as: 'about'
     resources :notifications, only:[:index]

@@ -6,6 +6,7 @@ class Group < ApplicationRecord
   has_many :personal_plans, dependent: :destroy
   has_many :annual_plans, dependent: :destroy
   has_many :weekly_plans, dependent: :destroy
+  has_many :accidents, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :age, presence: true, uniqueness: true

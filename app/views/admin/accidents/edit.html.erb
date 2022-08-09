@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5">
+      <h2 class="col-lg-8 text-center under offset-lg-2"><%= @accident.group.name %> ヒヤリハット</h2>
+      <%= form_with model: @accident, url: admin_group_accident_path(@accident), method: :patch  do |f| %>
+        <%= render partial: "form", locals: { f: f } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
